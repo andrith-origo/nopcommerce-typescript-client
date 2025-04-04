@@ -1,0 +1,21 @@
+{
+  "name": "@andrith-origo/nopcommerce-typescript-client",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Andri Þórhallsson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrith-origo/nopcommerce-typescript-client.git"
+  },
+  "publishConfig": {
+    "@andrith-origo:registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "test": "exit 0",
+    "build": "tsc",
+    "ci": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
+}
