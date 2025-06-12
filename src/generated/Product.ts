@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,69 +11,74 @@
  */
 
 import {
-  ProductAddProductToCompareListDetailData,
-  ProductAddProductToCompareListDetailError,
-  ProductClearCompareListDeleteData,
-  ProductClearCompareListDeleteError,
-  ProductCompareProductsListData,
-  ProductCompareProductsListError,
-  ProductCustomerProductReviewsListData,
-  ProductCustomerProductReviewsListError,
-  ProductCustomerProductReviewsListParams,
+  DeleteProductClearCompareListData,
+  DeleteProductClearCompareListError,
+  GetProductAddProductToCompareListData,
+  GetProductAddProductToCompareListError,
+  GetProductCompareProductsData,
+  GetProductCompareProductsError,
+  GetProductCustomerProductReviewsData,
+  GetProductCustomerProductReviewsError,
+  GetProductCustomerProductReviewsParams,
+  GetProductGetProductCombinationsData,
+  GetProductGetProductCombinationsError,
+  GetProductGetProductDetailsData,
+  GetProductGetProductDetailsError,
+  GetProductGetProductDetailsParams,
+  GetProductGetRelatedProductsData,
+  GetProductGetRelatedProductsError,
+  GetProductGetRelatedProductsParams,
+  GetProductHomePageProductsData,
+  GetProductHomePageProductsError,
+  GetProductProductEmailAFriendData,
+  GetProductProductEmailAFriendError,
+  GetProductProductReviewsData,
+  GetProductProductReviewsError,
+  GetProductRecentlyViewedProductsData,
+  GetProductRecentlyViewedProductsError,
+  GetProductRemoveProductFromCompareListData,
+  GetProductRemoveProductFromCompareListError,
+  GetProductValidateProductReviewAvailabilityData,
+  GetProductValidateProductReviewAvailabilityError,
+  PostProductEstimateShippingData,
+  PostProductEstimateShippingError,
+  PostProductProductEmailAFriendSendData,
+  PostProductProductEmailAFriendSendError,
+  PostProductProductReviewsAddData,
+  PostProductProductReviewsAddError,
+  PostProductSetProductReviewHelpfulnessData,
+  PostProductSetProductReviewHelpfulnessError,
+  PostProductSetProductReviewHelpfulnessParams,
   ProductEmailAFriendModelDto,
-  ProductEstimateShippingCreateData,
-  ProductEstimateShippingCreateError,
   ProductEstimateShippingModelDtoBaseModelDtoRequest,
-  ProductGetProductCombinationsDetailData,
-  ProductGetProductCombinationsDetailError,
-  ProductGetProductDetailsDetailData,
-  ProductGetProductDetailsDetailError,
-  ProductGetProductDetailsDetailParams,
-  ProductGetRelatedProductsDetailData,
-  ProductGetRelatedProductsDetailError,
-  ProductGetRelatedProductsDetailParams,
-  ProductHomePageProductsListData,
-  ProductHomePageProductsListError,
-  ProductProductEmailAFriendDetailData,
-  ProductProductEmailAFriendDetailError,
-  ProductProductEmailAFriendSendCreateData,
-  ProductProductEmailAFriendSendCreateError,
-  ProductProductReviewsAddCreateData,
-  ProductProductReviewsAddCreateError,
-  ProductProductReviewsDetailData,
-  ProductProductReviewsDetailError,
-  ProductRecentlyViewedProductsListData,
-  ProductRecentlyViewedProductsListError,
-  ProductRemoveProductFromCompareListDetailData,
-  ProductRemoveProductFromCompareListDetailError,
   ProductReviewsModelDto,
-  ProductSetProductReviewHelpfulnessCreateData,
-  ProductSetProductReviewHelpfulnessCreateError,
-  ProductSetProductReviewHelpfulnessCreateParams,
-  ProductValidateProductReviewAvailabilityDetailData,
-  ProductValidateProductReviewAvailabilityDetailError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Product<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Product<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Product
-   * @name ProductGetProductDetailsDetail
+   * @name GetProductGetProductDetails
    * @summary Get the product details
    * @request GET:/api-frontend/Product/GetProductDetails/{productId}
    * @secure
-   * @response `200` `ProductGetProductDetailsDetailData` Success
+   * @response `200` `GetProductGetProductDetailsData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productGetProductDetailsDetail = (
-    { productId, ...query }: ProductGetProductDetailsDetailParams,
+  getProductGetProductDetails = (
+    { productId, ...query }: GetProductGetProductDetailsParams,
     params: RequestParams = {},
   ) =>
-    this.request<ProductGetProductDetailsDetailData, ProductGetProductDetailsDetailError>({
+    this.request<
+      GetProductGetProductDetailsData,
+      GetProductGetProductDetailsError
+    >({
       path: `/api-frontend/Product/GetProductDetails/${productId}`,
       method: "GET",
       query: query,
@@ -84,19 +90,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductEstimateShippingCreate
+   * @name PostProductEstimateShipping
    * @summary Get the estimate shipping
    * @request POST:/api-frontend/Product/EstimateShipping
    * @secure
-   * @response `200` `ProductEstimateShippingCreateData` Success
+   * @response `200` `PostProductEstimateShippingData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productEstimateShippingCreate = (
+  postProductEstimateShipping = (
     data: ProductEstimateShippingModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ProductEstimateShippingCreateData, ProductEstimateShippingCreateError>({
+    this.request<
+      PostProductEstimateShippingData,
+      PostProductEstimateShippingError
+    >({
       path: `/api-frontend/Product/EstimateShipping`,
       method: "POST",
       body: data,
@@ -109,16 +118,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductGetProductCombinationsDetail
+   * @name GetProductGetProductCombinations
    * @summary Get product combinations
    * @request GET:/api-frontend/Product/GetProductCombinations/{productId}
    * @secure
-   * @response `200` `ProductGetProductCombinationsDetailData` Success
+   * @response `200` `GetProductGetProductCombinationsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productGetProductCombinationsDetail = (productId: number, params: RequestParams = {}) =>
-    this.request<ProductGetProductCombinationsDetailData, ProductGetProductCombinationsDetailError>({
+  getProductGetProductCombinations = (
+    productId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetProductGetProductCombinationsData,
+      GetProductGetProductCombinationsError
+    >({
       path: `/api-frontend/Product/GetProductCombinations/${productId}`,
       method: "GET",
       secure: true,
@@ -129,19 +144,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductGetRelatedProductsDetail
+   * @name GetProductGetRelatedProducts
    * @summary Get related products
    * @request GET:/api-frontend/Product/GetRelatedProducts/{productId}
    * @secure
-   * @response `200` `ProductGetRelatedProductsDetailData` Success
+   * @response `200` `GetProductGetRelatedProductsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productGetRelatedProductsDetail = (
-    { productId, ...query }: ProductGetRelatedProductsDetailParams,
+  getProductGetRelatedProducts = (
+    { productId, ...query }: GetProductGetRelatedProductsParams,
     params: RequestParams = {},
   ) =>
-    this.request<ProductGetRelatedProductsDetailData, ProductGetRelatedProductsDetailError>({
+    this.request<
+      GetProductGetRelatedProductsData,
+      GetProductGetRelatedProductsError
+    >({
       path: `/api-frontend/Product/GetRelatedProducts/${productId}`,
       method: "GET",
       query: query,
@@ -153,16 +171,19 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductRecentlyViewedProductsList
+   * @name GetProductRecentlyViewedProducts
    * @summary Get recently viewed products
    * @request GET:/api-frontend/Product/RecentlyViewedProducts
    * @secure
-   * @response `200` `ProductRecentlyViewedProductsListData` Success
+   * @response `200` `GetProductRecentlyViewedProductsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productRecentlyViewedProductsList = (params: RequestParams = {}) =>
-    this.request<ProductRecentlyViewedProductsListData, ProductRecentlyViewedProductsListError>({
+  getProductRecentlyViewedProducts = (params: RequestParams = {}) =>
+    this.request<
+      GetProductRecentlyViewedProductsData,
+      GetProductRecentlyViewedProductsError
+    >({
       path: `/api-frontend/Product/RecentlyViewedProducts`,
       method: "GET",
       secure: true,
@@ -173,15 +194,18 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductHomePageProductsList
+   * @name GetProductHomePageProducts
    * @summary Get products on the home page (featured products)
    * @request GET:/api-frontend/Product/HomePageProducts
    * @secure
-   * @response `200` `ProductHomePageProductsListData` Success
+   * @response `200` `GetProductHomePageProductsData` OK
    * @response `401` `string` Unauthorized
    */
-  productHomePageProductsList = (params: RequestParams = {}) =>
-    this.request<ProductHomePageProductsListData, ProductHomePageProductsListError>({
+  getProductHomePageProducts = (params: RequestParams = {}) =>
+    this.request<
+      GetProductHomePageProductsData,
+      GetProductHomePageProductsError
+    >({
       path: `/api-frontend/Product/HomePageProducts`,
       method: "GET",
       secure: true,
@@ -192,18 +216,21 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductValidateProductReviewAvailabilityDetail
+   * @name GetProductValidateProductReviewAvailability
    * @summary Validate product review availability for current customer
    * @request GET:/api-frontend/Product/ValidateProductReviewAvailability/{productId}
    * @secure
-   * @response `200` `ProductValidateProductReviewAvailabilityDetailData` Success
+   * @response `200` `GetProductValidateProductReviewAvailabilityData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productValidateProductReviewAvailabilityDetail = (productId: number, params: RequestParams = {}) =>
+  getProductValidateProductReviewAvailability = (
+    productId: number,
+    params: RequestParams = {},
+  ) =>
     this.request<
-      ProductValidateProductReviewAvailabilityDetailData,
-      ProductValidateProductReviewAvailabilityDetailError
+      GetProductValidateProductReviewAvailabilityData,
+      GetProductValidateProductReviewAvailabilityError
     >({
       path: `/api-frontend/Product/ValidateProductReviewAvailability/${productId}`,
       method: "GET",
@@ -215,16 +242,16 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductProductReviewsDetail
+   * @name GetProductProductReviews
    * @summary Get product reviews
    * @request GET:/api-frontend/Product/ProductReviews/{productId}
    * @secure
-   * @response `200` `ProductProductReviewsDetailData` Success
+   * @response `200` `GetProductProductReviewsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productProductReviewsDetail = (productId: number, params: RequestParams = {}) =>
-    this.request<ProductProductReviewsDetailData, ProductProductReviewsDetailError>({
+  getProductProductReviews = (productId: number, params: RequestParams = {}) =>
+    this.request<GetProductProductReviewsData, GetProductProductReviewsError>({
       path: `/api-frontend/Product/ProductReviews/${productId}`,
       method: "GET",
       secure: true,
@@ -235,17 +262,24 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductProductReviewsAddCreate
+   * @name PostProductProductReviewsAdd
    * @summary Add product reviews
    * @request POST:/api-frontend/Product/ProductReviewsAdd/{productId}
    * @secure
-   * @response `200` `ProductProductReviewsAddCreateData` Success
+   * @response `200` `PostProductProductReviewsAddData` OK
    * @response `400` `(string)[]` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productProductReviewsAddCreate = (productId: number, data: ProductReviewsModelDto, params: RequestParams = {}) =>
-    this.request<ProductProductReviewsAddCreateData, ProductProductReviewsAddCreateError>({
+  postProductProductReviewsAdd = (
+    productId: number,
+    data: ProductReviewsModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostProductProductReviewsAddData,
+      PostProductProductReviewsAddError
+    >({
       path: `/api-frontend/Product/ProductReviewsAdd/${productId}`,
       method: "POST",
       body: data,
@@ -258,19 +292,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductSetProductReviewHelpfulnessCreate
+   * @name PostProductSetProductReviewHelpfulness
    * @summary Set product review helpfulness
    * @request POST:/api-frontend/Product/SetProductReviewHelpfulness/{productReviewId}
    * @secure
-   * @response `200` `ProductSetProductReviewHelpfulnessCreateData` Success
+   * @response `200` `PostProductSetProductReviewHelpfulnessData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productSetProductReviewHelpfulnessCreate = (
-    { productReviewId, ...query }: ProductSetProductReviewHelpfulnessCreateParams,
+  postProductSetProductReviewHelpfulness = (
+    { productReviewId, ...query }: PostProductSetProductReviewHelpfulnessParams,
     params: RequestParams = {},
   ) =>
-    this.request<ProductSetProductReviewHelpfulnessCreateData, ProductSetProductReviewHelpfulnessCreateError>({
+    this.request<
+      PostProductSetProductReviewHelpfulnessData,
+      PostProductSetProductReviewHelpfulnessError
+    >({
       path: `/api-frontend/Product/SetProductReviewHelpfulness/${productReviewId}`,
       method: "POST",
       query: query,
@@ -282,17 +319,23 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductCustomerProductReviewsList
+   * @name GetProductCustomerProductReviews
    * @summary Customer product reviews for current customer
    * @request GET:/api-frontend/Product/CustomerProductReviews
    * @secure
-   * @response `200` `ProductCustomerProductReviewsListData` Success
+   * @response `200` `GetProductCustomerProductReviewsData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productCustomerProductReviewsList = (query: ProductCustomerProductReviewsListParams, params: RequestParams = {}) =>
-    this.request<ProductCustomerProductReviewsListData, ProductCustomerProductReviewsListError>({
+  getProductCustomerProductReviews = (
+    query: GetProductCustomerProductReviewsParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetProductCustomerProductReviewsData,
+      GetProductCustomerProductReviewsError
+    >({
       path: `/api-frontend/Product/CustomerProductReviews`,
       method: "GET",
       query: query,
@@ -304,16 +347,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductProductEmailAFriendDetail
+   * @name GetProductProductEmailAFriend
    * @summary ProductEmailAFriend
    * @request GET:/api-frontend/Product/ProductEmailAFriend/{productId}
    * @secure
-   * @response `200` `ProductProductEmailAFriendDetailData` Success
+   * @response `200` `GetProductProductEmailAFriendData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productProductEmailAFriendDetail = (productId: number, params: RequestParams = {}) =>
-    this.request<ProductProductEmailAFriendDetailData, ProductProductEmailAFriendDetailError>({
+  getProductProductEmailAFriend = (
+    productId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetProductProductEmailAFriendData,
+      GetProductProductEmailAFriendError
+    >({
       path: `/api-frontend/Product/ProductEmailAFriend/${productId}`,
       method: "GET",
       secure: true,
@@ -324,17 +373,23 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductProductEmailAFriendSendCreate
+   * @name PostProductProductEmailAFriendSend
    * @summary Send the product email a friend
    * @request POST:/api-frontend/Product/ProductEmailAFriendSend
    * @secure
-   * @response `200` `ProductProductEmailAFriendSendCreateData` Success
+   * @response `200` `PostProductProductEmailAFriendSendData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productProductEmailAFriendSendCreate = (data: ProductEmailAFriendModelDto, params: RequestParams = {}) =>
-    this.request<ProductProductEmailAFriendSendCreateData, ProductProductEmailAFriendSendCreateError>({
+  postProductProductEmailAFriendSend = (
+    data: ProductEmailAFriendModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostProductProductEmailAFriendSendData,
+      PostProductProductEmailAFriendSendError
+    >({
       path: `/api-frontend/Product/ProductEmailAFriendSend`,
       method: "POST",
       body: data,
@@ -347,15 +402,21 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductAddProductToCompareListDetail
+   * @name GetProductAddProductToCompareList
    * @summary Add product to compare list
    * @request GET:/api-frontend/Product/AddProductToCompareList/{productId}
    * @secure
-   * @response `200` `ProductAddProductToCompareListDetailData` Success
+   * @response `200` `GetProductAddProductToCompareListData` OK
    * @response `401` `string` Unauthorized
    */
-  productAddProductToCompareListDetail = (productId: number, params: RequestParams = {}) =>
-    this.request<ProductAddProductToCompareListDetailData, ProductAddProductToCompareListDetailError>({
+  getProductAddProductToCompareList = (
+    productId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetProductAddProductToCompareListData,
+      GetProductAddProductToCompareListError
+    >({
       path: `/api-frontend/Product/AddProductToCompareList/${productId}`,
       method: "GET",
       secure: true,
@@ -366,16 +427,22 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductRemoveProductFromCompareListDetail
+   * @name GetProductRemoveProductFromCompareList
    * @summary Remove product from compare list
    * @request GET:/api-frontend/Product/RemoveProductFromCompareList/{productId}
    * @secure
-   * @response `200` `ProductRemoveProductFromCompareListDetailData` Success
+   * @response `200` `GetProductRemoveProductFromCompareListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productRemoveProductFromCompareListDetail = (productId: number, params: RequestParams = {}) =>
-    this.request<ProductRemoveProductFromCompareListDetailData, ProductRemoveProductFromCompareListDetailError>({
+  getProductRemoveProductFromCompareList = (
+    productId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetProductRemoveProductFromCompareListData,
+      GetProductRemoveProductFromCompareListError
+    >({
       path: `/api-frontend/Product/RemoveProductFromCompareList/${productId}`,
       method: "GET",
       secure: true,
@@ -385,36 +452,41 @@ export class Product<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Product
-   * @name ProductCompareProductsList
+   * @name GetProductCompareProducts
    * @summary Compare products
    * @request GET:/api-frontend/Product/CompareProducts
    * @secure
-   * @response `200` `ProductCompareProductsListData` Success
+   * @response `200` `GetProductCompareProductsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productCompareProductsList = (params: RequestParams = {}) =>
-    this.request<ProductCompareProductsListData, ProductCompareProductsListError>({
-      path: `/api-frontend/Product/CompareProducts`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  getProductCompareProducts = (params: RequestParams = {}) =>
+    this.request<GetProductCompareProductsData, GetProductCompareProductsError>(
+      {
+        path: `/api-frontend/Product/CompareProducts`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Product
-   * @name ProductClearCompareListDelete
+   * @name DeleteProductClearCompareList
    * @summary Clear compare products list
    * @request DELETE:/api-frontend/Product/ClearCompareList
    * @secure
-   * @response `200` `ProductClearCompareListDeleteData` Success
+   * @response `200` `DeleteProductClearCompareListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  productClearCompareListDelete = (params: RequestParams = {}) =>
-    this.request<ProductClearCompareListDeleteData, ProductClearCompareListDeleteError>({
+  deleteProductClearCompareList = (params: RequestParams = {}) =>
+    this.request<
+      DeleteProductClearCompareListData,
+      DeleteProductClearCompareListError
+    >({
       path: `/api-frontend/Product/ClearCompareList`,
       method: "DELETE",
       secure: true,

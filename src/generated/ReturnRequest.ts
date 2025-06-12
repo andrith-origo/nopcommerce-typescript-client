@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,33 +11,38 @@
  */
 
 import {
-  ReturnRequestCustomerReturnRequestsListData,
-  ReturnRequestCustomerReturnRequestsListError,
-  ReturnRequestReturnRequestDetailData,
-  ReturnRequestReturnRequestDetailError,
-  ReturnRequestReturnRequestSubmitCreateData,
-  ReturnRequestReturnRequestSubmitCreateError,
-  ReturnRequestUploadFileReturnRequestCreateData,
-  ReturnRequestUploadFileReturnRequestCreateError,
-  ReturnRequestUploadFileReturnRequestCreateParams,
-  ReturnRequestUploadFileReturnRequestCreatePayload,
+  GetReturnRequestCustomerReturnRequestsData,
+  GetReturnRequestCustomerReturnRequestsError,
+  GetReturnRequestReturnRequestData,
+  GetReturnRequestReturnRequestError,
+  PostReturnRequestReturnRequestSubmitData,
+  PostReturnRequestReturnRequestSubmitError,
+  PostReturnRequestUploadFileReturnRequestData,
+  PostReturnRequestUploadFileReturnRequestError,
+  PostReturnRequestUploadFileReturnRequestParams,
+  PostReturnRequestUploadFileReturnRequestPayload,
   SubmitReturnRequestModelDtoBaseModelDtoRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class ReturnRequest<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class ReturnRequest<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags ReturnRequest
-   * @name ReturnRequestCustomerReturnRequestsList
+   * @name GetReturnRequestCustomerReturnRequests
    * @request GET:/api-frontend/ReturnRequest/CustomerReturnRequests
    * @secure
-   * @response `200` `ReturnRequestCustomerReturnRequestsListData` Success
+   * @response `200` `GetReturnRequestCustomerReturnRequestsData` OK
    * @response `401` `string` Unauthorized
    */
-  returnRequestCustomerReturnRequestsList = (params: RequestParams = {}) =>
-    this.request<ReturnRequestCustomerReturnRequestsListData, ReturnRequestCustomerReturnRequestsListError>({
+  getReturnRequestCustomerReturnRequests = (params: RequestParams = {}) =>
+    this.request<
+      GetReturnRequestCustomerReturnRequestsData,
+      GetReturnRequestCustomerReturnRequestsError
+    >({
       path: `/api-frontend/ReturnRequest/CustomerReturnRequests`,
       method: "GET",
       secure: true,
@@ -47,15 +53,21 @@ export class ReturnRequest<SecurityDataType = unknown> extends HttpClient<Securi
    * No description
    *
    * @tags ReturnRequest
-   * @name ReturnRequestReturnRequestDetail
+   * @name GetReturnRequestReturnRequest
    * @request GET:/api-frontend/ReturnRequest/ReturnRequest/{orderId}
    * @secure
-   * @response `200` `ReturnRequestReturnRequestDetailData` Success
+   * @response `200` `GetReturnRequestReturnRequestData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  returnRequestReturnRequestDetail = (orderId: number, params: RequestParams = {}) =>
-    this.request<ReturnRequestReturnRequestDetailData, ReturnRequestReturnRequestDetailError>({
+  getReturnRequestReturnRequest = (
+    orderId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetReturnRequestReturnRequestData,
+      GetReturnRequestReturnRequestError
+    >({
       path: `/api-frontend/ReturnRequest/ReturnRequest/${orderId}`,
       method: "GET",
       secure: true,
@@ -66,19 +78,22 @@ export class ReturnRequest<SecurityDataType = unknown> extends HttpClient<Securi
    * No description
    *
    * @tags ReturnRequest
-   * @name ReturnRequestReturnRequestSubmitCreate
+   * @name PostReturnRequestReturnRequestSubmit
    * @request POST:/api-frontend/ReturnRequest/ReturnRequestSubmit/{orderId}
    * @secure
-   * @response `200` `ReturnRequestReturnRequestSubmitCreateData` Success
+   * @response `200` `PostReturnRequestReturnRequestSubmitData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  returnRequestReturnRequestSubmitCreate = (
+  postReturnRequestReturnRequestSubmit = (
     orderId: number,
     data: SubmitReturnRequestModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ReturnRequestReturnRequestSubmitCreateData, ReturnRequestReturnRequestSubmitCreateError>({
+    this.request<
+      PostReturnRequestReturnRequestSubmitData,
+      PostReturnRequestReturnRequestSubmitError
+    >({
       path: `/api-frontend/ReturnRequest/ReturnRequestSubmit/${orderId}`,
       method: "POST",
       body: data,
@@ -91,18 +106,21 @@ export class ReturnRequest<SecurityDataType = unknown> extends HttpClient<Securi
    * No description
    *
    * @tags ReturnRequest
-   * @name ReturnRequestUploadFileReturnRequestCreate
+   * @name PostReturnRequestUploadFileReturnRequest
    * @request POST:/api-frontend/ReturnRequest/UploadFileReturnRequest
    * @secure
-   * @response `200` `ReturnRequestUploadFileReturnRequestCreateData` Success
+   * @response `200` `PostReturnRequestUploadFileReturnRequestData` OK
    * @response `401` `string` Unauthorized
    */
-  returnRequestUploadFileReturnRequestCreate = (
-    query: ReturnRequestUploadFileReturnRequestCreateParams,
-    data: ReturnRequestUploadFileReturnRequestCreatePayload,
+  postReturnRequestUploadFileReturnRequest = (
+    query: PostReturnRequestUploadFileReturnRequestParams,
+    data: PostReturnRequestUploadFileReturnRequestPayload,
     params: RequestParams = {},
   ) =>
-    this.request<ReturnRequestUploadFileReturnRequestCreateData, ReturnRequestUploadFileReturnRequestCreateError>({
+    this.request<
+      PostReturnRequestUploadFileReturnRequestData,
+      PostReturnRequestUploadFileReturnRequestError
+    >({
       path: `/api-frontend/ReturnRequest/UploadFileReturnRequest`,
       method: "POST",
       query: query,

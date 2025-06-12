@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,37 +11,42 @@
  */
 
 import {
-  BlogBlogByMonthCreateData,
-  BlogBlogByMonthCreateError,
-  BlogBlogByTagCreateData,
-  BlogBlogByTagCreateError,
-  BlogBlogCommentAddCreateData,
-  BlogBlogCommentAddCreateError,
-  BlogGetBlogPostDetailData,
-  BlogGetBlogPostDetailError,
-  BlogListCreateData,
-  BlogListCreateError,
-  BlogListRssDetailData,
-  BlogListRssDetailError,
   BlogPagingFilteringModelDto,
   BlogPostModelDto,
+  GetBlogGetBlogPostData,
+  GetBlogGetBlogPostError,
+  GetBlogListRssData,
+  GetBlogListRssError,
+  PostBlogBlogByMonthData,
+  PostBlogBlogByMonthError,
+  PostBlogBlogByTagData,
+  PostBlogBlogByTagError,
+  PostBlogBlogCommentAddData,
+  PostBlogBlogCommentAddError,
+  PostBlogListData,
+  PostBlogListError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Blog<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Blog
-   * @name BlogListCreate
+   * @name PostBlogList
    * @request POST:/api-frontend/Blog/List
    * @secure
-   * @response `200` `BlogListCreateData` Success
+   * @response `200` `PostBlogListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  blogListCreate = (data: BlogPagingFilteringModelDto, params: RequestParams = {}) =>
-    this.request<BlogListCreateData, BlogListCreateError>({
+  postBlogList = (
+    data: BlogPagingFilteringModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBlogListData, PostBlogListError>({
       path: `/api-frontend/Blog/List`,
       method: "POST",
       body: data,
@@ -53,15 +59,18 @@ export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataTyp
    * No description
    *
    * @tags Blog
-   * @name BlogBlogByTagCreate
+   * @name PostBlogBlogByTag
    * @request POST:/api-frontend/Blog/BlogByTag
    * @secure
-   * @response `200` `BlogBlogByTagCreateData` Success
+   * @response `200` `PostBlogBlogByTagData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  blogBlogByTagCreate = (data: BlogPagingFilteringModelDto, params: RequestParams = {}) =>
-    this.request<BlogBlogByTagCreateData, BlogBlogByTagCreateError>({
+  postBlogBlogByTag = (
+    data: BlogPagingFilteringModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBlogBlogByTagData, PostBlogBlogByTagError>({
       path: `/api-frontend/Blog/BlogByTag`,
       method: "POST",
       body: data,
@@ -74,15 +83,18 @@ export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataTyp
    * No description
    *
    * @tags Blog
-   * @name BlogBlogByMonthCreate
+   * @name PostBlogBlogByMonth
    * @request POST:/api-frontend/Blog/BlogByMonth
    * @secure
-   * @response `200` `BlogBlogByMonthCreateData` Success
+   * @response `200` `PostBlogBlogByMonthData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  blogBlogByMonthCreate = (data: BlogPagingFilteringModelDto, params: RequestParams = {}) =>
-    this.request<BlogBlogByMonthCreateData, BlogBlogByMonthCreateError>({
+  postBlogBlogByMonth = (
+    data: BlogPagingFilteringModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBlogBlogByMonthData, PostBlogBlogByMonthError>({
       path: `/api-frontend/Blog/BlogByMonth`,
       method: "POST",
       body: data,
@@ -95,15 +107,15 @@ export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataTyp
    * No description
    *
    * @tags Blog
-   * @name BlogListRssDetail
+   * @name GetBlogListRss
    * @request GET:/api-frontend/Blog/ListRss/{languageId}
    * @secure
-   * @response `200` `BlogListRssDetailData` Success
+   * @response `200` `GetBlogListRssData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  blogListRssDetail = (languageId: number, params: RequestParams = {}) =>
-    this.request<BlogListRssDetailData, BlogListRssDetailError>({
+  getBlogListRss = (languageId: number, params: RequestParams = {}) =>
+    this.request<GetBlogListRssData, GetBlogListRssError>({
       path: `/api-frontend/Blog/ListRss/${languageId}`,
       method: "GET",
       secure: true,
@@ -114,16 +126,16 @@ export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataTyp
    * No description
    *
    * @tags Blog
-   * @name BlogGetBlogPostDetail
+   * @name GetBlogGetBlogPost
    * @request GET:/api-frontend/Blog/GetBlogPost/{blogPostId}
    * @secure
-   * @response `200` `BlogGetBlogPostDetailData` Success
+   * @response `200` `GetBlogGetBlogPostData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  blogGetBlogPostDetail = (blogPostId: number, params: RequestParams = {}) =>
-    this.request<BlogGetBlogPostDetailData, BlogGetBlogPostDetailError>({
+  getBlogGetBlogPost = (blogPostId: number, params: RequestParams = {}) =>
+    this.request<GetBlogGetBlogPostData, GetBlogGetBlogPostError>({
       path: `/api-frontend/Blog/GetBlogPost/${blogPostId}`,
       method: "GET",
       secure: true,
@@ -134,16 +146,20 @@ export class Blog<SecurityDataType = unknown> extends HttpClient<SecurityDataTyp
    * No description
    *
    * @tags Blog
-   * @name BlogBlogCommentAddCreate
+   * @name PostBlogBlogCommentAdd
    * @request POST:/api-frontend/Blog/BlogCommentAdd/{blogPostId}
    * @secure
-   * @response `200` `BlogBlogCommentAddCreateData` Success
+   * @response `200` `PostBlogBlogCommentAddData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  blogBlogCommentAddCreate = (blogPostId: number, data: BlogPostModelDto, params: RequestParams = {}) =>
-    this.request<BlogBlogCommentAddCreateData, BlogBlogCommentAddCreateError>({
+  postBlogBlogCommentAdd = (
+    blogPostId: number,
+    data: BlogPostModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBlogBlogCommentAddData, PostBlogBlogCommentAddError>({
       path: `/api-frontend/Blog/BlogCommentAdd/${blogPostId}`,
       method: "POST",
       body: data,

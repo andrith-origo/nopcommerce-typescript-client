@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,41 +11,43 @@
  */
 
 import {
-  OrderCancelRecurringPaymentCreateData,
-  OrderCancelRecurringPaymentCreateError,
-  OrderCancelRecurringPaymentCreatePayload,
-  OrderCustomerOrdersListData,
-  OrderCustomerOrdersListError,
-  OrderCustomerRewardPointsListData,
-  OrderCustomerRewardPointsListError,
-  OrderCustomerRewardPointsListParams,
-  OrderDetailsDetailData,
-  OrderDetailsDetailError,
-  OrderReOrderDetailData,
-  OrderReOrderDetailError,
-  OrderRePostPaymentDetailData,
-  OrderRePostPaymentDetailError,
-  OrderRetryLastRecurringPaymentCreateData,
-  OrderRetryLastRecurringPaymentCreateError,
-  OrderRetryLastRecurringPaymentCreatePayload,
-  OrderShipmentDetailsDetailData,
-  OrderShipmentDetailsDetailError,
+  GetOrderCustomerOrdersData,
+  GetOrderCustomerOrdersError,
+  GetOrderCustomerRewardPointsData,
+  GetOrderCustomerRewardPointsError,
+  GetOrderCustomerRewardPointsParams,
+  GetOrderDetailsData,
+  GetOrderDetailsError,
+  GetOrderReOrderData,
+  GetOrderReOrderError,
+  GetOrderRePostPaymentData,
+  GetOrderRePostPaymentError,
+  GetOrderShipmentDetailsData,
+  GetOrderShipmentDetailsError,
+  PostOrderCancelRecurringPaymentData,
+  PostOrderCancelRecurringPaymentError,
+  PostOrderCancelRecurringPaymentPayload,
+  PostOrderRetryLastRecurringPaymentData,
+  PostOrderRetryLastRecurringPaymentError,
+  PostOrderRetryLastRecurringPaymentPayload,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Order<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Order
-   * @name OrderCustomerOrdersList
+   * @name GetOrderCustomerOrders
    * @request GET:/api-frontend/Order/CustomerOrders
    * @secure
-   * @response `200` `OrderCustomerOrdersListData` Success
+   * @response `200` `GetOrderCustomerOrdersData` OK
    * @response `401` `string` Unauthorized
    */
-  orderCustomerOrdersList = (params: RequestParams = {}) =>
-    this.request<OrderCustomerOrdersListData, OrderCustomerOrdersListError>({
+  getOrderCustomerOrders = (params: RequestParams = {}) =>
+    this.request<GetOrderCustomerOrdersData, GetOrderCustomerOrdersError>({
       path: `/api-frontend/Order/CustomerOrders`,
       method: "GET",
       secure: true,
@@ -55,15 +58,21 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderCancelRecurringPaymentCreate
+   * @name PostOrderCancelRecurringPayment
    * @request POST:/api-frontend/Order/CancelRecurringPayment
    * @secure
-   * @response `200` `OrderCancelRecurringPaymentCreateData` Success
+   * @response `200` `PostOrderCancelRecurringPaymentData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  orderCancelRecurringPaymentCreate = (data: OrderCancelRecurringPaymentCreatePayload, params: RequestParams = {}) =>
-    this.request<OrderCancelRecurringPaymentCreateData, OrderCancelRecurringPaymentCreateError>({
+  postOrderCancelRecurringPayment = (
+    data: PostOrderCancelRecurringPaymentPayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostOrderCancelRecurringPaymentData,
+      PostOrderCancelRecurringPaymentError
+    >({
       path: `/api-frontend/Order/CancelRecurringPayment`,
       method: "POST",
       body: data,
@@ -76,18 +85,21 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderRetryLastRecurringPaymentCreate
+   * @name PostOrderRetryLastRecurringPayment
    * @request POST:/api-frontend/Order/RetryLastRecurringPayment
    * @secure
-   * @response `200` `OrderRetryLastRecurringPaymentCreateData` Success
+   * @response `200` `PostOrderRetryLastRecurringPaymentData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  orderRetryLastRecurringPaymentCreate = (
-    data: OrderRetryLastRecurringPaymentCreatePayload,
+  postOrderRetryLastRecurringPayment = (
+    data: PostOrderRetryLastRecurringPaymentPayload,
     params: RequestParams = {},
   ) =>
-    this.request<OrderRetryLastRecurringPaymentCreateData, OrderRetryLastRecurringPaymentCreateError>({
+    this.request<
+      PostOrderRetryLastRecurringPaymentData,
+      PostOrderRetryLastRecurringPaymentError
+    >({
       path: `/api-frontend/Order/RetryLastRecurringPayment`,
       method: "POST",
       body: data,
@@ -100,15 +112,21 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderCustomerRewardPointsList
+   * @name GetOrderCustomerRewardPoints
    * @request GET:/api-frontend/Order/CustomerRewardPoints
    * @secure
-   * @response `200` `OrderCustomerRewardPointsListData` Success
+   * @response `200` `GetOrderCustomerRewardPointsData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  orderCustomerRewardPointsList = (query: OrderCustomerRewardPointsListParams, params: RequestParams = {}) =>
-    this.request<OrderCustomerRewardPointsListData, OrderCustomerRewardPointsListError>({
+  getOrderCustomerRewardPoints = (
+    query: GetOrderCustomerRewardPointsParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetOrderCustomerRewardPointsData,
+      GetOrderCustomerRewardPointsError
+    >({
       path: `/api-frontend/Order/CustomerRewardPoints`,
       method: "GET",
       query: query,
@@ -120,16 +138,16 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderDetailsDetail
+   * @name GetOrderDetails
    * @request GET:/api-frontend/Order/Details/{orderId}
    * @secure
-   * @response `200` `OrderDetailsDetailData` Success
+   * @response `200` `GetOrderDetailsData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  orderDetailsDetail = (orderId: number, params: RequestParams = {}) =>
-    this.request<OrderDetailsDetailData, OrderDetailsDetailError>({
+  getOrderDetails = (orderId: number, params: RequestParams = {}) =>
+    this.request<GetOrderDetailsData, GetOrderDetailsError>({
       path: `/api-frontend/Order/Details/${orderId}`,
       method: "GET",
       secure: true,
@@ -140,16 +158,16 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderReOrderDetail
+   * @name GetOrderReOrder
    * @request GET:/api-frontend/Order/ReOrder/{orderId}
    * @secure
-   * @response `200` `OrderReOrderDetailData` Success
+   * @response `200` `GetOrderReOrderData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  orderReOrderDetail = (orderId: number, params: RequestParams = {}) =>
-    this.request<OrderReOrderDetailData, OrderReOrderDetailError>({
+  getOrderReOrder = (orderId: number, params: RequestParams = {}) =>
+    this.request<GetOrderReOrderData, GetOrderReOrderError>({
       path: `/api-frontend/Order/ReOrder/${orderId}`,
       method: "GET",
       secure: true,
@@ -159,16 +177,16 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderRePostPaymentDetail
+   * @name GetOrderRePostPayment
    * @request GET:/api-frontend/Order/RePostPayment/{orderId}
    * @secure
-   * @response `200` `OrderRePostPaymentDetailData` Success
+   * @response `200` `GetOrderRePostPaymentData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  orderRePostPaymentDetail = (orderId: number, params: RequestParams = {}) =>
-    this.request<OrderRePostPaymentDetailData, OrderRePostPaymentDetailError>({
+  getOrderRePostPayment = (orderId: number, params: RequestParams = {}) =>
+    this.request<GetOrderRePostPaymentData, GetOrderRePostPaymentError>({
       path: `/api-frontend/Order/RePostPayment/${orderId}`,
       method: "GET",
       secure: true,
@@ -178,16 +196,16 @@ export class Order<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Order
-   * @name OrderShipmentDetailsDetail
+   * @name GetOrderShipmentDetails
    * @request GET:/api-frontend/Order/ShipmentDetails/{shipmentId}
    * @secure
-   * @response `200` `OrderShipmentDetailsDetailData` Success
+   * @response `200` `GetOrderShipmentDetailsData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  orderShipmentDetailsDetail = (shipmentId: number, params: RequestParams = {}) =>
-    this.request<OrderShipmentDetailsDetailData, OrderShipmentDetailsDetailError>({
+  getOrderShipmentDetails = (shipmentId: number, params: RequestParams = {}) =>
+    this.request<GetOrderShipmentDetailsData, GetOrderShipmentDetailsError>({
       path: `/api-frontend/Order/ShipmentDetails/${shipmentId}`,
       method: "GET",
       secure: true,

@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,38 +11,43 @@
  */
 
 import {
-  WishlistAddItemsToCartFromWishlistUpdateData,
-  WishlistAddItemsToCartFromWishlistUpdateError,
-  WishlistAddItemsToCartFromWishlistUpdateParams,
-  WishlistAddItemsToCartFromWishlistUpdatePayload,
+  GetWishlistEmailWishlistData,
+  GetWishlistEmailWishlistError,
+  GetWishlistWishlistData,
+  GetWishlistWishlistError,
+  GetWishlistWishlistParams,
+  PostWishlistEmailWishlistSendData,
+  PostWishlistEmailWishlistSendError,
+  PostWishlistUpdateWishlistData,
+  PostWishlistUpdateWishlistError,
+  PostWishlistUpdateWishlistPayload,
+  PutWishlistAddItemsToCartFromWishlistData,
+  PutWishlistAddItemsToCartFromWishlistError,
+  PutWishlistAddItemsToCartFromWishlistParams,
+  PutWishlistAddItemsToCartFromWishlistPayload,
   WishlistEmailAFriendModelDto,
-  WishlistEmailWishlistListData,
-  WishlistEmailWishlistListError,
-  WishlistEmailWishlistSendCreateData,
-  WishlistEmailWishlistSendCreateError,
-  WishlistUpdateWishlistCreateData,
-  WishlistUpdateWishlistCreateError,
-  WishlistUpdateWishlistCreatePayload,
-  WishlistWishlistListData,
-  WishlistWishlistListError,
-  WishlistWishlistListParams,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Wishlist<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Wishlist<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Wishlist
-   * @name WishlistWishlistList
+   * @name GetWishlistWishlist
    * @request GET:/api-frontend/Wishlist/Wishlist
    * @secure
-   * @response `200` `WishlistWishlistListData` Success
+   * @response `200` `GetWishlistWishlistData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  wishlistWishlistList = (query: WishlistWishlistListParams, params: RequestParams = {}) =>
-    this.request<WishlistWishlistListData, WishlistWishlistListError>({
+  getWishlistWishlist = (
+    query: GetWishlistWishlistParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetWishlistWishlistData, GetWishlistWishlistError>({
       path: `/api-frontend/Wishlist/Wishlist`,
       method: "GET",
       query: query,
@@ -53,15 +59,21 @@ export class Wishlist<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Wishlist
-   * @name WishlistUpdateWishlistCreate
+   * @name PostWishlistUpdateWishlist
    * @request POST:/api-frontend/Wishlist/UpdateWishlist
    * @secure
-   * @response `200` `WishlistUpdateWishlistCreateData` Success
+   * @response `200` `PostWishlistUpdateWishlistData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  wishlistUpdateWishlistCreate = (data: WishlistUpdateWishlistCreatePayload, params: RequestParams = {}) =>
-    this.request<WishlistUpdateWishlistCreateData, WishlistUpdateWishlistCreateError>({
+  postWishlistUpdateWishlist = (
+    data: PostWishlistUpdateWishlistPayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostWishlistUpdateWishlistData,
+      PostWishlistUpdateWishlistError
+    >({
       path: `/api-frontend/Wishlist/UpdateWishlist`,
       method: "POST",
       body: data,
@@ -74,19 +86,22 @@ export class Wishlist<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Wishlist
-   * @name WishlistAddItemsToCartFromWishlistUpdate
+   * @name PutWishlistAddItemsToCartFromWishlist
    * @request PUT:/api-frontend/Wishlist/AddItemsToCartFromWishlist
    * @secure
-   * @response `200` `WishlistAddItemsToCartFromWishlistUpdateData` Success
+   * @response `200` `PutWishlistAddItemsToCartFromWishlistData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  wishlistAddItemsToCartFromWishlistUpdate = (
-    query: WishlistAddItemsToCartFromWishlistUpdateParams,
-    data: WishlistAddItemsToCartFromWishlistUpdatePayload,
+  putWishlistAddItemsToCartFromWishlist = (
+    query: PutWishlistAddItemsToCartFromWishlistParams,
+    data: PutWishlistAddItemsToCartFromWishlistPayload,
     params: RequestParams = {},
   ) =>
-    this.request<WishlistAddItemsToCartFromWishlistUpdateData, WishlistAddItemsToCartFromWishlistUpdateError>({
+    this.request<
+      PutWishlistAddItemsToCartFromWishlistData,
+      PutWishlistAddItemsToCartFromWishlistError
+    >({
       path: `/api-frontend/Wishlist/AddItemsToCartFromWishlist`,
       method: "PUT",
       query: query,
@@ -100,15 +115,15 @@ export class Wishlist<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Wishlist
-   * @name WishlistEmailWishlistList
+   * @name GetWishlistEmailWishlist
    * @request GET:/api-frontend/Wishlist/EmailWishlist
    * @secure
-   * @response `200` `WishlistEmailWishlistListData` Success
+   * @response `200` `GetWishlistEmailWishlistData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  wishlistEmailWishlistList = (params: RequestParams = {}) =>
-    this.request<WishlistEmailWishlistListData, WishlistEmailWishlistListError>({
+  getWishlistEmailWishlist = (params: RequestParams = {}) =>
+    this.request<GetWishlistEmailWishlistData, GetWishlistEmailWishlistError>({
       path: `/api-frontend/Wishlist/EmailWishlist`,
       method: "GET",
       secure: true,
@@ -119,15 +134,21 @@ export class Wishlist<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Wishlist
-   * @name WishlistEmailWishlistSendCreate
+   * @name PostWishlistEmailWishlistSend
    * @request POST:/api-frontend/Wishlist/EmailWishlistSend
    * @secure
-   * @response `200` `WishlistEmailWishlistSendCreateData` Success
+   * @response `200` `PostWishlistEmailWishlistSendData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  wishlistEmailWishlistSendCreate = (data: WishlistEmailAFriendModelDto, params: RequestParams = {}) =>
-    this.request<WishlistEmailWishlistSendCreateData, WishlistEmailWishlistSendCreateError>({
+  postWishlistEmailWishlistSend = (
+    data: WishlistEmailAFriendModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostWishlistEmailWishlistSendData,
+      PostWishlistEmailWishlistSendError
+    >({
       path: `/api-frontend/Wishlist/EmailWishlistSend`,
       method: "POST",
       body: data,

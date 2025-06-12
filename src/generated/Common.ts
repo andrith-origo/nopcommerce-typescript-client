@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,57 +11,62 @@
  */
 
 import {
-  CommonContactUsListData,
-  CommonContactUsListError,
-  CommonContactUsSendCreateData,
-  CommonContactUsSendCreateError,
-  CommonContactVendorDetailData,
-  CommonContactVendorDetailError,
-  CommonContactVendorSendCreateData,
-  CommonContactVendorSendCreateError,
-  CommonEuCookieLawAcceptListData,
-  CommonEuCookieLawAcceptListError,
-  CommonGetCurrencySelectorListData,
-  CommonGetCurrencySelectorListError,
-  CommonGetLanguageSelectorListData,
-  CommonGetLanguageSelectorListError,
-  CommonGetTaxSelectorListData,
-  CommonGetTaxSelectorListError,
-  CommonRobotsTextFileListData,
-  CommonRobotsTextFileListError,
-  CommonSetCurrencyCreateData,
-  CommonSetCurrencyCreateError,
-  CommonSetLanguageCreateData,
-  CommonSetLanguageCreateError,
-  CommonSetStoreThemeListError,
-  CommonSetStoreThemeListParams,
-  CommonSetTaxTypeCreateData,
-  CommonSetTaxTypeCreateError,
-  CommonSetTaxTypeCreateParams,
-  CommonSitemapCreateData,
-  CommonSitemapCreateError,
-  CommonSitemapXmlDetailData,
-  CommonSitemapXmlDetailError,
   ContactUsModelDto,
   ContactVendorModelDto,
+  GetCommonContactUsData,
+  GetCommonContactUsError,
+  GetCommonContactVendorData,
+  GetCommonContactVendorError,
+  GetCommonEuCookieLawAcceptData,
+  GetCommonEuCookieLawAcceptError,
+  GetCommonGetCurrencySelectorData,
+  GetCommonGetCurrencySelectorError,
+  GetCommonGetLanguageSelectorData,
+  GetCommonGetLanguageSelectorError,
+  GetCommonGetTaxSelectorData,
+  GetCommonGetTaxSelectorError,
+  GetCommonRobotsTextFileData,
+  GetCommonRobotsTextFileError,
+  GetCommonSetStoreThemeError,
+  GetCommonSetStoreThemeParams,
+  GetCommonSitemapXmlData,
+  GetCommonSitemapXmlError,
+  PostCommonContactUsSendData,
+  PostCommonContactUsSendError,
+  PostCommonContactVendorSendData,
+  PostCommonContactVendorSendError,
+  PostCommonSetCurrencyData,
+  PostCommonSetCurrencyError,
+  PostCommonSetLanguageData,
+  PostCommonSetLanguageError,
+  PostCommonSetTaxTypeData,
+  PostCommonSetTaxTypeError,
+  PostCommonSetTaxTypeParams,
+  PostCommonSitemapData,
+  PostCommonSitemapError,
   SitemapPageModelDto,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Common<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Common
-   * @name CommonGetLanguageSelectorList
+   * @name GetCommonGetLanguageSelector
    * @summary Get language selector
    * @request GET:/api-frontend/Common/GetLanguageSelector
    * @secure
-   * @response `200` `CommonGetLanguageSelectorListData` Success
+   * @response `200` `GetCommonGetLanguageSelectorData` OK
    * @response `401` `string` Unauthorized
    */
-  commonGetLanguageSelectorList = (params: RequestParams = {}) =>
-    this.request<CommonGetLanguageSelectorListData, CommonGetLanguageSelectorListError>({
+  getCommonGetLanguageSelector = (params: RequestParams = {}) =>
+    this.request<
+      GetCommonGetLanguageSelectorData,
+      GetCommonGetLanguageSelectorError
+    >({
       path: `/api-frontend/Common/GetLanguageSelector`,
       method: "GET",
       secure: true,
@@ -71,15 +77,15 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSetLanguageCreate
+   * @name PostCommonSetLanguage
    * @summary Set language
    * @request POST:/api-frontend/Common/SetLanguage/{langId}
    * @secure
-   * @response `200` `CommonSetLanguageCreateData` Success
+   * @response `200` `PostCommonSetLanguageData` OK
    * @response `401` `string` Unauthorized
    */
-  commonSetLanguageCreate = (langId: number, params: RequestParams = {}) =>
-    this.request<CommonSetLanguageCreateData, CommonSetLanguageCreateError>({
+  postCommonSetLanguage = (langId: number, params: RequestParams = {}) =>
+    this.request<PostCommonSetLanguageData, PostCommonSetLanguageError>({
       path: `/api-frontend/Common/SetLanguage/${langId}`,
       method: "POST",
       secure: true,
@@ -89,15 +95,18 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonGetCurrencySelectorList
+   * @name GetCommonGetCurrencySelector
    * @summary Get currency selector
    * @request GET:/api-frontend/Common/GetCurrencySelector
    * @secure
-   * @response `200` `CommonGetCurrencySelectorListData` Success
+   * @response `200` `GetCommonGetCurrencySelectorData` OK
    * @response `401` `string` Unauthorized
    */
-  commonGetCurrencySelectorList = (params: RequestParams = {}) =>
-    this.request<CommonGetCurrencySelectorListData, CommonGetCurrencySelectorListError>({
+  getCommonGetCurrencySelector = (params: RequestParams = {}) =>
+    this.request<
+      GetCommonGetCurrencySelectorData,
+      GetCommonGetCurrencySelectorError
+    >({
       path: `/api-frontend/Common/GetCurrencySelector`,
       method: "GET",
       secure: true,
@@ -108,15 +117,18 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSetCurrencyCreate
+   * @name PostCommonSetCurrency
    * @summary Set currency
    * @request POST:/api-frontend/Common/SetCurrency/{customerCurrencyId}
    * @secure
-   * @response `200` `CommonSetCurrencyCreateData` Success
+   * @response `200` `PostCommonSetCurrencyData` OK
    * @response `401` `string` Unauthorized
    */
-  commonSetCurrencyCreate = (customerCurrencyId: number, params: RequestParams = {}) =>
-    this.request<CommonSetCurrencyCreateData, CommonSetCurrencyCreateError>({
+  postCommonSetCurrency = (
+    customerCurrencyId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostCommonSetCurrencyData, PostCommonSetCurrencyError>({
       path: `/api-frontend/Common/SetCurrency/${customerCurrencyId}`,
       method: "POST",
       secure: true,
@@ -126,15 +138,15 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonGetTaxSelectorList
+   * @name GetCommonGetTaxSelector
    * @summary Get tax selector
    * @request GET:/api-frontend/Common/GetTaxSelector
    * @secure
-   * @response `200` `CommonGetTaxSelectorListData` Success
+   * @response `200` `GetCommonGetTaxSelectorData` OK
    * @response `401` `string` Unauthorized
    */
-  commonGetTaxSelectorList = (params: RequestParams = {}) =>
-    this.request<CommonGetTaxSelectorListData, CommonGetTaxSelectorListError>({
+  getCommonGetTaxSelector = (params: RequestParams = {}) =>
+    this.request<GetCommonGetTaxSelectorData, GetCommonGetTaxSelectorError>({
       path: `/api-frontend/Common/GetTaxSelector`,
       method: "GET",
       secure: true,
@@ -145,15 +157,18 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSetTaxTypeCreate
+   * @name PostCommonSetTaxType
    * @summary Set tax type
    * @request POST:/api-frontend/Common/SetTaxType
    * @secure
-   * @response `200` `CommonSetTaxTypeCreateData` Success
+   * @response `200` `PostCommonSetTaxTypeData` OK
    * @response `401` `string` Unauthorized
    */
-  commonSetTaxTypeCreate = (query: CommonSetTaxTypeCreateParams, params: RequestParams = {}) =>
-    this.request<CommonSetTaxTypeCreateData, CommonSetTaxTypeCreateError>({
+  postCommonSetTaxType = (
+    query: PostCommonSetTaxTypeParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostCommonSetTaxTypeData, PostCommonSetTaxTypeError>({
       path: `/api-frontend/Common/SetTaxType`,
       method: "POST",
       query: query,
@@ -164,15 +179,15 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonContactUsList
+   * @name GetCommonContactUs
    * @summary Contact us page
    * @request GET:/api-frontend/Common/ContactUs
    * @secure
-   * @response `200` `CommonContactUsListData` Success
+   * @response `200` `GetCommonContactUsData` OK
    * @response `401` `string` Unauthorized
    */
-  commonContactUsList = (params: RequestParams = {}) =>
-    this.request<CommonContactUsListData, CommonContactUsListError>({
+  getCommonContactUs = (params: RequestParams = {}) =>
+    this.request<GetCommonContactUsData, GetCommonContactUsError>({
       path: `/api-frontend/Common/ContactUs`,
       method: "GET",
       secure: true,
@@ -183,15 +198,18 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonContactUsSendCreate
+   * @name PostCommonContactUsSend
    * @summary Contact us send
    * @request POST:/api-frontend/Common/ContactUsSend
    * @secure
-   * @response `200` `CommonContactUsSendCreateData` Success
+   * @response `200` `PostCommonContactUsSendData` OK
    * @response `401` `string` Unauthorized
    */
-  commonContactUsSendCreate = (data: ContactUsModelDto, params: RequestParams = {}) =>
-    this.request<CommonContactUsSendCreateData, CommonContactUsSendCreateError>({
+  postCommonContactUsSend = (
+    data: ContactUsModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostCommonContactUsSendData, PostCommonContactUsSendError>({
       path: `/api-frontend/Common/ContactUsSend`,
       method: "POST",
       body: data,
@@ -204,16 +222,16 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonContactVendorDetail
+   * @name GetCommonContactVendor
    * @summary contact vendor page
    * @request GET:/api-frontend/Common/ContactVendor/{vendorId}
    * @secure
-   * @response `200` `CommonContactVendorDetailData` Success
+   * @response `200` `GetCommonContactVendorData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  commonContactVendorDetail = (vendorId: number, params: RequestParams = {}) =>
-    this.request<CommonContactVendorDetailData, CommonContactVendorDetailError>({
+  getCommonContactVendor = (vendorId: number, params: RequestParams = {}) =>
+    this.request<GetCommonContactVendorData, GetCommonContactVendorError>({
       path: `/api-frontend/Common/ContactVendor/${vendorId}`,
       method: "GET",
       secure: true,
@@ -224,16 +242,22 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonContactVendorSendCreate
+   * @name PostCommonContactVendorSend
    * @summary Contact vendor vend
    * @request POST:/api-frontend/Common/ContactVendorSend
    * @secure
-   * @response `200` `CommonContactVendorSendCreateData` Success
+   * @response `200` `PostCommonContactVendorSendData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  commonContactVendorSendCreate = (data: ContactVendorModelDto, params: RequestParams = {}) =>
-    this.request<CommonContactVendorSendCreateData, CommonContactVendorSendCreateError>({
+  postCommonContactVendorSend = (
+    data: ContactVendorModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostCommonContactVendorSendData,
+      PostCommonContactVendorSendError
+    >({
       path: `/api-frontend/Common/ContactVendorSend`,
       method: "POST",
       body: data,
@@ -246,16 +270,16 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSitemapCreate
+   * @name PostCommonSitemap
    * @summary sitemap page
    * @request POST:/api-frontend/Common/Sitemap
    * @secure
-   * @response `200` `CommonSitemapCreateData` Success
+   * @response `200` `PostCommonSitemapData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  commonSitemapCreate = (data: SitemapPageModelDto, params: RequestParams = {}) =>
-    this.request<CommonSitemapCreateData, CommonSitemapCreateError>({
+  postCommonSitemap = (data: SitemapPageModelDto, params: RequestParams = {}) =>
+    this.request<PostCommonSitemapData, PostCommonSitemapError>({
       path: `/api-frontend/Common/Sitemap`,
       method: "POST",
       body: data,
@@ -268,15 +292,15 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSitemapXmlDetail
+   * @name GetCommonSitemapXml
    * @summary SEO sitemap page
    * @request GET:/api-frontend/Common/SitemapXml/{id}
    * @secure
-   * @response `200` `CommonSitemapXmlDetailData` Success
+   * @response `200` `GetCommonSitemapXmlData` OK
    * @response `401` `string` Unauthorized
    */
-  commonSitemapXmlDetail = (id: number, params: RequestParams = {}) =>
-    this.request<CommonSitemapXmlDetailData, CommonSitemapXmlDetailError>({
+  getCommonSitemapXml = (id: number, params: RequestParams = {}) =>
+    this.request<GetCommonSitemapXmlData, GetCommonSitemapXmlError>({
       path: `/api-frontend/Common/SitemapXml/${id}`,
       method: "GET",
       secure: true,
@@ -287,14 +311,17 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonSetStoreThemeList
+   * @name GetCommonSetStoreTheme
    * @summary Set store theme
    * @request GET:/api-frontend/Common/SetStoreTheme
    * @secure
    * @response `401` `string` Unauthorized
    */
-  commonSetStoreThemeList = (query: CommonSetStoreThemeListParams, params: RequestParams = {}) =>
-    this.request<any, CommonSetStoreThemeListError>({
+  getCommonSetStoreTheme = (
+    query: GetCommonSetStoreThemeParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<any, GetCommonSetStoreThemeError>({
       path: `/api-frontend/Common/SetStoreTheme`,
       method: "GET",
       query: query,
@@ -305,15 +332,18 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonEuCookieLawAcceptList
+   * @name GetCommonEuCookieLawAccept
    * @summary Eu cookie law accept
    * @request GET:/api-frontend/Common/EuCookieLawAccept
    * @secure
-   * @response `200` `CommonEuCookieLawAcceptListData` Success
+   * @response `200` `GetCommonEuCookieLawAcceptData` OK
    * @response `401` `string` Unauthorized
    */
-  commonEuCookieLawAcceptList = (params: RequestParams = {}) =>
-    this.request<CommonEuCookieLawAcceptListData, CommonEuCookieLawAcceptListError>({
+  getCommonEuCookieLawAccept = (params: RequestParams = {}) =>
+    this.request<
+      GetCommonEuCookieLawAcceptData,
+      GetCommonEuCookieLawAcceptError
+    >({
       path: `/api-frontend/Common/EuCookieLawAccept`,
       method: "GET",
       secure: true,
@@ -324,15 +354,15 @@ export class Common<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Common
-   * @name CommonRobotsTextFileList
+   * @name GetCommonRobotsTextFile
    * @summary robots.txt file
    * @request GET:/api-frontend/Common/RobotsTextFile
    * @secure
-   * @response `200` `CommonRobotsTextFileListData` Success
+   * @response `200` `GetCommonRobotsTextFileData` OK
    * @response `401` `string` Unauthorized
    */
-  commonRobotsTextFileList = (params: RequestParams = {}) =>
-    this.request<CommonRobotsTextFileListData, CommonRobotsTextFileListError>({
+  getCommonRobotsTextFile = (params: RequestParams = {}) =>
+    this.request<GetCommonRobotsTextFileData, GetCommonRobotsTextFileError>({
       path: `/api-frontend/Common/RobotsTextFile`,
       method: "GET",
       secure: true,

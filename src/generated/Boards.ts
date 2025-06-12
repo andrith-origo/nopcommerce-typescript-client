@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,83 +11,85 @@
  */
 
 import {
-  BoardsActiveDiscussionsListData,
-  BoardsActiveDiscussionsListError,
-  BoardsActiveDiscussionsListParams,
-  BoardsActiveDiscussionsRssListData,
-  BoardsActiveDiscussionsRssListError,
-  BoardsActiveDiscussionsRssListParams,
-  BoardsCustomerForumSubscriptionsCreateData,
-  BoardsCustomerForumSubscriptionsCreateError,
-  BoardsCustomerForumSubscriptionsCreatePayload,
-  BoardsCustomerForumSubscriptionsListData,
-  BoardsCustomerForumSubscriptionsListError,
-  BoardsCustomerForumSubscriptionsListParams,
-  BoardsForumDetailData,
-  BoardsForumDetailError,
-  BoardsForumDetailParams,
-  BoardsForumGroupDetailData,
-  BoardsForumGroupDetailError,
-  BoardsForumRssDetailData,
-  BoardsForumRssDetailError,
-  BoardsForumWatchDetailData,
-  BoardsForumWatchDetailError,
-  BoardsIndexListData,
-  BoardsIndexListError,
-  BoardsPostCreateCreateData,
-  BoardsPostCreateCreateError,
-  BoardsPostCreateDetailData,
-  BoardsPostCreateDetailError,
-  BoardsPostCreateDetailParams,
-  BoardsPostDeleteDeleteData,
-  BoardsPostDeleteDeleteError,
-  BoardsPostEditCreateData,
-  BoardsPostEditCreateError,
-  BoardsPostEditDetailData,
-  BoardsPostEditDetailError,
-  BoardsPostVoteDetailData,
-  BoardsPostVoteDetailError,
-  BoardsPostVoteDetailParams,
-  BoardsSearchDetailData,
-  BoardsSearchDetailError,
-  BoardsSearchDetailParams,
-  BoardsTopicCreateCreateData,
-  BoardsTopicCreateCreateError,
-  BoardsTopicCreateDetailData,
-  BoardsTopicCreateDetailError,
-  BoardsTopicDeleteDeleteData,
-  BoardsTopicDeleteDeleteError,
-  BoardsTopicDetailData,
-  BoardsTopicDetailError,
-  BoardsTopicDetailParams,
-  BoardsTopicEditCreateData,
-  BoardsTopicEditCreateError,
-  BoardsTopicEditDetailData,
-  BoardsTopicEditDetailError,
-  BoardsTopicMoveDetailData,
-  BoardsTopicMoveDetailError,
-  BoardsTopicWatchDetailData,
-  BoardsTopicWatchDetailError,
+  DeleteBoardsPostDeleteData,
+  DeleteBoardsPostDeleteError,
+  DeleteBoardsTopicDeleteData,
+  DeleteBoardsTopicDeleteError,
   EditForumPostModelDto,
   EditForumTopicModelDto,
+  GetBoardsActiveDiscussionsData,
+  GetBoardsActiveDiscussionsError,
+  GetBoardsActiveDiscussionsParams,
+  GetBoardsActiveDiscussionsRssData,
+  GetBoardsActiveDiscussionsRssError,
+  GetBoardsActiveDiscussionsRssParams,
+  GetBoardsCustomerForumSubscriptionsData,
+  GetBoardsCustomerForumSubscriptionsError,
+  GetBoardsCustomerForumSubscriptionsParams,
+  GetBoardsForumData,
+  GetBoardsForumError,
+  GetBoardsForumGroupData,
+  GetBoardsForumGroupError,
+  GetBoardsForumParams,
+  GetBoardsForumRssData,
+  GetBoardsForumRssError,
+  GetBoardsForumWatchData,
+  GetBoardsForumWatchError,
+  GetBoardsIndexData,
+  GetBoardsIndexError,
+  GetBoardsPostCreateData,
+  GetBoardsPostCreateError,
+  GetBoardsPostCreateParams,
+  GetBoardsPostEditData,
+  GetBoardsPostEditError,
+  GetBoardsPostVoteData,
+  GetBoardsPostVoteError,
+  GetBoardsPostVoteParams,
+  GetBoardsSearchData,
+  GetBoardsSearchError,
+  GetBoardsSearchParams,
+  GetBoardsTopicCreateData,
+  GetBoardsTopicCreateError,
+  GetBoardsTopicData,
+  GetBoardsTopicEditData,
+  GetBoardsTopicEditError,
+  GetBoardsTopicError,
+  GetBoardsTopicMoveData,
+  GetBoardsTopicMoveError,
+  GetBoardsTopicParams,
+  GetBoardsTopicWatchData,
+  GetBoardsTopicWatchError,
+  PostBoardsCustomerForumSubscriptionsData,
+  PostBoardsCustomerForumSubscriptionsError,
+  PostBoardsCustomerForumSubscriptionsPayload,
+  PostBoardsPostCreateData,
+  PostBoardsPostCreateError,
+  PostBoardsPostEditData,
+  PostBoardsPostEditError,
+  PostBoardsTopicCreateData,
+  PostBoardsTopicCreateError,
+  PostBoardsTopicEditData,
+  PostBoardsTopicEditError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Boards<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Boards
-   * @name BoardsIndexList
+   * @name GetBoardsIndex
    * @summary Index
    * @request GET:/api-frontend/Boards/Index
    * @secure
-   * @response `200` `BoardsIndexListData` Success
+   * @response `200` `GetBoardsIndexData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsIndexList = (params: RequestParams = {}) =>
-    this.request<BoardsIndexListData, BoardsIndexListError>({
+  getBoardsIndex = (params: RequestParams = {}) =>
+    this.request<GetBoardsIndexData, GetBoardsIndexError>({
       path: `/api-frontend/Boards/Index`,
       method: "GET",
       secure: true,
@@ -97,16 +100,22 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsActiveDiscussionsList
+   * @name GetBoardsActiveDiscussions
    * @summary Active discussions
    * @request GET:/api-frontend/Boards/ActiveDiscussions
    * @secure
-   * @response `200` `BoardsActiveDiscussionsListData` Success
+   * @response `200` `GetBoardsActiveDiscussionsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsActiveDiscussionsList = (query: BoardsActiveDiscussionsListParams, params: RequestParams = {}) =>
-    this.request<BoardsActiveDiscussionsListData, BoardsActiveDiscussionsListError>({
+  getBoardsActiveDiscussions = (
+    query: GetBoardsActiveDiscussionsParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetBoardsActiveDiscussionsData,
+      GetBoardsActiveDiscussionsError
+    >({
       path: `/api-frontend/Boards/ActiveDiscussions`,
       method: "GET",
       query: query,
@@ -118,16 +127,22 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsActiveDiscussionsRssList
+   * @name GetBoardsActiveDiscussionsRss
    * @summary Active discussions RSS
    * @request GET:/api-frontend/Boards/ActiveDiscussionsRss
    * @secure
-   * @response `200` `BoardsActiveDiscussionsRssListData` Success
+   * @response `200` `GetBoardsActiveDiscussionsRssData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsActiveDiscussionsRssList = (query: BoardsActiveDiscussionsRssListParams, params: RequestParams = {}) =>
-    this.request<BoardsActiveDiscussionsRssListData, BoardsActiveDiscussionsRssListError>({
+  getBoardsActiveDiscussionsRss = (
+    query: GetBoardsActiveDiscussionsRssParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetBoardsActiveDiscussionsRssData,
+      GetBoardsActiveDiscussionsRssError
+    >({
       path: `/api-frontend/Boards/ActiveDiscussionsRss`,
       method: "GET",
       query: query,
@@ -139,16 +154,16 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsForumGroupDetail
+   * @name GetBoardsForumGroup
    * @summary Gets a forum group
    * @request GET:/api-frontend/Boards/ForumGroup/{id}
    * @secure
-   * @response `200` `BoardsForumGroupDetailData` Success
+   * @response `200` `GetBoardsForumGroupData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsForumGroupDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsForumGroupDetailData, BoardsForumGroupDetailError>({
+  getBoardsForumGroup = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsForumGroupData, GetBoardsForumGroupError>({
       path: `/api-frontend/Boards/ForumGroup/${id}`,
       method: "GET",
       secure: true,
@@ -159,16 +174,19 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsForumDetail
+   * @name GetBoardsForum
    * @summary Get forum page
    * @request GET:/api-frontend/Boards/Forum/{id}
    * @secure
-   * @response `200` `BoardsForumDetailData` Success
+   * @response `200` `GetBoardsForumData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsForumDetail = ({ id, ...query }: BoardsForumDetailParams, params: RequestParams = {}) =>
-    this.request<BoardsForumDetailData, BoardsForumDetailError>({
+  getBoardsForum = (
+    { id, ...query }: GetBoardsForumParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetBoardsForumData, GetBoardsForumError>({
       path: `/api-frontend/Boards/Forum/${id}`,
       method: "GET",
       query: query,
@@ -180,16 +198,16 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsForumRssDetail
+   * @name GetBoardsForumRss
    * @summary Forum RSS
    * @request GET:/api-frontend/Boards/ForumRss/{id}
    * @secure
-   * @response `200` `BoardsForumRssDetailData` Success
+   * @response `200` `GetBoardsForumRssData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsForumRssDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsForumRssDetailData, BoardsForumRssDetailError>({
+  getBoardsForumRss = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsForumRssData, GetBoardsForumRssError>({
       path: `/api-frontend/Boards/ForumRss/${id}`,
       method: "GET",
       secure: true,
@@ -200,15 +218,15 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsForumWatchDetail
+   * @name GetBoardsForumWatch
    * @summary Forum watch
    * @request GET:/api-frontend/Boards/ForumWatch/{id}
    * @secure
-   * @response `200` `BoardsForumWatchDetailData` Success
+   * @response `200` `GetBoardsForumWatchData` OK
    * @response `401` `string` Unauthorized
    */
-  boardsForumWatchDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsForumWatchDetailData, BoardsForumWatchDetailError>({
+  getBoardsForumWatch = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsForumWatchData, GetBoardsForumWatchError>({
       path: `/api-frontend/Boards/ForumWatch/${id}`,
       method: "GET",
       secure: true,
@@ -219,16 +237,19 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicDetail
+   * @name GetBoardsTopic
    * @summary Get topic page
    * @request GET:/api-frontend/Boards/Topic/{id}
    * @secure
-   * @response `200` `BoardsTopicDetailData` Success
+   * @response `200` `GetBoardsTopicData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicDetail = ({ id, ...query }: BoardsTopicDetailParams, params: RequestParams = {}) =>
-    this.request<BoardsTopicDetailData, BoardsTopicDetailError>({
+  getBoardsTopic = (
+    { id, ...query }: GetBoardsTopicParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetBoardsTopicData, GetBoardsTopicError>({
       path: `/api-frontend/Boards/Topic/${id}`,
       method: "GET",
       query: query,
@@ -240,15 +261,15 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicWatchDetail
+   * @name GetBoardsTopicWatch
    * @summary Topic watch
    * @request GET:/api-frontend/Boards/TopicWatch/{id}
    * @secure
-   * @response `200` `BoardsTopicWatchDetailData` Success
+   * @response `200` `GetBoardsTopicWatchData` OK
    * @response `401` `string` Unauthorized
    */
-  boardsTopicWatchDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsTopicWatchDetailData, BoardsTopicWatchDetailError>({
+  getBoardsTopicWatch = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsTopicWatchData, GetBoardsTopicWatchError>({
       path: `/api-frontend/Boards/TopicWatch/${id}`,
       method: "GET",
       secure: true,
@@ -259,16 +280,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicMoveDetail
+   * @name GetBoardsTopicMove
    * @summary Get topic move model
    * @request GET:/api-frontend/Boards/TopicMove/{id}
    * @secure
-   * @response `200` `BoardsTopicMoveDetailData` Success
+   * @response `200` `GetBoardsTopicMoveData` OK
    * @response `401` `string` Unauthorized
+   * @response `403` `string` Forbidden
    * @response `404` `string` Not Found
    */
-  boardsTopicMoveDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsTopicMoveDetailData, BoardsTopicMoveDetailError>({
+  getBoardsTopicMove = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsTopicMoveData, GetBoardsTopicMoveError>({
       path: `/api-frontend/Boards/TopicMove/${id}`,
       method: "GET",
       secure: true,
@@ -279,17 +301,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicDeleteDelete
+   * @name DeleteBoardsTopicDelete
    * @summary Topic delete
    * @request DELETE:/api-frontend/Boards/TopicDelete/{id}
    * @secure
-   * @response `200` `BoardsTopicDeleteDeleteData` Success
+   * @response `200` `DeleteBoardsTopicDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicDeleteDelete = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsTopicDeleteDeleteData, BoardsTopicDeleteDeleteError>({
+  deleteBoardsTopicDelete = (id: number, params: RequestParams = {}) =>
+    this.request<DeleteBoardsTopicDeleteData, DeleteBoardsTopicDeleteError>({
       path: `/api-frontend/Boards/TopicDelete/${id}`,
       method: "DELETE",
       secure: true,
@@ -300,17 +322,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicCreateDetail
+   * @name GetBoardsTopicCreate
    * @summary Prepare the forum topic create model
    * @request GET:/api-frontend/Boards/TopicCreate/{id}
    * @secure
-   * @response `200` `BoardsTopicCreateDetailData` Success
+   * @response `200` `GetBoardsTopicCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicCreateDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsTopicCreateDetailData, BoardsTopicCreateDetailError>({
+  getBoardsTopicCreate = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsTopicCreateData, GetBoardsTopicCreateError>({
       path: `/api-frontend/Boards/TopicCreate/${id}`,
       method: "GET",
       secure: true,
@@ -321,17 +343,20 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicCreateCreate
+   * @name PostBoardsTopicCreate
    * @summary Topic create
    * @request POST:/api-frontend/Boards/TopicCreate
    * @secure
-   * @response `200` `BoardsTopicCreateCreateData` Success
+   * @response `200` `PostBoardsTopicCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicCreateCreate = (data: EditForumTopicModelDto, params: RequestParams = {}) =>
-    this.request<BoardsTopicCreateCreateData, BoardsTopicCreateCreateError>({
+  postBoardsTopicCreate = (
+    data: EditForumTopicModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBoardsTopicCreateData, PostBoardsTopicCreateError>({
       path: `/api-frontend/Boards/TopicCreate`,
       method: "POST",
       body: data,
@@ -344,17 +369,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicEditDetail
+   * @name GetBoardsTopicEdit
    * @summary Edit the forum topic
    * @request GET:/api-frontend/Boards/TopicEdit/{id}
    * @secure
-   * @response `200` `BoardsTopicEditDetailData` Success
+   * @response `200` `GetBoardsTopicEditData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicEditDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsTopicEditDetailData, BoardsTopicEditDetailError>({
+  getBoardsTopicEdit = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsTopicEditData, GetBoardsTopicEditError>({
       path: `/api-frontend/Boards/TopicEdit/${id}`,
       method: "GET",
       secure: true,
@@ -365,17 +390,20 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsTopicEditCreate
+   * @name PostBoardsTopicEdit
    * @summary Edit the forum topic
    * @request POST:/api-frontend/Boards/TopicEdit
    * @secure
-   * @response `200` `BoardsTopicEditCreateData` Success
+   * @response `200` `PostBoardsTopicEditData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsTopicEditCreate = (data: EditForumTopicModelDto, params: RequestParams = {}) =>
-    this.request<BoardsTopicEditCreateData, BoardsTopicEditCreateError>({
+  postBoardsTopicEdit = (
+    data: EditForumTopicModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBoardsTopicEditData, PostBoardsTopicEditError>({
       path: `/api-frontend/Boards/TopicEdit`,
       method: "POST",
       body: data,
@@ -388,17 +416,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostDeleteDelete
+   * @name DeleteBoardsPostDelete
    * @summary Delete the forum post
    * @request DELETE:/api-frontend/Boards/PostDelete/{id}
    * @secure
-   * @response `200` `BoardsPostDeleteDeleteData` Success
+   * @response `200` `DeleteBoardsPostDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostDeleteDelete = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsPostDeleteDeleteData, BoardsPostDeleteDeleteError>({
+  deleteBoardsPostDelete = (id: number, params: RequestParams = {}) =>
+    this.request<DeleteBoardsPostDeleteData, DeleteBoardsPostDeleteError>({
       path: `/api-frontend/Boards/PostDelete/${id}`,
       method: "DELETE",
       secure: true,
@@ -409,17 +437,20 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostCreateDetail
+   * @name GetBoardsPostCreate
    * @summary Prepare forum post model
    * @request GET:/api-frontend/Boards/PostCreate/{id}/{quote}
    * @secure
-   * @response `200` `BoardsPostCreateDetailData` Success
+   * @response `200` `GetBoardsPostCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostCreateDetail = ({ id, quote, ...query }: BoardsPostCreateDetailParams, params: RequestParams = {}) =>
-    this.request<BoardsPostCreateDetailData, BoardsPostCreateDetailError>({
+  getBoardsPostCreate = (
+    { id, quote, ...query }: GetBoardsPostCreateParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetBoardsPostCreateData, GetBoardsPostCreateError>({
       path: `/api-frontend/Boards/PostCreate/${id}/${quote}`,
       method: "GET",
       query: query,
@@ -431,17 +462,20 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostCreateCreate
+   * @name PostBoardsPostCreate
    * @summary Create forum post
    * @request POST:/api-frontend/Boards/PostCreate
    * @secure
-   * @response `200` `BoardsPostCreateCreateData` Success
+   * @response `200` `PostBoardsPostCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostCreateCreate = (data: EditForumPostModelDto, params: RequestParams = {}) =>
-    this.request<BoardsPostCreateCreateData, BoardsPostCreateCreateError>({
+  postBoardsPostCreate = (
+    data: EditForumPostModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBoardsPostCreateData, PostBoardsPostCreateError>({
       path: `/api-frontend/Boards/PostCreate`,
       method: "POST",
       body: data,
@@ -454,17 +488,17 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostEditDetail
+   * @name GetBoardsPostEdit
    * @summary Prepare the forum post edit model
    * @request GET:/api-frontend/Boards/PostEdit/{id}
    * @secure
-   * @response `200` `BoardsPostEditDetailData` Success
+   * @response `200` `GetBoardsPostEditData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostEditDetail = (id: number, params: RequestParams = {}) =>
-    this.request<BoardsPostEditDetailData, BoardsPostEditDetailError>({
+  getBoardsPostEdit = (id: number, params: RequestParams = {}) =>
+    this.request<GetBoardsPostEditData, GetBoardsPostEditError>({
       path: `/api-frontend/Boards/PostEdit/${id}`,
       method: "GET",
       secure: true,
@@ -475,17 +509,20 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostEditCreate
+   * @name PostBoardsPostEdit
    * @summary Edit forum post
    * @request POST:/api-frontend/Boards/PostEdit
    * @secure
-   * @response `200` `BoardsPostEditCreateData` Success
+   * @response `200` `PostBoardsPostEditData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostEditCreate = (data: EditForumPostModelDto, params: RequestParams = {}) =>
-    this.request<BoardsPostEditCreateData, BoardsPostEditCreateError>({
+  postBoardsPostEdit = (
+    data: EditForumPostModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostBoardsPostEditData, PostBoardsPostEditError>({
       path: `/api-frontend/Boards/PostEdit`,
       method: "POST",
       body: data,
@@ -498,16 +535,19 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsSearchDetail
+   * @name GetBoardsSearch
    * @summary Search terms in forum post
    * @request GET:/api-frontend/Boards/Search/{forumId}
    * @secure
-   * @response `200` `BoardsSearchDetailData` Success
+   * @response `200` `GetBoardsSearchData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsSearchDetail = ({ forumId, ...query }: BoardsSearchDetailParams, params: RequestParams = {}) =>
-    this.request<BoardsSearchDetailData, BoardsSearchDetailError>({
+  getBoardsSearch = (
+    { forumId, ...query }: GetBoardsSearchParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetBoardsSearchData, GetBoardsSearchError>({
       path: `/api-frontend/Boards/Search/${forumId}`,
       method: "GET",
       query: query,
@@ -519,19 +559,22 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsCustomerForumSubscriptionsList
+   * @name GetBoardsCustomerForumSubscriptions
    * @summary Prepare the customer forum subscriptions model
    * @request GET:/api-frontend/Boards/CustomerForumSubscriptions
    * @secure
-   * @response `200` `BoardsCustomerForumSubscriptionsListData` Success
+   * @response `200` `GetBoardsCustomerForumSubscriptionsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsCustomerForumSubscriptionsList = (
-    query: BoardsCustomerForumSubscriptionsListParams,
+  getBoardsCustomerForumSubscriptions = (
+    query: GetBoardsCustomerForumSubscriptionsParams,
     params: RequestParams = {},
   ) =>
-    this.request<BoardsCustomerForumSubscriptionsListData, BoardsCustomerForumSubscriptionsListError>({
+    this.request<
+      GetBoardsCustomerForumSubscriptionsData,
+      GetBoardsCustomerForumSubscriptionsError
+    >({
       path: `/api-frontend/Boards/CustomerForumSubscriptions`,
       method: "GET",
       query: query,
@@ -543,19 +586,22 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsCustomerForumSubscriptionsCreate
+   * @name PostBoardsCustomerForumSubscriptions
    * @summary Customer forum subscriptions POST
    * @request POST:/api-frontend/Boards/CustomerForumSubscriptions
    * @secure
-   * @response `200` `BoardsCustomerForumSubscriptionsCreateData` Success
+   * @response `200` `PostBoardsCustomerForumSubscriptionsData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsCustomerForumSubscriptionsCreate = (
-    data: BoardsCustomerForumSubscriptionsCreatePayload,
+  postBoardsCustomerForumSubscriptions = (
+    data: PostBoardsCustomerForumSubscriptionsPayload,
     params: RequestParams = {},
   ) =>
-    this.request<BoardsCustomerForumSubscriptionsCreateData, BoardsCustomerForumSubscriptionsCreateError>({
+    this.request<
+      PostBoardsCustomerForumSubscriptionsData,
+      PostBoardsCustomerForumSubscriptionsError
+    >({
       path: `/api-frontend/Boards/CustomerForumSubscriptions`,
       method: "POST",
       body: data,
@@ -568,16 +614,19 @@ export class Boards<SecurityDataType = unknown> extends HttpClient<SecurityDataT
    * No description
    *
    * @tags Boards
-   * @name BoardsPostVoteDetail
+   * @name GetBoardsPostVote
    * @summary POst vote
    * @request GET:/api-frontend/Boards/PostVote/{postId}
    * @secure
-   * @response `200` `BoardsPostVoteDetailData` Success
+   * @response `200` `GetBoardsPostVoteData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  boardsPostVoteDetail = ({ postId, ...query }: BoardsPostVoteDetailParams, params: RequestParams = {}) =>
-    this.request<BoardsPostVoteDetailData, BoardsPostVoteDetailError>({
+  getBoardsPostVote = (
+    { postId, ...query }: GetBoardsPostVoteParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetBoardsPostVoteData, GetBoardsPostVoteError>({
       path: `/api-frontend/Boards/PostVote/${postId}`,
       method: "GET",
       query: query,

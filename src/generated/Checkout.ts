@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,95 +11,102 @@
  */
 
 import {
-  CheckoutBillingAddressCreateData,
-  CheckoutBillingAddressCreateError,
   CheckoutBillingAddressModelDto,
   CheckoutBillingAddressModelDtoBaseModelDtoRequest,
-  CheckoutCompletedListData,
-  CheckoutCompletedListError,
-  CheckoutCompletedListParams,
-  CheckoutConfirmListData,
-  CheckoutConfirmListError,
-  CheckoutConfirmOrderCreateData,
-  CheckoutConfirmOrderCreateError,
-  CheckoutDeleteEditBillingAddressDeleteData,
-  CheckoutDeleteEditBillingAddressDeleteError,
-  CheckoutDeleteEditShippingAddressDeleteData,
-  CheckoutDeleteEditShippingAddressDeleteError,
-  CheckoutEnterPaymentInfoCreateData,
-  CheckoutEnterPaymentInfoCreateError,
-  CheckoutEnterPaymentInfoCreatePayload,
-  CheckoutGetAddressByIdDetailData,
-  CheckoutGetAddressByIdDetailError,
-  CheckoutNewBillingAddressCreateData,
-  CheckoutNewBillingAddressCreateError,
-  CheckoutNewShippingAddressCreateData,
-  CheckoutNewShippingAddressCreateError,
-  CheckoutPaymentInfoListData,
-  CheckoutPaymentInfoListError,
-  CheckoutPaymentMethodListData,
-  CheckoutPaymentMethodListError,
-  CheckoutSaveEditBillingAddressCreateData,
-  CheckoutSaveEditBillingAddressCreateError,
-  CheckoutSaveEditShippingAddressCreateData,
-  CheckoutSaveEditShippingAddressCreateError,
-  CheckoutSelectBillingAddressDetailData,
-  CheckoutSelectBillingAddressDetailError,
-  CheckoutSelectBillingAddressDetailParams,
-  CheckoutSelectPaymentMethodCreateData,
-  CheckoutSelectPaymentMethodCreateError,
-  CheckoutSelectPaymentMethodCreateParams,
-  CheckoutSelectShippingAddressDetailData,
-  CheckoutSelectShippingAddressDetailError,
-  CheckoutSelectShippingMethodCreateData,
-  CheckoutSelectShippingMethodCreateError,
-  CheckoutSelectShippingMethodCreateParams,
-  CheckoutSelectShippingMethodCreatePayload,
-  CheckoutShippingAddressListData,
-  CheckoutShippingAddressListError,
   CheckoutShippingAddressModelDto,
   CheckoutShippingAddressModelDtoBaseModelDtoRequest,
-  CheckoutShippingMethodListData,
-  CheckoutShippingMethodListError,
+  DeleteCheckoutDeleteEditBillingAddressData,
+  DeleteCheckoutDeleteEditBillingAddressError,
+  DeleteCheckoutDeleteEditShippingAddressData,
+  DeleteCheckoutDeleteEditShippingAddressError,
+  GetCheckoutCompletedData,
+  GetCheckoutCompletedError,
+  GetCheckoutCompletedParams,
+  GetCheckoutConfirmData,
+  GetCheckoutConfirmError,
+  GetCheckoutGetAddressByIdData,
+  GetCheckoutGetAddressByIdError,
+  GetCheckoutPaymentInfoData,
+  GetCheckoutPaymentInfoError,
+  GetCheckoutPaymentMethodData,
+  GetCheckoutPaymentMethodError,
+  GetCheckoutSelectBillingAddressData,
+  GetCheckoutSelectBillingAddressError,
+  GetCheckoutSelectBillingAddressParams,
+  GetCheckoutSelectShippingAddressData,
+  GetCheckoutSelectShippingAddressError,
+  GetCheckoutShippingAddressData,
+  GetCheckoutShippingAddressError,
+  GetCheckoutShippingMethodData,
+  GetCheckoutShippingMethodError,
+  PostCheckoutBillingAddressData,
+  PostCheckoutBillingAddressError,
+  PostCheckoutConfirmOrderData,
+  PostCheckoutConfirmOrderError,
+  PostCheckoutEnterPaymentInfoData,
+  PostCheckoutEnterPaymentInfoError,
+  PostCheckoutEnterPaymentInfoPayload,
+  PostCheckoutNewBillingAddressData,
+  PostCheckoutNewBillingAddressError,
+  PostCheckoutNewShippingAddressData,
+  PostCheckoutNewShippingAddressError,
+  PostCheckoutSaveEditBillingAddressData,
+  PostCheckoutSaveEditBillingAddressError,
+  PostCheckoutSaveEditShippingAddressData,
+  PostCheckoutSaveEditShippingAddressError,
+  PostCheckoutSelectPaymentMethodData,
+  PostCheckoutSelectPaymentMethodError,
+  PostCheckoutSelectPaymentMethodParams,
+  PostCheckoutSelectShippingMethodData,
+  PostCheckoutSelectShippingMethodError,
+  PostCheckoutSelectShippingMethodParams,
+  PostCheckoutSelectShippingMethodPayload,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Checkout<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Checkout
-   * @name CheckoutGetAddressByIdDetail
+   * @name GetCheckoutGetAddressById
    * @summary Get specified Address by addressId
    * @request GET:/api-frontend/Checkout/GetAddressById/{addressId}
    * @secure
-   * @response `200` `CheckoutGetAddressByIdDetailData` Success
+   * @response `200` `GetCheckoutGetAddressByIdData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutGetAddressByIdDetail = (addressId: number, params: RequestParams = {}) =>
-    this.request<CheckoutGetAddressByIdDetailData, CheckoutGetAddressByIdDetailError>({
-      path: `/api-frontend/Checkout/GetAddressById/${addressId}`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  getCheckoutGetAddressById = (addressId: number, params: RequestParams = {}) =>
+    this.request<GetCheckoutGetAddressByIdData, GetCheckoutGetAddressByIdError>(
+      {
+        path: `/api-frontend/Checkout/GetAddressById/${addressId}`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Checkout
-   * @name CheckoutBillingAddressCreate
+   * @name PostCheckoutBillingAddress
    * @summary Prepare billing address model
    * @request POST:/api-frontend/Checkout/BillingAddress
    * @secure
-   * @response `200` `CheckoutBillingAddressCreateData` Success
+   * @response `200` `PostCheckoutBillingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutBillingAddressCreate = (params: RequestParams = {}) =>
-    this.request<CheckoutBillingAddressCreateData, CheckoutBillingAddressCreateError>({
+  postCheckoutBillingAddress = (params: RequestParams = {}) =>
+    this.request<
+      PostCheckoutBillingAddressData,
+      PostCheckoutBillingAddressError
+    >({
       path: `/api-frontend/Checkout/BillingAddress`,
       method: "POST",
       secure: true,
@@ -109,20 +117,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSelectBillingAddressDetail
+   * @name GetCheckoutSelectBillingAddress
    * @summary Select billing address
    * @request GET:/api-frontend/Checkout/SelectBillingAddress/{addressId}
    * @secure
-   * @response `200` `CheckoutSelectBillingAddressDetailData` Success
+   * @response `200` `GetCheckoutSelectBillingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSelectBillingAddressDetail = (
-    { addressId, ...query }: CheckoutSelectBillingAddressDetailParams,
+  getCheckoutSelectBillingAddress = (
+    { addressId, ...query }: GetCheckoutSelectBillingAddressParams,
     params: RequestParams = {},
   ) =>
-    this.request<CheckoutSelectBillingAddressDetailData, CheckoutSelectBillingAddressDetailError>({
+    this.request<
+      GetCheckoutSelectBillingAddressData,
+      GetCheckoutSelectBillingAddressError
+    >({
       path: `/api-frontend/Checkout/SelectBillingAddress/${addressId}`,
       method: "GET",
       query: query,
@@ -134,20 +145,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutNewBillingAddressCreate
+   * @name PostCheckoutNewBillingAddress
    * @summary New billing address
    * @request POST:/api-frontend/Checkout/NewBillingAddress
    * @secure
-   * @response `200` `CheckoutNewBillingAddressCreateData` Success
+   * @response `200` `PostCheckoutNewBillingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutNewBillingAddressCreate = (
+  postCheckoutNewBillingAddress = (
     data: CheckoutBillingAddressModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<CheckoutNewBillingAddressCreateData, CheckoutNewBillingAddressCreateError>({
+    this.request<
+      PostCheckoutNewBillingAddressData,
+      PostCheckoutNewBillingAddressError
+    >({
       path: `/api-frontend/Checkout/NewBillingAddress`,
       method: "POST",
       body: data,
@@ -160,17 +174,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSaveEditBillingAddressCreate
+   * @name PostCheckoutSaveEditBillingAddress
    * @summary Save edited address
    * @request POST:/api-frontend/Checkout/SaveEditBillingAddress
    * @secure
-   * @response `200` `CheckoutSaveEditBillingAddressCreateData` Success
+   * @response `200` `PostCheckoutSaveEditBillingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSaveEditBillingAddressCreate = (data: CheckoutBillingAddressModelDto, params: RequestParams = {}) =>
-    this.request<CheckoutSaveEditBillingAddressCreateData, CheckoutSaveEditBillingAddressCreateError>({
+  postCheckoutSaveEditBillingAddress = (
+    data: CheckoutBillingAddressModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostCheckoutSaveEditBillingAddressData,
+      PostCheckoutSaveEditBillingAddressError
+    >({
       path: `/api-frontend/Checkout/SaveEditBillingAddress`,
       method: "POST",
       body: data,
@@ -183,16 +203,22 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutDeleteEditBillingAddressDelete
+   * @name DeleteCheckoutDeleteEditBillingAddress
    * @summary Delete edited address
    * @request DELETE:/api-frontend/Checkout/DeleteEditBillingAddress/{addressId}
    * @secure
-   * @response `200` `CheckoutDeleteEditBillingAddressDeleteData` Success
+   * @response `200` `DeleteCheckoutDeleteEditBillingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  checkoutDeleteEditBillingAddressDelete = (addressId: number, params: RequestParams = {}) =>
-    this.request<CheckoutDeleteEditBillingAddressDeleteData, CheckoutDeleteEditBillingAddressDeleteError>({
+  deleteCheckoutDeleteEditBillingAddress = (
+    addressId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      DeleteCheckoutDeleteEditBillingAddressData,
+      DeleteCheckoutDeleteEditBillingAddressError
+    >({
       path: `/api-frontend/Checkout/DeleteEditBillingAddress/${addressId}`,
       method: "DELETE",
       secure: true,
@@ -203,17 +229,20 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutShippingAddressList
+   * @name GetCheckoutShippingAddress
    * @summary Prepare shipping address model
    * @request GET:/api-frontend/Checkout/ShippingAddress
    * @secure
-   * @response `200` `CheckoutShippingAddressListData` Success
+   * @response `200` `GetCheckoutShippingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutShippingAddressList = (params: RequestParams = {}) =>
-    this.request<CheckoutShippingAddressListData, CheckoutShippingAddressListError>({
+  getCheckoutShippingAddress = (params: RequestParams = {}) =>
+    this.request<
+      GetCheckoutShippingAddressData,
+      GetCheckoutShippingAddressError
+    >({
       path: `/api-frontend/Checkout/ShippingAddress`,
       method: "GET",
       secure: true,
@@ -224,16 +253,22 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSelectShippingAddressDetail
+   * @name GetCheckoutSelectShippingAddress
    * @summary Select shipping address
    * @request GET:/api-frontend/Checkout/SelectShippingAddress/{addressId}
    * @secure
-   * @response `200` `CheckoutSelectShippingAddressDetailData` Success
+   * @response `200` `GetCheckoutSelectShippingAddressData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSelectShippingAddressDetail = (addressId: number, params: RequestParams = {}) =>
-    this.request<CheckoutSelectShippingAddressDetailData, CheckoutSelectShippingAddressDetailError>({
+  getCheckoutSelectShippingAddress = (
+    addressId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetCheckoutSelectShippingAddressData,
+      GetCheckoutSelectShippingAddressError
+    >({
       path: `/api-frontend/Checkout/SelectShippingAddress/${addressId}`,
       method: "GET",
       secure: true,
@@ -244,20 +279,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutNewShippingAddressCreate
+   * @name PostCheckoutNewShippingAddress
    * @summary New shipping address
    * @request POST:/api-frontend/Checkout/NewShippingAddress
    * @secure
-   * @response `200` `CheckoutNewShippingAddressCreateData` Success
+   * @response `200` `PostCheckoutNewShippingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutNewShippingAddressCreate = (
+  postCheckoutNewShippingAddress = (
     data: CheckoutShippingAddressModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<CheckoutNewShippingAddressCreateData, CheckoutNewShippingAddressCreateError>({
+    this.request<
+      PostCheckoutNewShippingAddressData,
+      PostCheckoutNewShippingAddressError
+    >({
       path: `/api-frontend/Checkout/NewShippingAddress`,
       method: "POST",
       body: data,
@@ -270,17 +308,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSaveEditShippingAddressCreate
+   * @name PostCheckoutSaveEditShippingAddress
    * @summary Save edited address
    * @request POST:/api-frontend/Checkout/SaveEditShippingAddress
    * @secure
-   * @response `200` `CheckoutSaveEditShippingAddressCreateData` Success
+   * @response `200` `PostCheckoutSaveEditShippingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSaveEditShippingAddressCreate = (data: CheckoutShippingAddressModelDto, params: RequestParams = {}) =>
-    this.request<CheckoutSaveEditShippingAddressCreateData, CheckoutSaveEditShippingAddressCreateError>({
+  postCheckoutSaveEditShippingAddress = (
+    data: CheckoutShippingAddressModelDto,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostCheckoutSaveEditShippingAddressData,
+      PostCheckoutSaveEditShippingAddressError
+    >({
       path: `/api-frontend/Checkout/SaveEditShippingAddress`,
       method: "POST",
       body: data,
@@ -293,16 +337,22 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutDeleteEditShippingAddressDelete
+   * @name DeleteCheckoutDeleteEditShippingAddress
    * @summary Delete edited address
    * @request DELETE:/api-frontend/Checkout/DeleteEditShippingAddress/{addressId}
    * @secure
-   * @response `200` `CheckoutDeleteEditShippingAddressDeleteData` Success
+   * @response `200` `DeleteCheckoutDeleteEditShippingAddressData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  checkoutDeleteEditShippingAddressDelete = (addressId: number, params: RequestParams = {}) =>
-    this.request<CheckoutDeleteEditShippingAddressDeleteData, CheckoutDeleteEditShippingAddressDeleteError>({
+  deleteCheckoutDeleteEditShippingAddress = (
+    addressId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      DeleteCheckoutDeleteEditShippingAddressData,
+      DeleteCheckoutDeleteEditShippingAddressError
+    >({
       path: `/api-frontend/Checkout/DeleteEditShippingAddress/${addressId}`,
       method: "DELETE",
       secure: true,
@@ -313,42 +363,47 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutShippingMethodList
+   * @name GetCheckoutShippingMethod
    * @summary Prepare shipping method model
    * @request GET:/api-frontend/Checkout/ShippingMethod
    * @secure
-   * @response `200` `CheckoutShippingMethodListData` Success
+   * @response `200` `GetCheckoutShippingMethodData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutShippingMethodList = (params: RequestParams = {}) =>
-    this.request<CheckoutShippingMethodListData, CheckoutShippingMethodListError>({
-      path: `/api-frontend/Checkout/ShippingMethod`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  getCheckoutShippingMethod = (params: RequestParams = {}) =>
+    this.request<GetCheckoutShippingMethodData, GetCheckoutShippingMethodError>(
+      {
+        path: `/api-frontend/Checkout/ShippingMethod`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSelectShippingMethodCreate
+   * @name PostCheckoutSelectShippingMethod
    * @summary Select shipping method
    * @request POST:/api-frontend/Checkout/SelectShippingMethod
    * @secure
-   * @response `200` `CheckoutSelectShippingMethodCreateData` Success
+   * @response `200` `PostCheckoutSelectShippingMethodData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSelectShippingMethodCreate = (
-    query: CheckoutSelectShippingMethodCreateParams,
-    data: CheckoutSelectShippingMethodCreatePayload,
+  postCheckoutSelectShippingMethod = (
+    query: PostCheckoutSelectShippingMethodParams,
+    data: PostCheckoutSelectShippingMethodPayload,
     params: RequestParams = {},
   ) =>
-    this.request<CheckoutSelectShippingMethodCreateData, CheckoutSelectShippingMethodCreateError>({
+    this.request<
+      PostCheckoutSelectShippingMethodData,
+      PostCheckoutSelectShippingMethodError
+    >({
       path: `/api-frontend/Checkout/SelectShippingMethod`,
       method: "POST",
       query: query,
@@ -362,17 +417,17 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutPaymentMethodList
+   * @name GetCheckoutPaymentMethod
    * @summary Prepare payment method model
    * @request GET:/api-frontend/Checkout/PaymentMethod
    * @secure
-   * @response `200` `CheckoutPaymentMethodListData` Success
+   * @response `200` `GetCheckoutPaymentMethodData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutPaymentMethodList = (params: RequestParams = {}) =>
-    this.request<CheckoutPaymentMethodListData, CheckoutPaymentMethodListError>({
+  getCheckoutPaymentMethod = (params: RequestParams = {}) =>
+    this.request<GetCheckoutPaymentMethodData, GetCheckoutPaymentMethodError>({
       path: `/api-frontend/Checkout/PaymentMethod`,
       method: "GET",
       secure: true,
@@ -383,17 +438,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutSelectPaymentMethodCreate
+   * @name PostCheckoutSelectPaymentMethod
    * @summary Select payment method
    * @request POST:/api-frontend/Checkout/SelectPaymentMethod
    * @secure
-   * @response `200` `CheckoutSelectPaymentMethodCreateData` Success
+   * @response `200` `PostCheckoutSelectPaymentMethodData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutSelectPaymentMethodCreate = (query: CheckoutSelectPaymentMethodCreateParams, params: RequestParams = {}) =>
-    this.request<CheckoutSelectPaymentMethodCreateData, CheckoutSelectPaymentMethodCreateError>({
+  postCheckoutSelectPaymentMethod = (
+    query: PostCheckoutSelectPaymentMethodParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostCheckoutSelectPaymentMethodData,
+      PostCheckoutSelectPaymentMethodError
+    >({
       path: `/api-frontend/Checkout/SelectPaymentMethod`,
       method: "POST",
       query: query,
@@ -405,17 +466,17 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutPaymentInfoList
+   * @name GetCheckoutPaymentInfo
    * @summary Prepare payment info model
    * @request GET:/api-frontend/Checkout/PaymentInfo
    * @secure
-   * @response `200` `CheckoutPaymentInfoListData` Success
+   * @response `200` `GetCheckoutPaymentInfoData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutPaymentInfoList = (params: RequestParams = {}) =>
-    this.request<CheckoutPaymentInfoListData, CheckoutPaymentInfoListError>({
+  getCheckoutPaymentInfo = (params: RequestParams = {}) =>
+    this.request<GetCheckoutPaymentInfoData, GetCheckoutPaymentInfoError>({
       path: `/api-frontend/Checkout/PaymentInfo`,
       method: "GET",
       secure: true,
@@ -426,17 +487,23 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutEnterPaymentInfoCreate
+   * @name PostCheckoutEnterPaymentInfo
    * @summary Enter payment Info
    * @request POST:/api-frontend/Checkout/EnterPaymentInfo
    * @secure
-   * @response `200` `CheckoutEnterPaymentInfoCreateData` Success
+   * @response `200` `PostCheckoutEnterPaymentInfoData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutEnterPaymentInfoCreate = (data: CheckoutEnterPaymentInfoCreatePayload, params: RequestParams = {}) =>
-    this.request<CheckoutEnterPaymentInfoCreateData, CheckoutEnterPaymentInfoCreateError>({
+  postCheckoutEnterPaymentInfo = (
+    data: PostCheckoutEnterPaymentInfoPayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostCheckoutEnterPaymentInfoData,
+      PostCheckoutEnterPaymentInfoError
+    >({
       path: `/api-frontend/Checkout/EnterPaymentInfo`,
       method: "POST",
       body: data,
@@ -449,17 +516,17 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutConfirmList
+   * @name GetCheckoutConfirm
    * @summary Prepare confirm order model
    * @request GET:/api-frontend/Checkout/Confirm
    * @secure
-   * @response `200` `CheckoutConfirmListData` Success
+   * @response `200` `GetCheckoutConfirmData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutConfirmList = (params: RequestParams = {}) =>
-    this.request<CheckoutConfirmListData, CheckoutConfirmListError>({
+  getCheckoutConfirm = (params: RequestParams = {}) =>
+    this.request<GetCheckoutConfirmData, GetCheckoutConfirmError>({
       path: `/api-frontend/Checkout/Confirm`,
       method: "GET",
       secure: true,
@@ -470,17 +537,17 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutConfirmOrderCreate
+   * @name PostCheckoutConfirmOrder
    * @summary Confirm order
    * @request POST:/api-frontend/Checkout/ConfirmOrder
    * @secure
-   * @response `200` `CheckoutConfirmOrderCreateData` Success
+   * @response `200` `PostCheckoutConfirmOrderData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutConfirmOrderCreate = (params: RequestParams = {}) =>
-    this.request<CheckoutConfirmOrderCreateData, CheckoutConfirmOrderCreateError>({
+  postCheckoutConfirmOrder = (params: RequestParams = {}) =>
+    this.request<PostCheckoutConfirmOrderData, PostCheckoutConfirmOrderError>({
       path: `/api-frontend/Checkout/ConfirmOrder`,
       method: "POST",
       secure: true,
@@ -491,17 +558,20 @@ export class Checkout<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Checkout
-   * @name CheckoutCompletedList
+   * @name GetCheckoutCompleted
    * @summary Prepare checkout completed model
    * @request GET:/api-frontend/Checkout/Completed
    * @secure
-   * @response `200` `CheckoutCompletedListData` Success
+   * @response `200` `GetCheckoutCompletedData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  checkoutCompletedList = (query: CheckoutCompletedListParams, params: RequestParams = {}) =>
-    this.request<CheckoutCompletedListData, CheckoutCompletedListError>({
+  getCheckoutCompleted = (
+    query: GetCheckoutCompletedParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetCheckoutCompletedData, GetCheckoutCompletedError>({
       path: `/api-frontend/Checkout/Completed`,
       method: "GET",
       query: query,

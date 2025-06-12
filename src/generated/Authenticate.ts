@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -11,27 +12,32 @@
 
 import {
   AuthenticateCustomerRequest,
-  AuthenticateGetApiVersionListData,
-  AuthenticateGetTokenCreateData,
-  AuthenticateGetTokenCreateError,
+  GetAuthenticateGetApiVersionData,
+  PostAuthenticateGetTokenData,
+  PostAuthenticateGetTokenError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class Authenticate<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Authenticate<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Authenticate
-   * @name AuthenticateGetTokenCreate
+   * @name PostAuthenticateGetToken
    * @summary Authenticate user
    * @request POST:/api-frontend/Authenticate/GetToken
    * @secure
-   * @response `200` `AuthenticateGetTokenCreateData` Success
+   * @response `200` `PostAuthenticateGetTokenData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  authenticateGetTokenCreate = (data: AuthenticateCustomerRequest, params: RequestParams = {}) =>
-    this.request<AuthenticateGetTokenCreateData, AuthenticateGetTokenCreateError>({
+  postAuthenticateGetToken = (
+    data: AuthenticateCustomerRequest,
+    params: RequestParams = {},
+  ) =>
+    this.request<PostAuthenticateGetTokenData, PostAuthenticateGetTokenError>({
       path: `/api-frontend/Authenticate/GetToken`,
       method: "POST",
       body: data,
@@ -44,14 +50,14 @@ export class Authenticate<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags Authenticate
-   * @name AuthenticateGetApiVersionList
+   * @name GetAuthenticateGetApiVersion
    * @summary Gets API version
    * @request GET:/api-frontend/Authenticate/GetApiVersion
    * @secure
-   * @response `200` `AuthenticateGetApiVersionListData` Success
+   * @response `200` `GetAuthenticateGetApiVersionData` OK
    */
-  authenticateGetApiVersionList = (params: RequestParams = {}) =>
-    this.request<AuthenticateGetApiVersionListData, any>({
+  getAuthenticateGetApiVersion = (params: RequestParams = {}) =>
+    this.request<GetAuthenticateGetApiVersionData, any>({
       path: `/api-frontend/Authenticate/GetApiVersion`,
       method: "GET",
       secure: true,

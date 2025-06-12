@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,27 +11,29 @@
  */
 
 import {
-  NopMobileAppSettingsListData,
-  NopMobileAppSettingsListError,
-  NopMobileAppSliderDataListData,
-  NopMobileAppSliderDataListError,
+  GetNopMobileAppSettingsData,
+  GetNopMobileAppSettingsError,
+  GetNopMobileAppSliderDataData,
+  GetNopMobileAppSliderDataError,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class NopMobileApp<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class NopMobileApp<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags NopMobileApp
-   * @name NopMobileAppSettingsList
+   * @name GetNopMobileAppSettings
    * @summary Get all settings
    * @request GET:/api-frontend/NopMobileApp/Settings
    * @secure
-   * @response `200` `NopMobileAppSettingsListData` Success
+   * @response `200` `GetNopMobileAppSettingsData` OK
    * @response `401` `string` Unauthorized
    */
-  nopMobileAppSettingsList = (params: RequestParams = {}) =>
-    this.request<NopMobileAppSettingsListData, NopMobileAppSettingsListError>({
+  getNopMobileAppSettings = (params: RequestParams = {}) =>
+    this.request<GetNopMobileAppSettingsData, GetNopMobileAppSettingsError>({
       path: `/api-frontend/NopMobileApp/Settings`,
       method: "GET",
       secure: true,
@@ -41,18 +44,20 @@ export class NopMobileApp<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags NopMobileApp
-   * @name NopMobileAppSliderDataList
+   * @name GetNopMobileAppSliderData
    * @request GET:/api-frontend/NopMobileApp/SliderData
    * @secure
-   * @response `200` `NopMobileAppSliderDataListData` Success
+   * @response `200` `GetNopMobileAppSliderDataData` OK
    * @response `401` `string` Unauthorized
    */
-  nopMobileAppSliderDataList = (params: RequestParams = {}) =>
-    this.request<NopMobileAppSliderDataListData, NopMobileAppSliderDataListError>({
-      path: `/api-frontend/NopMobileApp/SliderData`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  getNopMobileAppSliderData = (params: RequestParams = {}) =>
+    this.request<GetNopMobileAppSliderDataData, GetNopMobileAppSliderDataError>(
+      {
+        path: `/api-frontend/NopMobileApp/SliderData`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
 }

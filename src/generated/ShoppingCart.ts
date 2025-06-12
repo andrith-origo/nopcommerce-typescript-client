@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -11,70 +12,75 @@
 
 import {
   EstimateShippingModelDtoBaseModelDtoRequest,
-  ShoppingCartAddProductToCartFromCatalogCreateData,
-  ShoppingCartAddProductToCartFromCatalogCreateError,
-  ShoppingCartAddProductToCartFromCatalogCreateParams,
-  ShoppingCartAddProductToCartFromDetailsCreateData,
-  ShoppingCartAddProductToCartFromDetailsCreateError,
-  ShoppingCartAddProductToCartFromDetailsCreateParams,
-  ShoppingCartAddProductToCartFromDetailsCreatePayload,
-  ShoppingCartApplyDiscountCouponCreateData,
-  ShoppingCartApplyDiscountCouponCreateError,
-  ShoppingCartApplyDiscountCouponCreateParams,
-  ShoppingCartApplyDiscountCouponCreatePayload,
-  ShoppingCartApplyGiftCardCreateData,
-  ShoppingCartApplyGiftCardCreateError,
-  ShoppingCartApplyGiftCardCreateParams,
-  ShoppingCartApplyGiftCardCreatePayload,
-  ShoppingCartCartListData,
-  ShoppingCartCartListError,
-  ShoppingCartCheckoutAttributeChangeCreateData,
-  ShoppingCartCheckoutAttributeChangeCreateError,
-  ShoppingCartCheckoutAttributeChangeCreatePayload,
-  ShoppingCartGetEstimateShippingCreateData,
-  ShoppingCartGetEstimateShippingCreateError,
-  ShoppingCartMiniCartListData,
-  ShoppingCartMiniCartListError,
-  ShoppingCartProductDetailsAttributeChangeUpdateData,
-  ShoppingCartProductDetailsAttributeChangeUpdateError,
-  ShoppingCartProductDetailsAttributeChangeUpdateParams,
-  ShoppingCartProductDetailsAttributeChangeUpdatePayload,
-  ShoppingCartRemoveDiscountCouponCreateData,
-  ShoppingCartRemoveDiscountCouponCreateError,
-  ShoppingCartRemoveDiscountCouponCreatePayload,
-  ShoppingCartRemoveGiftCardCodeCreateData,
-  ShoppingCartRemoveGiftCardCodeCreateError,
-  ShoppingCartRemoveGiftCardCodeCreatePayload,
-  ShoppingCartSelectShippingOptionCreateData,
-  ShoppingCartSelectShippingOptionCreateError,
-  ShoppingCartSelectShippingOptionCreateParams,
-  ShoppingCartUpdateCartCreateData,
-  ShoppingCartUpdateCartCreateError,
-  ShoppingCartUpdateCartCreatePayload,
-  ShoppingCartUploadFileCheckoutAttributeCreateData,
-  ShoppingCartUploadFileCheckoutAttributeCreateError,
-  ShoppingCartUploadFileProductAttributeCreateData,
-  ShoppingCartUploadFileProductAttributeCreateError,
+  GetShoppingCartCartData,
+  GetShoppingCartCartError,
+  GetShoppingCartMiniCartData,
+  GetShoppingCartMiniCartError,
+  PostShoppingCartAddProductToCartFromCatalogData,
+  PostShoppingCartAddProductToCartFromCatalogError,
+  PostShoppingCartAddProductToCartFromCatalogParams,
+  PostShoppingCartAddProductToCartFromDetailsData,
+  PostShoppingCartAddProductToCartFromDetailsError,
+  PostShoppingCartAddProductToCartFromDetailsParams,
+  PostShoppingCartAddProductToCartFromDetailsPayload,
+  PostShoppingCartApplyDiscountCouponData,
+  PostShoppingCartApplyDiscountCouponError,
+  PostShoppingCartApplyDiscountCouponParams,
+  PostShoppingCartApplyDiscountCouponPayload,
+  PostShoppingCartApplyGiftCardData,
+  PostShoppingCartApplyGiftCardError,
+  PostShoppingCartApplyGiftCardParams,
+  PostShoppingCartApplyGiftCardPayload,
+  PostShoppingCartCheckoutAttributeChangeData,
+  PostShoppingCartCheckoutAttributeChangeError,
+  PostShoppingCartCheckoutAttributeChangePayload,
+  PostShoppingCartGetEstimateShippingData,
+  PostShoppingCartGetEstimateShippingError,
+  PostShoppingCartRemoveDiscountCouponData,
+  PostShoppingCartRemoveDiscountCouponError,
+  PostShoppingCartRemoveDiscountCouponPayload,
+  PostShoppingCartRemoveGiftCardCodeData,
+  PostShoppingCartRemoveGiftCardCodeError,
+  PostShoppingCartRemoveGiftCardCodePayload,
+  PostShoppingCartSelectShippingOptionData,
+  PostShoppingCartSelectShippingOptionError,
+  PostShoppingCartSelectShippingOptionParams,
+  PostShoppingCartUpdateCartData,
+  PostShoppingCartUpdateCartError,
+  PostShoppingCartUpdateCartPayload,
+  PostShoppingCartUploadFileCheckoutAttributeData,
+  PostShoppingCartUploadFileCheckoutAttributeError,
+  PostShoppingCartUploadFileProductAttributeData,
+  PostShoppingCartUploadFileProductAttributeError,
+  PutShoppingCartProductDetailsAttributeChangeData,
+  PutShoppingCartProductDetailsAttributeChangeError,
+  PutShoppingCartProductDetailsAttributeChangeParams,
+  PutShoppingCartProductDetailsAttributeChangePayload,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
-export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class ShoppingCart<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartSelectShippingOptionCreate
+   * @name PostShoppingCartSelectShippingOption
    * @request POST:/api-frontend/ShoppingCart/SelectShippingOption
    * @secure
-   * @response `200` `ShoppingCartSelectShippingOptionCreateData` Success
+   * @response `200` `PostShoppingCartSelectShippingOptionData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartSelectShippingOptionCreate = (
-    query: ShoppingCartSelectShippingOptionCreateParams,
+  postShoppingCartSelectShippingOption = (
+    query: PostShoppingCartSelectShippingOptionParams,
     data: EstimateShippingModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartSelectShippingOptionCreateData, ShoppingCartSelectShippingOptionCreateError>({
+    this.request<
+      PostShoppingCartSelectShippingOptionData,
+      PostShoppingCartSelectShippingOptionError
+    >({
       path: `/api-frontend/ShoppingCart/SelectShippingOption`,
       method: "POST",
       query: query,
@@ -88,74 +94,76 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartAddProductToCartFromCatalogCreate
+   * @name PostShoppingCartAddProductToCartFromCatalog
    * @request POST:/api-frontend/ShoppingCart/AddProductToCartFromCatalog/{productId}
    * @secure
-   * @response `200` `ShoppingCartAddProductToCartFromCatalogCreateData` Success
+   * @response `200` `PostShoppingCartAddProductToCartFromCatalogData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  shoppingCartAddProductToCartFromCatalogCreate = (
-    { productId, ...query }: ShoppingCartAddProductToCartFromCatalogCreateParams,
-    params: RequestParams = {},
-  ) =>
-    this.request<ShoppingCartAddProductToCartFromCatalogCreateData, ShoppingCartAddProductToCartFromCatalogCreateError>(
-      {
-        path: `/api-frontend/ShoppingCart/AddProductToCartFromCatalog/${productId}`,
-        method: "POST",
-        query: query,
-        secure: true,
-        format: "json",
-        ...params,
-      },
-    );
-  /**
-   * No description
-   *
-   * @tags ShoppingCart
-   * @name ShoppingCartAddProductToCartFromDetailsCreate
-   * @request POST:/api-frontend/ShoppingCart/AddProductToCartFromDetails/{productId}
-   * @secure
-   * @response `200` `ShoppingCartAddProductToCartFromDetailsCreateData` Success
-   * @response `400` `string` Bad Request
-   * @response `401` `string` Unauthorized
-   */
-  shoppingCartAddProductToCartFromDetailsCreate = (
-    { productId, ...query }: ShoppingCartAddProductToCartFromDetailsCreateParams,
-    data: ShoppingCartAddProductToCartFromDetailsCreatePayload,
-    params: RequestParams = {},
-  ) =>
-    this.request<ShoppingCartAddProductToCartFromDetailsCreateData, ShoppingCartAddProductToCartFromDetailsCreateError>(
-      {
-        path: `/api-frontend/ShoppingCart/AddProductToCartFromDetails/${productId}`,
-        method: "POST",
-        query: query,
-        body: data,
-        secure: true,
-        type: ContentType.Json,
-        format: "json",
-        ...params,
-      },
-    );
-  /**
-   * No description
-   *
-   * @tags ShoppingCart
-   * @name ShoppingCartProductDetailsAttributeChangeUpdate
-   * @request PUT:/api-frontend/ShoppingCart/ProductDetailsAttributeChange/{productId}
-   * @secure
-   * @response `200` `ShoppingCartProductDetailsAttributeChangeUpdateData` Success
-   * @response `400` `string` Bad Request
-   * @response `401` `string` Unauthorized
-   */
-  shoppingCartProductDetailsAttributeChangeUpdate = (
-    { productId, ...query }: ShoppingCartProductDetailsAttributeChangeUpdateParams,
-    data: ShoppingCartProductDetailsAttributeChangeUpdatePayload,
+  postShoppingCartAddProductToCartFromCatalog = (
+    { productId, ...query }: PostShoppingCartAddProductToCartFromCatalogParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      ShoppingCartProductDetailsAttributeChangeUpdateData,
-      ShoppingCartProductDetailsAttributeChangeUpdateError
+      PostShoppingCartAddProductToCartFromCatalogData,
+      PostShoppingCartAddProductToCartFromCatalogError
+    >({
+      path: `/api-frontend/ShoppingCart/AddProductToCartFromCatalog/${productId}`,
+      method: "POST",
+      query: query,
+      secure: true,
+      format: "json",
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags ShoppingCart
+   * @name PostShoppingCartAddProductToCartFromDetails
+   * @request POST:/api-frontend/ShoppingCart/AddProductToCartFromDetails/{productId}
+   * @secure
+   * @response `200` `PostShoppingCartAddProductToCartFromDetailsData` OK
+   * @response `400` `string` Bad Request
+   * @response `401` `string` Unauthorized
+   */
+  postShoppingCartAddProductToCartFromDetails = (
+    { productId, ...query }: PostShoppingCartAddProductToCartFromDetailsParams,
+    data: PostShoppingCartAddProductToCartFromDetailsPayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostShoppingCartAddProductToCartFromDetailsData,
+      PostShoppingCartAddProductToCartFromDetailsError
+    >({
+      path: `/api-frontend/ShoppingCart/AddProductToCartFromDetails/${productId}`,
+      method: "POST",
+      query: query,
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      format: "json",
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags ShoppingCart
+   * @name PutShoppingCartProductDetailsAttributeChange
+   * @request PUT:/api-frontend/ShoppingCart/ProductDetailsAttributeChange/{productId}
+   * @secure
+   * @response `200` `PutShoppingCartProductDetailsAttributeChangeData` OK
+   * @response `400` `string` Bad Request
+   * @response `401` `string` Unauthorized
+   */
+  putShoppingCartProductDetailsAttributeChange = (
+    { productId, ...query }: PutShoppingCartProductDetailsAttributeChangeParams,
+    data: PutShoppingCartProductDetailsAttributeChangePayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PutShoppingCartProductDetailsAttributeChangeData,
+      PutShoppingCartProductDetailsAttributeChangeError
     >({
       path: `/api-frontend/ShoppingCart/ProductDetailsAttributeChange/${productId}`,
       method: "PUT",
@@ -170,17 +178,20 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartCheckoutAttributeChangeCreate
+   * @name PostShoppingCartCheckoutAttributeChange
    * @request POST:/api-frontend/ShoppingCart/CheckoutAttributeChange
    * @secure
-   * @response `200` `ShoppingCartCheckoutAttributeChangeCreateData` Success
+   * @response `200` `PostShoppingCartCheckoutAttributeChangeData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartCheckoutAttributeChangeCreate = (
-    data: ShoppingCartCheckoutAttributeChangeCreatePayload,
+  postShoppingCartCheckoutAttributeChange = (
+    data: PostShoppingCartCheckoutAttributeChangePayload,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartCheckoutAttributeChangeCreateData, ShoppingCartCheckoutAttributeChangeCreateError>({
+    this.request<
+      PostShoppingCartCheckoutAttributeChangeData,
+      PostShoppingCartCheckoutAttributeChangeError
+    >({
       path: `/api-frontend/ShoppingCart/CheckoutAttributeChange`,
       method: "POST",
       body: data,
@@ -193,14 +204,20 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartUploadFileProductAttributeCreate
+   * @name PostShoppingCartUploadFileProductAttribute
    * @request POST:/api-frontend/ShoppingCart/UploadFileProductAttribute/{attributeId}
    * @secure
-   * @response `200` `ShoppingCartUploadFileProductAttributeCreateData` Success
+   * @response `200` `PostShoppingCartUploadFileProductAttributeData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartUploadFileProductAttributeCreate = (attributeId: number, params: RequestParams = {}) =>
-    this.request<ShoppingCartUploadFileProductAttributeCreateData, ShoppingCartUploadFileProductAttributeCreateError>({
+  postShoppingCartUploadFileProductAttribute = (
+    attributeId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostShoppingCartUploadFileProductAttributeData,
+      PostShoppingCartUploadFileProductAttributeError
+    >({
       path: `/api-frontend/ShoppingCart/UploadFileProductAttribute/${attributeId}`,
       method: "POST",
       secure: true,
@@ -211,35 +228,39 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartUploadFileCheckoutAttributeCreate
+   * @name PostShoppingCartUploadFileCheckoutAttribute
    * @request POST:/api-frontend/ShoppingCart/UploadFileCheckoutAttribute/{attributeId}
    * @secure
-   * @response `200` `ShoppingCartUploadFileCheckoutAttributeCreateData` Success
+   * @response `200` `PostShoppingCartUploadFileCheckoutAttributeData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartUploadFileCheckoutAttributeCreate = (attributeId: number, params: RequestParams = {}) =>
-    this.request<ShoppingCartUploadFileCheckoutAttributeCreateData, ShoppingCartUploadFileCheckoutAttributeCreateError>(
-      {
-        path: `/api-frontend/ShoppingCart/UploadFileCheckoutAttribute/${attributeId}`,
-        method: "POST",
-        secure: true,
-        format: "json",
-        ...params,
-      },
-    );
+  postShoppingCartUploadFileCheckoutAttribute = (
+    attributeId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostShoppingCartUploadFileCheckoutAttributeData,
+      PostShoppingCartUploadFileCheckoutAttributeError
+    >({
+      path: `/api-frontend/ShoppingCart/UploadFileCheckoutAttribute/${attributeId}`,
+      method: "POST",
+      secure: true,
+      format: "json",
+      ...params,
+    });
   /**
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartCartList
+   * @name GetShoppingCartCart
    * @request GET:/api-frontend/ShoppingCart/Cart
    * @secure
-   * @response `200` `ShoppingCartCartListData` Success
+   * @response `200` `GetShoppingCartCartData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  shoppingCartCartList = (params: RequestParams = {}) =>
-    this.request<ShoppingCartCartListData, ShoppingCartCartListError>({
+  getShoppingCartCart = (params: RequestParams = {}) =>
+    this.request<GetShoppingCartCartData, GetShoppingCartCartError>({
       path: `/api-frontend/ShoppingCart/Cart`,
       method: "GET",
       secure: true,
@@ -250,15 +271,15 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartMiniCartList
+   * @name GetShoppingCartMiniCart
    * @request GET:/api-frontend/ShoppingCart/MiniCart
    * @secure
-   * @response `200` `ShoppingCartMiniCartListData` Success
+   * @response `200` `GetShoppingCartMiniCartData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  shoppingCartMiniCartList = (params: RequestParams = {}) =>
-    this.request<ShoppingCartMiniCartListData, ShoppingCartMiniCartListError>({
+  getShoppingCartMiniCart = (params: RequestParams = {}) =>
+    this.request<GetShoppingCartMiniCartData, GetShoppingCartMiniCartError>({
       path: `/api-frontend/ShoppingCart/MiniCart`,
       method: "GET",
       secure: true,
@@ -269,15 +290,21 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartUpdateCartCreate
+   * @name PostShoppingCartUpdateCart
    * @request POST:/api-frontend/ShoppingCart/UpdateCart
    * @secure
-   * @response `200` `ShoppingCartUpdateCartCreateData` Success
+   * @response `200` `PostShoppingCartUpdateCartData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  shoppingCartUpdateCartCreate = (data: ShoppingCartUpdateCartCreatePayload, params: RequestParams = {}) =>
-    this.request<ShoppingCartUpdateCartCreateData, ShoppingCartUpdateCartCreateError>({
+  postShoppingCartUpdateCart = (
+    data: PostShoppingCartUpdateCartPayload,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      PostShoppingCartUpdateCartData,
+      PostShoppingCartUpdateCartError
+    >({
       path: `/api-frontend/ShoppingCart/UpdateCart`,
       method: "POST",
       body: data,
@@ -290,18 +317,21 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartApplyDiscountCouponCreate
+   * @name PostShoppingCartApplyDiscountCoupon
    * @request POST:/api-frontend/ShoppingCart/ApplyDiscountCoupon
    * @secure
-   * @response `200` `ShoppingCartApplyDiscountCouponCreateData` Success
+   * @response `200` `PostShoppingCartApplyDiscountCouponData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartApplyDiscountCouponCreate = (
-    query: ShoppingCartApplyDiscountCouponCreateParams,
-    data: ShoppingCartApplyDiscountCouponCreatePayload,
+  postShoppingCartApplyDiscountCoupon = (
+    query: PostShoppingCartApplyDiscountCouponParams,
+    data: PostShoppingCartApplyDiscountCouponPayload,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartApplyDiscountCouponCreateData, ShoppingCartApplyDiscountCouponCreateError>({
+    this.request<
+      PostShoppingCartApplyDiscountCouponData,
+      PostShoppingCartApplyDiscountCouponError
+    >({
       path: `/api-frontend/ShoppingCart/ApplyDiscountCoupon`,
       method: "POST",
       query: query,
@@ -315,18 +345,21 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartApplyGiftCardCreate
+   * @name PostShoppingCartApplyGiftCard
    * @request POST:/api-frontend/ShoppingCart/ApplyGiftCard
    * @secure
-   * @response `200` `ShoppingCartApplyGiftCardCreateData` Success
+   * @response `200` `PostShoppingCartApplyGiftCardData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartApplyGiftCardCreate = (
-    query: ShoppingCartApplyGiftCardCreateParams,
-    data: ShoppingCartApplyGiftCardCreatePayload,
+  postShoppingCartApplyGiftCard = (
+    query: PostShoppingCartApplyGiftCardParams,
+    data: PostShoppingCartApplyGiftCardPayload,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartApplyGiftCardCreateData, ShoppingCartApplyGiftCardCreateError>({
+    this.request<
+      PostShoppingCartApplyGiftCardData,
+      PostShoppingCartApplyGiftCardError
+    >({
       path: `/api-frontend/ShoppingCart/ApplyGiftCard`,
       method: "POST",
       query: query,
@@ -340,17 +373,20 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartGetEstimateShippingCreate
+   * @name PostShoppingCartGetEstimateShipping
    * @request POST:/api-frontend/ShoppingCart/GetEstimateShipping
    * @secure
-   * @response `200` `ShoppingCartGetEstimateShippingCreateData` Success
+   * @response `200` `PostShoppingCartGetEstimateShippingData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartGetEstimateShippingCreate = (
+  postShoppingCartGetEstimateShipping = (
     data: EstimateShippingModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartGetEstimateShippingCreateData, ShoppingCartGetEstimateShippingCreateError>({
+    this.request<
+      PostShoppingCartGetEstimateShippingData,
+      PostShoppingCartGetEstimateShippingError
+    >({
       path: `/api-frontend/ShoppingCart/GetEstimateShipping`,
       method: "POST",
       body: data,
@@ -363,17 +399,20 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartRemoveDiscountCouponCreate
+   * @name PostShoppingCartRemoveDiscountCoupon
    * @request POST:/api-frontend/ShoppingCart/RemoveDiscountCoupon
    * @secure
-   * @response `200` `ShoppingCartRemoveDiscountCouponCreateData` Success
+   * @response `200` `PostShoppingCartRemoveDiscountCouponData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartRemoveDiscountCouponCreate = (
-    data: ShoppingCartRemoveDiscountCouponCreatePayload,
+  postShoppingCartRemoveDiscountCoupon = (
+    data: PostShoppingCartRemoveDiscountCouponPayload,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartRemoveDiscountCouponCreateData, ShoppingCartRemoveDiscountCouponCreateError>({
+    this.request<
+      PostShoppingCartRemoveDiscountCouponData,
+      PostShoppingCartRemoveDiscountCouponError
+    >({
       path: `/api-frontend/ShoppingCart/RemoveDiscountCoupon`,
       method: "POST",
       body: data,
@@ -386,17 +425,20 @@ export class ShoppingCart<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags ShoppingCart
-   * @name ShoppingCartRemoveGiftCardCodeCreate
+   * @name PostShoppingCartRemoveGiftCardCode
    * @request POST:/api-frontend/ShoppingCart/RemoveGiftCardCode
    * @secure
-   * @response `200` `ShoppingCartRemoveGiftCardCodeCreateData` Success
+   * @response `200` `PostShoppingCartRemoveGiftCardCodeData` OK
    * @response `401` `string` Unauthorized
    */
-  shoppingCartRemoveGiftCardCodeCreate = (
-    data: ShoppingCartRemoveGiftCardCodeCreatePayload,
+  postShoppingCartRemoveGiftCardCode = (
+    data: PostShoppingCartRemoveGiftCardCodePayload,
     params: RequestParams = {},
   ) =>
-    this.request<ShoppingCartRemoveGiftCardCodeCreateData, ShoppingCartRemoveGiftCardCodeCreateError>({
+    this.request<
+      PostShoppingCartRemoveGiftCardCodeData,
+      PostShoppingCartRemoveGiftCardCodeError
+    >({
       path: `/api-frontend/ShoppingCart/RemoveGiftCardCode`,
       method: "POST",
       body: data,

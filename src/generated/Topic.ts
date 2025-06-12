@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,29 +11,31 @@
  */
 
 import {
-  TopicGetTopicDetailsBySystemNameDetailData,
-  TopicGetTopicDetailsBySystemNameDetailError,
-  TopicGetTopicDetailsDetailData,
-  TopicGetTopicDetailsDetailError,
+  GetTopicGetTopicDetailsBySystemNameData,
+  GetTopicGetTopicDetailsBySystemNameError,
+  GetTopicGetTopicDetailsData,
+  GetTopicGetTopicDetailsError,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class Topic<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Topic<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Topic
-   * @name TopicGetTopicDetailsDetail
+   * @name GetTopicGetTopicDetails
    * @summary Gets a topic details
    * @request GET:/api-frontend/Topic/GetTopicDetails/{id}
    * @secure
-   * @response `200` `TopicGetTopicDetailsDetailData` Success
+   * @response `200` `GetTopicGetTopicDetailsData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  topicGetTopicDetailsDetail = (id: number, params: RequestParams = {}) =>
-    this.request<TopicGetTopicDetailsDetailData, TopicGetTopicDetailsDetailError>({
+  getTopicGetTopicDetails = (id: number, params: RequestParams = {}) =>
+    this.request<GetTopicGetTopicDetailsData, GetTopicGetTopicDetailsError>({
       path: `/api-frontend/Topic/GetTopicDetails/${id}`,
       method: "GET",
       secure: true,
@@ -43,17 +46,23 @@ export class Topic<SecurityDataType = unknown> extends HttpClient<SecurityDataTy
    * No description
    *
    * @tags Topic
-   * @name TopicGetTopicDetailsBySystemNameDetail
+   * @name GetTopicGetTopicDetailsBySystemName
    * @summary Gets a topic details by system name
    * @request GET:/api-frontend/Topic/GetTopicDetailsBySystemName/{systemName}
    * @secure
-   * @response `200` `TopicGetTopicDetailsBySystemNameDetailData` Success
+   * @response `200` `GetTopicGetTopicDetailsBySystemNameData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  topicGetTopicDetailsBySystemNameDetail = (systemName: string, params: RequestParams = {}) =>
-    this.request<TopicGetTopicDetailsBySystemNameDetailData, TopicGetTopicDetailsBySystemNameDetailError>({
+  getTopicGetTopicDetailsBySystemName = (
+    systemName: string,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetTopicGetTopicDetailsBySystemNameData,
+      GetTopicGetTopicDetailsBySystemNameError
+    >({
       path: `/api-frontend/Topic/GetTopicDetailsBySystemName/${systemName}`,
       method: "GET",
       secure: true,

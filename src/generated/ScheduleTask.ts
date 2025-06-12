@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,27 +11,32 @@
  */
 
 import {
-  ScheduleTaskRunTaskListData,
-  ScheduleTaskRunTaskListError,
-  ScheduleTaskRunTaskListParams,
+  GetScheduleTaskRunTaskData,
+  GetScheduleTaskRunTaskError,
+  GetScheduleTaskRunTaskParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class ScheduleTask<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class ScheduleTask<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags ScheduleTask
-   * @name ScheduleTaskRunTaskList
+   * @name GetScheduleTaskRunTask
    * @summary Run task
    * @request GET:/api-frontend/ScheduleTask/RunTask
    * @secure
-   * @response `200` `ScheduleTaskRunTaskListData` Success
+   * @response `200` `GetScheduleTaskRunTaskData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  scheduleTaskRunTaskList = (query: ScheduleTaskRunTaskListParams, params: RequestParams = {}) =>
-    this.request<ScheduleTaskRunTaskListData, ScheduleTaskRunTaskListError>({
+  getScheduleTaskRunTask = (
+    query: GetScheduleTaskRunTaskParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<GetScheduleTaskRunTaskData, GetScheduleTaskRunTaskError>({
       path: `/api-frontend/ScheduleTask/RunTask`,
       method: "GET",
       query: query,

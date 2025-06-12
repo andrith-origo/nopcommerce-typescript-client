@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -8,6 +9,56 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
+export enum TaxDisplayType {
+  IncludingTax = "IncludingTax",
+  ExcludingTax = "ExcludingTax",
+}
+
+export enum ShoppingCartType {
+  ShoppingCart = "ShoppingCart",
+  Wishlist = "Wishlist",
+}
+
+export enum ProductType {
+  SimpleProduct = "SimpleProduct",
+  GroupedProduct = "GroupedProduct",
+}
+
+export enum ManageInventoryMethod {
+  DontManageStock = "DontManageStock",
+  ManageStock = "ManageStock",
+  ManageStockByAttributes = "ManageStockByAttributes",
+}
+
+export enum GiftCardType {
+  Virtual = "Virtual",
+  Physical = "Physical",
+}
+
+export enum ForumTopicType {
+  Normal = "Normal",
+  Sticky = "Sticky",
+  Announcement = "Announcement",
+}
+
+export enum EditorType {
+  SimpleTextBox = "SimpleTextBox",
+  BBCodeEditor = "BBCodeEditor",
+}
+
+export enum AttributeControlType {
+  DropdownList = "DropdownList",
+  RadioList = "RadioList",
+  Checkboxes = "Checkboxes",
+  TextBox = "TextBox",
+  MultilineTextbox = "MultilineTextbox",
+  Datepicker = "Datepicker",
+  FileUpload = "FileUpload",
+  ColorSquares = "ColorSquares",
+  ImageSquares = "ImageSquares",
+  ReadonlyCheckboxes = "ReadonlyCheckboxes",
+}
 
 export interface AccountActivationModelDto {
   result?: string | null;
@@ -213,7 +264,7 @@ export interface ApplyVendorRequest {
   /** @format byte */
   picture_binary?: string | null;
   model?: ApplyVendorModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface AssociatedExternalAuthModelDto {
@@ -223,19 +274,6 @@ export interface AssociatedExternalAuthModelDto {
   /** @format int32 */
   id?: number;
   custom_properties?: Record<string, string | null>;
-}
-
-export enum AttributeControlType {
-  DropdownList = "DropdownList",
-  RadioList = "RadioList",
-  Checkboxes = "Checkboxes",
-  TextBox = "TextBox",
-  MultilineTextbox = "MultilineTextbox",
-  Datepicker = "Datepicker",
-  FileUpload = "FileUpload",
-  ColorSquares = "ColorSquares",
-  ImageSquares = "ImageSquares",
-  ReadonlyCheckboxes = "ReadonlyCheckboxes",
 }
 
 export interface AuthenticateCustomerRequest {
@@ -385,9 +423,9 @@ export interface CatalogProductsCommandDto {
   /** Gets or sets the price ('min-max' format) */
   price?: string | null;
   /** Gets or sets the specification attribute option ids */
-  specification_option_ids?: number[] | null;
+  specs?: number[] | null;
   /** Gets or sets the manufacturer ids */
-  manufacturer_ids?: number[] | null;
+  ms?: number[] | null;
   /**
    * Gets or sets a order by
    * @format int32
@@ -557,6 +595,8 @@ export interface ChangePasswordModelDto {
   old_password?: string | null;
   new_password?: string | null;
   confirm_new_password?: string | null;
+  password_must_be_changed?: boolean;
+  password_expired?: boolean;
   custom_properties?: Record<string, string | null>;
 }
 
@@ -624,7 +664,7 @@ export interface CheckoutBillingAddressModelDto {
 
 export interface CheckoutBillingAddressModelDtoBaseModelDtoRequest {
   model?: CheckoutBillingAddressModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface CheckoutCompletedModelDto {
@@ -715,7 +755,7 @@ export interface CheckoutShippingAddressModelDto {
 
 export interface CheckoutShippingAddressModelDtoBaseModelDtoRequest {
   model?: CheckoutShippingAddressModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface CheckoutShippingMethodModelDto {
@@ -792,7 +832,7 @@ export interface CustomerAddressEditModelDto {
 
 export interface CustomerAddressEditModelDtoBaseModelDtoRequest {
   model?: CustomerAddressEditModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface CustomerAddressListModelDto {
@@ -909,6 +949,7 @@ export interface CustomerInfoModelDto {
   vat_number?: string | null;
   vat_number_status_note?: string | null;
   display_vat_number?: boolean;
+  vat_number_required?: boolean;
   associated_external_auth_records?: AssociatedExternalAuthModelDto[] | null;
   /** @format int32 */
   number_of_external_authentication_providers?: number;
@@ -920,7 +961,7 @@ export interface CustomerInfoModelDto {
 
 export interface CustomerInfoModelDtoBaseModelDtoRequest {
   model?: CustomerInfoModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface CustomerOrderDetailsModelDto {
@@ -958,7 +999,9 @@ export interface CustomerProductReviewModelDto {
   rating?: number;
   written_on_str?: string | null;
   approval_status?: string | null;
-  additional_product_review_list?: ProductReviewReviewTypeMappingModelDto[] | null;
+  additional_product_review_list?:
+    | ProductReviewReviewTypeMappingModelDto[]
+    | null;
   custom_properties?: Record<string, string | null>;
 }
 
@@ -1067,11 +1110,6 @@ export interface EditForumTopicModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export enum EditorType {
-  SimpleTextBox = "SimpleTextBox",
-  BBCodeEditor = "BBCodeEditor",
-}
-
 export interface EmailRevalidationModelDto {
   result?: string | null;
   return_url?: string | null;
@@ -1096,7 +1134,7 @@ export interface EstimateShippingModelDto {
 
 export interface EstimateShippingModelDtoBaseModelDtoRequest {
   model?: EstimateShippingModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface EstimateShippingResultModelDto {
@@ -1246,12 +1284,6 @@ export interface ForumTopicRowModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export enum ForumTopicType {
-  Normal = "Normal",
-  Sticky = "Sticky",
-  Announcement = "Announcement",
-}
-
 export interface ForumWatchResponse {
   subscribed?: boolean;
   text?: string | null;
@@ -1324,21 +1356,24 @@ export interface GiftCardModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export enum GiftCardType {
-  Virtual = "Virtual",
-  Physical = "Physical",
-}
-
 export interface InfoRequest {
   /** @format byte */
   picture_binary?: string | null;
   model?: VendorInfoModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface InfoResponse {
   model?: CustomerInfoModelDto;
   errors?: string[] | null;
+}
+
+export interface KlokurAuthenticateCustomerRequest {
+  token?: string | null;
+  is_guest?: boolean;
+  username?: string | null;
+  email?: string | null;
+  password?: string | null;
 }
 
 export interface LanguageModelDto {
@@ -1361,12 +1396,6 @@ export interface LoginCustomerRequest {
   username?: string | null;
   email?: string | null;
   password?: string | null;
-}
-
-export enum ManageInventoryMethod {
-  DontManageStock = "DontManageStock",
-  ManageStock = "ManageStock",
-  ManageStockByAttributes = "ManageStockByAttributes",
 }
 
 export interface ManufacturerBriefInfoModelDto {
@@ -2098,7 +2127,7 @@ export interface ProductEstimateShippingModelDto {
 
 export interface ProductEstimateShippingModelDtoBaseModelDtoRequest {
   model?: ProductEstimateShippingModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface ProductOverviewModelDto {
@@ -2109,7 +2138,7 @@ export interface ProductOverviewModelDto {
   sku?: string | null;
   product_type?: ProductType;
   mark_as_new?: boolean;
-  product_price?: ProductOverviewProductPriceModelDto;
+  product_price?: ProductPriceModelDto;
   picture_models?: PictureModelDto[] | null;
   product_specification_model?: ProductSpecificationModelDto;
   review_overview_model?: ProductReviewOverviewModelDto;
@@ -2118,14 +2147,14 @@ export interface ProductOverviewModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export interface ProductOverviewProductPriceModelDto {
+export interface ProductPriceModelDto {
   old_price?: string | null;
   /** @format double */
   old_price_value?: number | null;
   price?: string | null;
   /** @format double */
   price_value?: number | null;
-  /** PAngV base price (used in Germany) */
+  /** PAngV baseprice (used in Germany) */
   base_price_p_ang_v?: string | null;
   /** @format double */
   base_price_p_ang_v_value?: number | null;
@@ -2139,19 +2168,9 @@ export interface ProductOverviewProductPriceModelDto {
   force_redirection_after_adding_to_cart?: boolean;
   /** A value indicating whether we should display tax/shipping info (used in Germany) */
   display_tax_shipping_info?: boolean;
-  custom_properties?: Record<string, string | null>;
-}
-
-export interface ProductPriceModelDto {
   /** The currency (in 3-letter ISO 4217 format) of the offer price */
   currency_code?: string | null;
-  old_price?: string | null;
-  /** @format double */
-  old_price_value?: number | null;
-  price?: string | null;
   price_with_discount?: string | null;
-  /** @format double */
-  price_value?: number;
   /** @format double */
   price_with_discount_value?: number | null;
   customer_enters_price?: boolean;
@@ -2159,17 +2178,9 @@ export interface ProductPriceModelDto {
   /** @format int32 */
   product_id?: number;
   hide_prices?: boolean;
-  /** rental */
-  is_rental?: boolean;
   rental_price?: string | null;
   /** @format double */
   rental_price_value?: number | null;
-  /** A value indicating whether we should display tax/shipping info (used in Germany) */
-  display_tax_shipping_info?: boolean;
-  /** PAngV baseprice (used in Germany) */
-  base_price_p_ang_v?: string | null;
-  /** @format double */
-  base_price_p_ang_v_value?: number | null;
   custom_properties?: Record<string, string | null>;
 }
 
@@ -2196,7 +2207,9 @@ export interface ProductReviewModelDto {
   rating?: number;
   written_on_str?: string | null;
   helpfulness?: ProductReviewHelpfulnessModelDto;
-  additional_product_review_list?: ProductReviewReviewTypeMappingModelDto[] | null;
+  additional_product_review_list?:
+    | ProductReviewReviewTypeMappingModelDto[]
+    | null;
   /** @format int32 */
   id?: number;
   custom_properties?: Record<string, string | null>;
@@ -2236,7 +2249,9 @@ export interface ProductReviewsModelDto {
   items?: ProductReviewModelDto[] | null;
   add_product_review?: AddProductReviewModelDto;
   review_type_list?: ReviewTypeModelDto[] | null;
-  add_additional_product_review_list?: AddProductReviewReviewTypeMappingModelDto[] | null;
+  add_additional_product_review_list?:
+    | AddProductReviewReviewTypeMappingModelDto[]
+    | null;
   custom_properties?: Record<string, string | null>;
 }
 
@@ -2287,11 +2302,6 @@ export interface ProductTagModelDto {
   /** @format int32 */
   id?: number;
   custom_properties?: Record<string, string | null>;
-}
-
-export enum ProductType {
-  SimpleProduct = "SimpleProduct",
-  GroupedProduct = "GroupedProduct",
 }
 
 export interface ProductsByTagModelDto {
@@ -2401,6 +2411,7 @@ export interface RegisterModelDto {
   available_time_zones?: SelectListItemDto[] | null;
   vat_number?: string | null;
   display_vat_number?: boolean;
+  vat_number_required?: boolean;
   honeypot_enabled?: boolean;
   display_captcha?: boolean;
   customer_attributes?: CustomerAttributeModelDto[] | null;
@@ -2410,7 +2421,7 @@ export interface RegisterModelDto {
 
 export interface RegisterModelDtoBaseModelDtoRequest {
   model?: RegisterModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface RegisterResultModelDto {
@@ -2812,11 +2823,6 @@ export interface ShoppingCartModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export enum ShoppingCartType {
-  ShoppingCart = "ShoppingCart",
-  Wishlist = "Wishlist",
-}
-
 export interface SitemapItemModelDto {
   group_title?: string | null;
   url?: string | null;
@@ -2960,17 +2966,12 @@ export interface SubmitReturnRequestModelDto {
 
 export interface SubmitReturnRequestModelDtoBaseModelDtoRequest {
   model?: SubmitReturnRequestModelDto;
-  form?: Record<string, string>;
+  form?: Record<string, string | null>;
 }
 
 export interface SubscriptionActivationModelDto {
   result?: string | null;
   custom_properties?: Record<string, string | null>;
-}
-
-export enum TaxDisplayType {
-  IncludingTax = "IncludingTax",
-  ExcludingTax = "ExcludingTax",
 }
 
 export interface TaxRateDto {
@@ -3134,11 +3135,110 @@ export interface VendorModelDto {
   meta_title?: string | null;
   se_name?: string | null;
   allow_customers_to_contact_vendors?: boolean;
+  /** @format int32 */
+  pm_customer_id?: number | null;
   picture_model?: PictureModelDto;
   /** Represents a catalog products model */
   catalog_products_model?: CatalogProductsModelDto;
+  product_reviews?: VendorProductReviewsListModelDto;
   /** @format int32 */
   id?: number;
+  custom_properties?: Record<string, string | null>;
+}
+
+export interface VendorProductReviewModelDto {
+  /** @format int32 */
+  customer_id?: number;
+  customer_avatar_url?: string | null;
+  customer_name?: string | null;
+  product_se_name?: string | null;
+  product_name?: string | null;
+  title?: string | null;
+  review_text?: string | null;
+  reply_text?: string | null;
+  /** @format int32 */
+  rating?: number;
+  /** @format int32 */
+  helpful_yes_total?: number;
+  /** @format int32 */
+  helpful_no_total?: number;
+  /** @format date-time */
+  created_on_utc?: string;
+  helpfulness?: ProductReviewHelpfulnessModelDto;
+  allow_viewing_profiles?: boolean;
+  custom_properties?: Record<string, string | null>;
+}
+
+export interface VendorProductReviewsListModelDto {
+  /** @format int32 */
+  vendor_id?: number;
+  vendor_name?: string | null;
+  vendor_url?: string | null;
+  paging_filtering_context?: VendorReviewsPagingFilteringModelDto;
+  reviews?: VendorProductReviewModelDto[] | null;
+  custom_properties?: Record<string, string | null>;
+}
+
+export interface VendorReviewsPagingFilteringModel {
+  /** @format int32 */
+  PageIndex?: number;
+  /** @format int32 */
+  PageNumber?: number;
+  /** @format int32 */
+  PageSize?: number;
+  /** @format int32 */
+  TotalItems?: number;
+  /** @format int32 */
+  TotalPages?: number;
+  /** @format int32 */
+  FirstItem?: number;
+  /** @format int32 */
+  LastItem?: number;
+  HasPreviousPage?: boolean;
+  HasNextPage?: boolean;
+  CustomProperties?: Record<string, string | null>;
+}
+
+export interface VendorReviewsPagingFilteringModelDto {
+  /**
+   * The current page index (starts from 0)
+   * @format int32
+   */
+  page_index?: number;
+  /**
+   * The current page number (starts from 1)
+   * @format int32
+   */
+  page_number?: number;
+  /**
+   * The number of items in each page.
+   * @format int32
+   */
+  page_size?: number;
+  /**
+   * The total number of items.
+   * @format int32
+   */
+  total_items?: number;
+  /**
+   * The total number of pages.
+   * @format int32
+   */
+  total_pages?: number;
+  /**
+   * The index of the first item in the page.
+   * @format int32
+   */
+  first_item?: number;
+  /**
+   * The index of the last item in the page.
+   * @format int32
+   */
+  last_item?: number;
+  /** Whether there are pages before the current page. */
+  has_previous_page?: boolean;
+  /** Whether there are pages after the current page. */
+  has_next_page?: boolean;
   custom_properties?: Record<string, string | null>;
 }
 
@@ -3208,21 +3308,22 @@ export interface WishlistShoppingCartItemModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
-export type AuthenticateGetTokenCreateData = AuthenticateResponse;
+export type PostAuthenticateGetTokenData = AuthenticateResponse;
 
-export type AuthenticateGetTokenCreateError = string;
+export type PostAuthenticateGetTokenError = string;
 
-export type AuthenticateGetApiVersionListData = string;
+export type GetAuthenticateGetApiVersionData = string;
 
-export type BackInStockSubscriptionSubscribePopupDetailData = BackInStockSubscribeModelDto;
+export type GetBackInStockSubscriptionSubscribePopupData =
+  BackInStockSubscribeModelDto;
 
-export type BackInStockSubscriptionSubscribePopupDetailError = string;
+export type GetBackInStockSubscriptionSubscribePopupError = string;
 
-export type BackInStockSubscriptionSubscribeCreateData = string;
+export type PostBackInStockSubscriptionSubscribeData = string;
 
-export type BackInStockSubscriptionSubscribeCreateError = string;
+export type PostBackInStockSubscriptionSubscribeError = string;
 
-export interface BackInStockSubscriptionCustomerSubscriptionsListParams {
+export interface GetBackInStockSubscriptionCustomerSubscriptionsParams {
   /**
    * Page number
    * @format int32
@@ -3230,45 +3331,50 @@ export interface BackInStockSubscriptionCustomerSubscriptionsListParams {
   pageNumber?: number;
 }
 
-export type BackInStockSubscriptionCustomerSubscriptionsListData = CustomerBackInStockSubscriptionsModelDto;
+export type GetBackInStockSubscriptionCustomerSubscriptionsData =
+  CustomerBackInStockSubscriptionsModelDto;
 
-export type BackInStockSubscriptionCustomerSubscriptionsListError = string;
+export type GetBackInStockSubscriptionCustomerSubscriptionsError = string;
 
-export type BackInStockSubscriptionCustomerSubscriptionsCreatePayload = Record<string, string>;
+export type PostBackInStockSubscriptionCustomerSubscriptionsPayload = Record<
+  string,
+  string
+>;
 
-export type BackInStockSubscriptionCustomerSubscriptionsCreateData = CustomerBackInStockSubscriptionsModelDto;
+export type PostBackInStockSubscriptionCustomerSubscriptionsData =
+  CustomerBackInStockSubscriptionsModelDto;
 
-export type BackInStockSubscriptionCustomerSubscriptionsCreateError = string;
+export type PostBackInStockSubscriptionCustomerSubscriptionsError = string;
 
-export type BlogListCreateData = BlogPostListModelDto;
+export type PostBlogListData = BlogPostListModelDto;
 
-export type BlogListCreateError = string;
+export type PostBlogListError = string;
 
-export type BlogBlogByTagCreateData = BlogPostListModelDto;
+export type PostBlogBlogByTagData = BlogPostListModelDto;
 
-export type BlogBlogByTagCreateError = string;
+export type PostBlogBlogByTagError = string;
 
-export type BlogBlogByMonthCreateData = BlogPostListModelDto;
+export type PostBlogBlogByMonthData = BlogPostListModelDto;
 
-export type BlogBlogByMonthCreateError = string;
+export type PostBlogBlogByMonthError = string;
 
-export type BlogListRssDetailData = string;
+export type GetBlogListRssData = string;
 
-export type BlogListRssDetailError = string;
+export type GetBlogListRssError = string;
 
-export type BlogGetBlogPostDetailData = BlogPostModelDto;
+export type GetBlogGetBlogPostData = BlogPostModelDto;
 
-export type BlogGetBlogPostDetailError = string;
+export type GetBlogGetBlogPostError = string;
 
-export type BlogBlogCommentAddCreateData = any;
+export type PostBlogBlogCommentAddData = any;
 
-export type BlogBlogCommentAddCreateError = string;
+export type PostBlogBlogCommentAddError = string;
 
-export type BoardsIndexListData = BoardsIndexModelDto;
+export type GetBoardsIndexData = BoardsIndexModelDto;
 
-export type BoardsIndexListError = string;
+export type GetBoardsIndexError = string;
 
-export interface BoardsActiveDiscussionsListParams {
+export interface GetBoardsActiveDiscussionsParams {
   /**
    * Forum identifier
    * @format int32
@@ -3283,11 +3389,11 @@ export interface BoardsActiveDiscussionsListParams {
   pageNumber?: number;
 }
 
-export type BoardsActiveDiscussionsListData = ActiveDiscussionsModelDto;
+export type GetBoardsActiveDiscussionsData = ActiveDiscussionsModelDto;
 
-export type BoardsActiveDiscussionsListError = string;
+export type GetBoardsActiveDiscussionsError = string;
 
-export interface BoardsActiveDiscussionsRssListParams {
+export interface GetBoardsActiveDiscussionsRssParams {
   /**
    * Forum identifier
    * @format int32
@@ -3296,15 +3402,15 @@ export interface BoardsActiveDiscussionsRssListParams {
   forumId?: number;
 }
 
-export type BoardsActiveDiscussionsRssListData = string;
+export type GetBoardsActiveDiscussionsRssData = string;
 
-export type BoardsActiveDiscussionsRssListError = string;
+export type GetBoardsActiveDiscussionsRssError = string;
 
-export type BoardsForumGroupDetailData = ForumGroupModelDto;
+export type GetBoardsForumGroupData = ForumGroupModelDto;
 
-export type BoardsForumGroupDetailError = string;
+export type GetBoardsForumGroupError = string;
 
-export interface BoardsForumDetailParams {
+export interface GetBoardsForumParams {
   /**
    * Number of forum page
    * @format int32
@@ -3318,19 +3424,19 @@ export interface BoardsForumDetailParams {
   id: number;
 }
 
-export type BoardsForumDetailData = ForumPageModelDto;
+export type GetBoardsForumData = ForumPageModelDto;
 
-export type BoardsForumDetailError = string;
+export type GetBoardsForumError = string;
 
-export type BoardsForumRssDetailData = string;
+export type GetBoardsForumRssData = string;
 
-export type BoardsForumRssDetailError = string;
+export type GetBoardsForumRssError = string;
 
-export type BoardsForumWatchDetailData = ForumWatchResponse;
+export type GetBoardsForumWatchData = ForumWatchResponse;
 
-export type BoardsForumWatchDetailError = string;
+export type GetBoardsForumWatchError = string;
 
-export interface BoardsTopicDetailParams {
+export interface GetBoardsTopicParams {
   /**
    * Number of topic page
    * @format int32
@@ -3344,43 +3450,43 @@ export interface BoardsTopicDetailParams {
   id: number;
 }
 
-export type BoardsTopicDetailData = ForumTopicPageModelDto;
+export type GetBoardsTopicData = ForumTopicPageModelDto;
 
-export type BoardsTopicDetailError = string;
+export type GetBoardsTopicError = string;
 
-export type BoardsTopicWatchDetailData = TopicWatchResponse;
+export type GetBoardsTopicWatchData = TopicWatchResponse;
 
-export type BoardsTopicWatchDetailError = string;
+export type GetBoardsTopicWatchError = string;
 
-export type BoardsTopicMoveDetailData = TopicMoveModelDto;
+export type GetBoardsTopicMoveData = TopicMoveModelDto;
 
-export type BoardsTopicMoveDetailError = string;
+export type GetBoardsTopicMoveError = string;
 
-export type BoardsTopicDeleteDeleteData = string;
+export type DeleteBoardsTopicDeleteData = string;
 
-export type BoardsTopicDeleteDeleteError = string;
+export type DeleteBoardsTopicDeleteError = string;
 
-export type BoardsTopicCreateDetailData = EditForumTopicModelDto;
+export type GetBoardsTopicCreateData = EditForumTopicModelDto;
 
-export type BoardsTopicCreateDetailError = string;
+export type GetBoardsTopicCreateError = string;
 
-export type BoardsTopicCreateCreateData = EditForumTopicModelDto;
+export type PostBoardsTopicCreateData = EditForumTopicModelDto;
 
-export type BoardsTopicCreateCreateError = string;
+export type PostBoardsTopicCreateError = string;
 
-export type BoardsTopicEditDetailData = EditForumTopicModelDto;
+export type GetBoardsTopicEditData = EditForumTopicModelDto;
 
-export type BoardsTopicEditDetailError = string;
+export type GetBoardsTopicEditError = string;
 
-export type BoardsTopicEditCreateData = EditForumTopicModelDto;
+export type PostBoardsTopicEditData = EditForumTopicModelDto;
 
-export type BoardsTopicEditCreateError = string;
+export type PostBoardsTopicEditError = string;
 
-export type BoardsPostDeleteDeleteData = EditForumTopicModelDto;
+export type DeleteBoardsPostDeleteData = EditForumTopicModelDto;
 
-export type BoardsPostDeleteDeleteError = string;
+export type DeleteBoardsPostDeleteError = string;
 
-export interface BoardsPostCreateDetailParams {
+export interface GetBoardsPostCreateParams {
   /**
    * Identifier of the quoted post; pass 0 to load the empty text
    * @format int32
@@ -3394,23 +3500,23 @@ export interface BoardsPostCreateDetailParams {
   quote: string;
 }
 
-export type BoardsPostCreateDetailData = EditForumPostModelDto;
+export type GetBoardsPostCreateData = EditForumPostModelDto;
 
-export type BoardsPostCreateDetailError = string;
+export type GetBoardsPostCreateError = string;
 
-export type BoardsPostCreateCreateData = EditForumPostModelDto;
+export type PostBoardsPostCreateData = EditForumPostModelDto;
 
-export type BoardsPostCreateCreateError = string;
+export type PostBoardsPostCreateError = string;
 
-export type BoardsPostEditDetailData = EditForumPostModelDto;
+export type GetBoardsPostEditData = EditForumPostModelDto;
 
-export type BoardsPostEditDetailError = string;
+export type GetBoardsPostEditError = string;
 
-export type BoardsPostEditCreateData = EditForumPostModelDto;
+export type PostBoardsPostEditData = EditForumPostModelDto;
 
-export type BoardsPostEditCreateError = string;
+export type PostBoardsPostEditError = string;
 
-export interface BoardsSearchDetailParams {
+export interface GetBoardsSearchParams {
   /** Search terms */
   searchTerms: string;
   /** Whether to use the advanced search */
@@ -3428,11 +3534,11 @@ export interface BoardsSearchDetailParams {
   forumId: string;
 }
 
-export type BoardsSearchDetailData = SearchBoardsModelDto;
+export type GetBoardsSearchData = SearchBoardsModelDto;
 
-export type BoardsSearchDetailError = string;
+export type GetBoardsSearchError = string;
 
-export interface BoardsCustomerForumSubscriptionsListParams {
+export interface GetBoardsCustomerForumSubscriptionsParams {
   /**
    * Number of items page; pass null to load the first page
    * @format int32
@@ -3440,17 +3546,22 @@ export interface BoardsCustomerForumSubscriptionsListParams {
   pageNumber?: number;
 }
 
-export type BoardsCustomerForumSubscriptionsListData = CustomerForumSubscriptionsModelDto;
+export type GetBoardsCustomerForumSubscriptionsData =
+  CustomerForumSubscriptionsModelDto;
 
-export type BoardsCustomerForumSubscriptionsListError = string;
+export type GetBoardsCustomerForumSubscriptionsError = string;
 
-export type BoardsCustomerForumSubscriptionsCreatePayload = Record<string, string>;
+export type PostBoardsCustomerForumSubscriptionsPayload = Record<
+  string,
+  string
+>;
 
-export type BoardsCustomerForumSubscriptionsCreateData = CustomerForumSubscriptionsModelDto;
+export type PostBoardsCustomerForumSubscriptionsData =
+  CustomerForumSubscriptionsModelDto;
 
-export type BoardsCustomerForumSubscriptionsCreateError = string;
+export type PostBoardsCustomerForumSubscriptionsError = string;
 
-export interface BoardsPostVoteDetailParams {
+export interface GetBoardsPostVoteParams {
   /** Is up */
   isUp: boolean;
   /**
@@ -3460,104 +3571,112 @@ export interface BoardsPostVoteDetailParams {
   postId: number;
 }
 
-export type BoardsPostVoteDetailData = PostVoteResponse;
+export type GetBoardsPostVoteData = PostVoteResponse;
 
-export type BoardsPostVoteDetailError = string;
+export type GetBoardsPostVoteError = string;
 
-export type CatalogGetCategoryCreateData = CategoryResponse;
+export type PostCatalogGetCategoryData = CategoryResponse;
 
-export type CatalogGetCategoryCreateError = string;
+export type PostCatalogGetCategoryError = string;
 
-export type CatalogGetCategoryProductsCreateData = GetCategoryProductsResponse;
+export type PostCatalogGetCategoryProductsData = GetCategoryProductsResponse;
 
-export type CatalogGetCategoryProductsCreateError = string;
+export type PostCatalogGetCategoryProductsError = string;
 
-export interface CatalogGetCatalogRootListParams {
+export interface GetCatalogGetCatalogRootParams {
   /** @default false */
   loadImage?: boolean;
 }
 
-export type CatalogGetCatalogRootListData = CategorySimpleModelDto[];
+export type GetCatalogGetCatalogRootData = CategorySimpleModelDto[];
 
-export type CatalogGetCatalogRootListError = string;
+export type GetCatalogGetCatalogRootError = string;
 
-export type CatalogGetCatalogSubCategoriesDetailData = CategorySimpleModelDto[];
+export type GetCatalogGetCatalogSubCategoriesData = CategorySimpleModelDto[];
 
-export type CatalogGetCatalogSubCategoriesDetailError = string;
+export type GetCatalogGetCatalogSubCategoriesError = string;
 
-export type CatalogHomePageCategoriesListData = CategorySimpleModelDto[];
+export type GetCatalogHomePageCategoriesData = CategorySimpleModelDto[];
 
-export type CatalogHomePageCategoriesListError = string;
+export type GetCatalogHomePageCategoriesError = string;
 
-export type CatalogGetManufacturerCreateData = ManufacturerResponse;
+export type PostCatalogGetManufacturerData = ManufacturerResponse;
 
-export type CatalogGetManufacturerCreateError = string;
+export type PostCatalogGetManufacturerError = string;
 
-export type CatalogGetManufacturerProductsCreateData = GetManufacturerProductsResponse;
+export type PostCatalogGetManufacturerProductsData =
+  GetManufacturerProductsResponse;
 
-export type CatalogGetManufacturerProductsCreateError = string;
+export type PostCatalogGetManufacturerProductsError = string;
 
-export type CatalogManufacturerAllListData = ManufacturerModelDto[];
+export type GetCatalogManufacturerAllData = ManufacturerModelDto[];
 
-export type CatalogManufacturerAllListError = string;
+export type GetCatalogManufacturerAllError = string;
 
-export type CatalogGetVendorCreateData = VendorModelDto;
+export type PostCatalogGetVendorData = VendorModelDto;
 
-export type CatalogGetVendorCreateError = string;
+export type PostCatalogGetVendorError = string;
 
-export type CatalogGetVendorProductsCreateData = GetVendorProductsResponse;
+export type PostCatalogGetVendorProductsData = GetVendorProductsResponse;
 
-export type CatalogGetVendorProductsCreateError = string;
+export type PostCatalogGetVendorProductsError = string;
 
-export type CatalogVendorAllListData = VendorModelDto[];
+export type PostCatalogVendorReviewsData = VendorProductReviewsListModelDto;
 
-export type CatalogVendorAllListError = string;
+export type PostCatalogVendorReviewsError = string;
 
-export type CatalogGetProductsByTagCreateData = ProductsByTagModelDto;
+export type GetCatalogVendorAllData = VendorModelDto[];
 
-export type CatalogGetProductsByTagCreateError = string;
+export type GetCatalogVendorAllError = string;
 
-export type CatalogGetTagProductsCreateData = GetTagProductsResponse;
+export type PostCatalogGetProductsByTagData = ProductsByTagModelDto;
 
-export type CatalogGetTagProductsCreateError = string;
+export type PostCatalogGetProductsByTagError = string;
 
-export type CatalogProductTagsAllListData = PopularProductTagsModelDto;
+export type PostCatalogGetTagProductsData = GetTagProductsResponse;
 
-export type CatalogProductTagsAllListError = string;
+export type PostCatalogGetTagProductsError = string;
 
-export type CatalogNewProductsListData = NewProductsModelDto;
+export type GetCatalogProductTagsAllData = PopularProductTagsModelDto;
 
-export type CatalogNewProductsListError = string;
+export type GetCatalogProductTagsAllError = string;
 
-export type CatalogNewProductsRssListData = string;
+export type GetCatalogNewProductsData = NewProductsModelDto;
 
-export type CatalogNewProductsRssListError = string;
+export type GetCatalogNewProductsError = string;
 
-export type CatalogSearchCreateData = SearchModelDto;
+export type GetCatalogNewProductsRssData = string;
 
-export type CatalogSearchCreateError = string;
+export type GetCatalogNewProductsRssError = string;
 
-export interface CatalogSearchTermAutoCompleteListParams {
+export type PostCatalogSearchData = SearchModelDto;
+
+export type PostCatalogSearchError = string;
+
+export interface GetCatalogSearchTermAutoCompleteParams {
   term: string;
+  /** @format int32 */
+  categoryId: number;
 }
 
-export type CatalogSearchTermAutoCompleteListData = SearchTermAutoCompleteResponse[];
+export type GetCatalogSearchTermAutoCompleteData =
+  SearchTermAutoCompleteResponse[];
 
-export type CatalogSearchTermAutoCompleteListError = string;
+export type GetCatalogSearchTermAutoCompleteError = string;
 
-export type CatalogSearchProductsCreateData = SearchProductsResponse;
+export type PostCatalogSearchProductsData = SearchProductsResponse;
 
-export type CatalogSearchProductsCreateError = string;
+export type PostCatalogSearchProductsError = string;
 
-export type CheckoutGetAddressByIdDetailData = AddressModelDto;
+export type GetCheckoutGetAddressByIdData = AddressModelDto;
 
-export type CheckoutGetAddressByIdDetailError = string;
+export type GetCheckoutGetAddressByIdError = string;
 
-export type CheckoutBillingAddressCreateData = BillingAddressResponse;
+export type PostCheckoutBillingAddressData = BillingAddressResponse;
 
-export type CheckoutBillingAddressCreateError = string;
+export type PostCheckoutBillingAddressError = string;
 
-export interface CheckoutSelectBillingAddressDetailParams {
+export interface GetCheckoutSelectBillingAddressParams {
   /**
    * A value indicating "Ship to the same address" option is enabled
    * @default false
@@ -3570,302 +3689,307 @@ export interface CheckoutSelectBillingAddressDetailParams {
   addressId: number;
 }
 
-export type CheckoutSelectBillingAddressDetailData = BillingAddressResponse;
+export type GetCheckoutSelectBillingAddressData = BillingAddressResponse;
 
-export type CheckoutSelectBillingAddressDetailError = string;
+export type GetCheckoutSelectBillingAddressError = string;
 
-export type CheckoutNewBillingAddressCreateData = BillingAddressResponse;
+export type PostCheckoutNewBillingAddressData = BillingAddressResponse;
 
-export type CheckoutNewBillingAddressCreateError = string;
+export type PostCheckoutNewBillingAddressError = string;
 
-export type CheckoutSaveEditBillingAddressCreateData = BillingAddressResponse;
+export type PostCheckoutSaveEditBillingAddressData = BillingAddressResponse;
 
-export type CheckoutSaveEditBillingAddressCreateError = string;
+export type PostCheckoutSaveEditBillingAddressError = string;
 
-export type CheckoutDeleteEditBillingAddressDeleteData = BillingAddressResponse;
+export type DeleteCheckoutDeleteEditBillingAddressData = BillingAddressResponse;
 
-export type CheckoutDeleteEditBillingAddressDeleteError = string;
+export type DeleteCheckoutDeleteEditBillingAddressError = string;
 
-export type CheckoutShippingAddressListData = ShippingAddressResponse;
+export type GetCheckoutShippingAddressData = ShippingAddressResponse;
 
-export type CheckoutShippingAddressListError = string;
+export type GetCheckoutShippingAddressError = string;
 
-export type CheckoutSelectShippingAddressDetailData = ShippingAddressResponse;
+export type GetCheckoutSelectShippingAddressData = ShippingAddressResponse;
 
-export type CheckoutSelectShippingAddressDetailError = string;
+export type GetCheckoutSelectShippingAddressError = string;
 
-export type CheckoutNewShippingAddressCreateData = ShippingAddressResponse;
+export type PostCheckoutNewShippingAddressData = ShippingAddressResponse;
 
-export type CheckoutNewShippingAddressCreateError = string;
+export type PostCheckoutNewShippingAddressError = string;
 
-export type CheckoutSaveEditShippingAddressCreateData = ShippingAddressResponse;
+export type PostCheckoutSaveEditShippingAddressData = ShippingAddressResponse;
 
-export type CheckoutSaveEditShippingAddressCreateError = string;
+export type PostCheckoutSaveEditShippingAddressError = string;
 
-export type CheckoutDeleteEditShippingAddressDeleteData = ShippingAddressResponse;
+export type DeleteCheckoutDeleteEditShippingAddressData =
+  ShippingAddressResponse;
 
-export type CheckoutDeleteEditShippingAddressDeleteError = string;
+export type DeleteCheckoutDeleteEditShippingAddressError = string;
 
-export type CheckoutShippingMethodListData = ShippingMethodResponse;
+export type GetCheckoutShippingMethodData = ShippingMethodResponse;
 
-export type CheckoutShippingMethodListError = string;
+export type GetCheckoutShippingMethodError = string;
 
-export type CheckoutSelectShippingMethodCreatePayload = Record<string, string>;
+export type PostCheckoutSelectShippingMethodPayload = Record<string, string>;
 
-export interface CheckoutSelectShippingMethodCreateParams {
+export interface PostCheckoutSelectShippingMethodParams {
   shippingOption: string;
 }
 
-export type CheckoutSelectShippingMethodCreateData = CheckoutRedirectResponse;
+export type PostCheckoutSelectShippingMethodData = CheckoutRedirectResponse;
 
-export type CheckoutSelectShippingMethodCreateError = string;
+export type PostCheckoutSelectShippingMethodError = string;
 
-export type CheckoutPaymentMethodListData = PaymentMethodResponse;
+export type GetCheckoutPaymentMethodData = PaymentMethodResponse;
 
-export type CheckoutPaymentMethodListError = string;
+export type GetCheckoutPaymentMethodError = string;
 
-export interface CheckoutSelectPaymentMethodCreateParams {
+export interface PostCheckoutSelectPaymentMethodParams {
   paymentMethod: string;
   /** @default false */
   useRewardPoints?: boolean;
 }
 
-export type CheckoutSelectPaymentMethodCreateData = CheckoutRedirectResponse;
+export type PostCheckoutSelectPaymentMethodData = CheckoutRedirectResponse;
 
-export type CheckoutSelectPaymentMethodCreateError = string;
+export type PostCheckoutSelectPaymentMethodError = string;
 
-export type CheckoutPaymentInfoListData = CheckoutPaymentInfoModelDto;
+export type GetCheckoutPaymentInfoData = CheckoutPaymentInfoModelDto;
 
-export type CheckoutPaymentInfoListError = string;
+export type GetCheckoutPaymentInfoError = string;
 
-export type CheckoutEnterPaymentInfoCreatePayload = Record<string, string>;
+export type PostCheckoutEnterPaymentInfoPayload = Record<string, string>;
 
-export type CheckoutEnterPaymentInfoCreateData = CheckoutRedirectResponse;
+export type PostCheckoutEnterPaymentInfoData = CheckoutRedirectResponse;
 
-export type CheckoutEnterPaymentInfoCreateError = string;
+export type PostCheckoutEnterPaymentInfoError = string;
 
-export type CheckoutConfirmListData = CheckoutConfirmModelDto;
+export type GetCheckoutConfirmData = CheckoutConfirmModelDto;
 
-export type CheckoutConfirmListError = string;
+export type GetCheckoutConfirmError = string;
 
-export type CheckoutConfirmOrderCreateData = ConfirmOrderResponse;
+export type PostCheckoutConfirmOrderData = ConfirmOrderResponse;
 
-export type CheckoutConfirmOrderCreateError = string;
+export type PostCheckoutConfirmOrderError = string;
 
-export interface CheckoutCompletedListParams {
+export interface GetCheckoutCompletedParams {
   /** @format int32 */
   orderId?: number;
 }
 
-export type CheckoutCompletedListData = CheckoutCompletedModelDto;
+export type GetCheckoutCompletedData = CheckoutCompletedModelDto;
 
-export type CheckoutCompletedListError = string;
+export type GetCheckoutCompletedError = string;
 
-export type CommonGetLanguageSelectorListData = LanguageSelectorModelDto;
+export type GetCommonGetLanguageSelectorData = LanguageSelectorModelDto;
 
-export type CommonGetLanguageSelectorListError = string;
+export type GetCommonGetLanguageSelectorError = string;
 
-export type CommonSetLanguageCreateData = any;
+export type PostCommonSetLanguageData = any;
 
-export type CommonSetLanguageCreateError = string;
+export type PostCommonSetLanguageError = string;
 
-export type CommonGetCurrencySelectorListData = CurrencySelectorModelDto;
+export type GetCommonGetCurrencySelectorData = CurrencySelectorModelDto;
 
-export type CommonGetCurrencySelectorListError = string;
+export type GetCommonGetCurrencySelectorError = string;
 
-export type CommonSetCurrencyCreateData = any;
+export type PostCommonSetCurrencyData = any;
 
-export type CommonSetCurrencyCreateError = string;
+export type PostCommonSetCurrencyError = string;
 
-export type CommonGetTaxSelectorListData = TaxTypeSelectorModelDto;
+export type GetCommonGetTaxSelectorData = TaxTypeSelectorModelDto;
 
-export type CommonGetTaxSelectorListError = string;
+export type GetCommonGetTaxSelectorError = string;
 
-export interface CommonSetTaxTypeCreateParams {
+export interface PostCommonSetTaxTypeParams {
   customerTaxType: TaxDisplayType;
 }
 
-export type CommonSetTaxTypeCreateData = any;
+export type PostCommonSetTaxTypeData = any;
 
-export type CommonSetTaxTypeCreateError = string;
+export type PostCommonSetTaxTypeError = string;
 
-export type CommonContactUsListData = ContactUsModelDto;
+export type GetCommonContactUsData = ContactUsModelDto;
 
-export type CommonContactUsListError = string;
+export type GetCommonContactUsError = string;
 
-export type CommonContactUsSendCreateData = ContactUsModelDto;
+export type PostCommonContactUsSendData = ContactUsModelDto;
 
-export type CommonContactUsSendCreateError = string;
+export type PostCommonContactUsSendError = string;
 
-export type CommonContactVendorDetailData = ContactVendorModelDto;
+export type GetCommonContactVendorData = ContactVendorModelDto;
 
-export type CommonContactVendorDetailError = string;
+export type GetCommonContactVendorError = string;
 
-export type CommonContactVendorSendCreateData = ContactVendorModelDto;
+export type PostCommonContactVendorSendData = ContactVendorModelDto;
 
-export type CommonContactVendorSendCreateError = string;
+export type PostCommonContactVendorSendError = string;
 
-export type CommonSitemapCreateData = SitemapModelDto;
+export type PostCommonSitemapData = SitemapModelDto;
 
-export type CommonSitemapCreateError = string;
+export type PostCommonSitemapError = string;
 
-export type CommonSitemapXmlDetailData = SitemapXmlResponse;
+export type GetCommonSitemapXmlData = SitemapXmlResponse;
 
-export type CommonSitemapXmlDetailError = string;
+export type GetCommonSitemapXmlError = string;
 
-export interface CommonSetStoreThemeListParams {
+export interface GetCommonSetStoreThemeParams {
   /** Theme name */
   themeName: string;
 }
 
-export type CommonSetStoreThemeListError = string;
+export type GetCommonSetStoreThemeError = string;
 
-export type CommonEuCookieLawAcceptListData = boolean;
+export type GetCommonEuCookieLawAcceptData = boolean;
 
-export type CommonEuCookieLawAcceptListError = string;
+export type GetCommonEuCookieLawAcceptError = string;
 
-export type CommonRobotsTextFileListData = RobotsTextFileResponse;
+export type GetCommonRobotsTextFileData = RobotsTextFileResponse;
 
-export type CommonRobotsTextFileListError = string;
+export type GetCommonRobotsTextFileError = string;
 
-export interface CountryGetStatesByCountryIdDetailParams {
+export interface GetCountryGetStatesByCountryIdParams {
   addSelectStateItem: boolean;
   /** @format int32 */
   countryId: number;
 }
 
-export type CountryGetStatesByCountryIdDetailData = StateProvinceModelDto[];
+export type GetCountryGetStatesByCountryIdData = StateProvinceModelDto[];
 
-export type CountryGetStatesByCountryIdDetailError = string;
+export type GetCountryGetStatesByCountryIdError = string;
 
-export type CustomerLoginCreateData = boolean;
+export type PostCustomerLoginData = boolean;
 
-export type CustomerLoginCreateError = string;
+export type PostCustomerLoginError = string;
 
-export type CustomerLogoutListData = any;
+export type GetCustomerLogoutData = any;
 
-export type CustomerLogoutListError = string;
+export type GetCustomerLogoutError = string;
 
-export type CustomerPasswordRecoveryListData = PasswordRecoveryModelDto;
+export type GetCustomerPasswordRecoveryData = PasswordRecoveryModelDto;
 
-export type CustomerPasswordRecoveryListError = string;
+export type GetCustomerPasswordRecoveryError = string;
 
-export type CustomerPasswordRecoverySendCreateData = PasswordRecoveryModelDto;
+export type PostCustomerPasswordRecoverySendData = PasswordRecoveryModelDto;
 
-export type CustomerPasswordRecoverySendCreateError = string;
+export type PostCustomerPasswordRecoverySendError = string;
 
-export interface CustomerPasswordRecoveryConfirmCreateParams {
+export interface PostCustomerPasswordRecoveryConfirmParams {
   token: string;
   email: string;
   /** @format uuid */
   customerGuid: string;
 }
 
-export type CustomerPasswordRecoveryConfirmCreateData = PasswordRecoveryConfirmModelDto;
+export type PostCustomerPasswordRecoveryConfirmData =
+  PasswordRecoveryConfirmModelDto;
 
-export type CustomerPasswordRecoveryConfirmCreateError = string;
+export type PostCustomerPasswordRecoveryConfirmError = string;
 
-export interface CustomerPasswordRecoveryConfirmPostCreateParams {
+export interface PostCustomerPasswordRecoveryConfirmPostParams {
   token: string;
   email: string;
   /** @format uuid */
   customerGuid: string;
 }
 
-export type CustomerPasswordRecoveryConfirmPostCreateData = PasswordRecoveryConfirmModelDto;
+export type PostCustomerPasswordRecoveryConfirmPostData =
+  PasswordRecoveryConfirmModelDto;
 
-export type CustomerPasswordRecoveryConfirmPostCreateError = string;
+export type PostCustomerPasswordRecoveryConfirmPostError = string;
 
-export type CustomerRegisterListData = RegisterModelDto;
+export type GetCustomerRegisterData = RegisterModelDto;
 
-export type CustomerRegisterListError = string;
+export type GetCustomerRegisterError = string;
 
-export type CustomerRegisterCreateData = RegisterModelDto;
+export type PostCustomerRegisterData = RegisterModelDto;
 
-export type CustomerRegisterCreateError = string[] | string;
+export type PostCustomerRegisterError = string[] | string;
 
-export interface CustomerRegisterResultCreateParams {
+export interface PostCustomerRegisterResultParams {
   returnUrl: string;
   /** @format int32 */
   resultId: number;
 }
 
-export type CustomerRegisterResultCreateData = RegisterResultModelDto;
+export type PostCustomerRegisterResultData = RegisterResultModelDto;
 
-export type CustomerRegisterResultCreateError = string;
+export type PostCustomerRegisterResultError = string;
 
-export interface CustomerCheckUsernameAvailabilityListParams {
+export interface GetCustomerCheckUsernameAvailabilityParams {
   /** Username */
   username: string;
 }
 
-export type CustomerCheckUsernameAvailabilityListData = CheckUsernameAvailabilityResponse;
+export type GetCustomerCheckUsernameAvailabilityData =
+  CheckUsernameAvailabilityResponse;
 
-export type CustomerCheckUsernameAvailabilityListError = string;
+export type GetCustomerCheckUsernameAvailabilityError = string;
 
-export interface CustomerAccountActivationCreateParams {
+export interface PostCustomerAccountActivationParams {
   token: string;
   email: string;
   /** @format uuid */
   customerGuid: string;
 }
 
-export type CustomerAccountActivationCreateData = AccountActivationModelDto;
+export type PostCustomerAccountActivationData = AccountActivationModelDto;
 
-export type CustomerAccountActivationCreateError = string;
+export type PostCustomerAccountActivationError = string;
 
-export type CustomerInfoListData = CustomerInfoModelDto;
+export type GetCustomerInfoData = CustomerInfoModelDto;
 
-export type CustomerInfoListError = string;
+export type GetCustomerInfoError = string;
 
-export type CustomerInfoCreateData = InfoResponse;
+export type PostCustomerInfoData = InfoResponse;
 
-export type CustomerInfoCreateError = string;
+export type PostCustomerInfoError = string;
 
-export type CustomerRemoveExternalAssociationDeleteData = string;
+export type DeleteCustomerRemoveExternalAssociationData = string;
 
-export type CustomerRemoveExternalAssociationDeleteError = string;
+export type DeleteCustomerRemoveExternalAssociationError = string;
 
-export interface CustomerEmailRevalidationCreateParams {
+export interface PostCustomerEmailRevalidationParams {
   token: string;
   email: string;
   /** @format uuid */
   customerGuid: string;
 }
 
-export type CustomerEmailRevalidationCreateData = EmailRevalidationModelDto;
+export type PostCustomerEmailRevalidationData = EmailRevalidationModelDto;
 
-export type CustomerEmailRevalidationCreateError = string;
+export type PostCustomerEmailRevalidationError = string;
 
-export type CustomerAddressesListData = CustomerAddressListModelDto;
+export type GetCustomerAddressesData = CustomerAddressListModelDto;
 
-export type CustomerAddressesListError = string;
+export type GetCustomerAddressesError = string;
 
-export type CustomerAddressDeleteDeleteData = string;
+export type DeleteCustomerAddressDeleteData = string;
 
-export type CustomerAddressDeleteDeleteError = string;
+export type DeleteCustomerAddressDeleteError = string;
 
-export type CustomerAddressAddListData = CustomerAddressEditModelDto;
+export type GetCustomerAddressAddData = CustomerAddressEditModelDto;
 
-export type CustomerAddressAddListError = string;
+export type GetCustomerAddressAddError = string;
 
-export type CustomerAddressAddCreateData = AddressAddResponse;
+export type PostCustomerAddressAddData = AddressAddResponse;
 
-export type CustomerAddressAddCreateError = string;
+export type PostCustomerAddressAddError = string;
 
-export type CustomerAddressEditDetailData = CustomerAddressEditModelDto;
+export type GetCustomerAddressEditData = CustomerAddressEditModelDto;
 
-export type CustomerAddressEditDetailError = string;
+export type GetCustomerAddressEditError = string;
 
-export type CustomerAddressEditUpdateData = AddressEditResponse;
+export type PutCustomerAddressEditData = AddressEditResponse;
 
-export type CustomerAddressEditUpdateError = string;
+export type PutCustomerAddressEditError = string;
 
-export type CustomerDownloadableProductsListData = CustomerDownloadableProductsModelDto;
+export type GetCustomerDownloadableProductsData =
+  CustomerDownloadableProductsModelDto;
 
-export type CustomerDownloadableProductsListError = string;
+export type GetCustomerDownloadableProductsError = string;
 
-export interface CustomerUserAgreementListParams {
+export interface GetCustomerUserAgreementParams {
   /**
    * Order item guid identifier
    * @format uuid
@@ -3873,73 +3997,73 @@ export interface CustomerUserAgreementListParams {
   orderItemId: string;
 }
 
-export type CustomerUserAgreementListData = UserAgreementModelDto;
+export type GetCustomerUserAgreementData = UserAgreementModelDto;
 
-export type CustomerUserAgreementListError = string;
+export type GetCustomerUserAgreementError = string;
 
-export type CustomerChangePasswordListData = ChangePasswordModelDto;
+export type GetCustomerChangePasswordData = ChangePasswordModelDto;
 
-export type CustomerChangePasswordListError = string;
+export type GetCustomerChangePasswordError = string;
 
-export type CustomerChangePasswordCreateData = ChangePasswordModelDto;
+export type PostCustomerChangePasswordData = ChangePasswordModelDto;
 
-export type CustomerChangePasswordCreateError = string[] | string;
+export type PostCustomerChangePasswordError = string[] | string;
 
-export type CustomerAvatarListData = CustomerAvatarModelDto;
+export type GetCustomerAvatarData = CustomerAvatarModelDto;
 
-export type CustomerAvatarListError = string;
+export type GetCustomerAvatarError = string;
 
-export interface CustomerUploadAvatarCreatePayload {
+export interface PostCustomerUploadAvatarPayload {
   /** @format binary */
   fileBinary?: File;
 }
 
-export interface CustomerUploadAvatarCreateParams {
+export interface PostCustomerUploadAvatarParams {
   fileName: string;
   contentType: string;
 }
 
-export type CustomerUploadAvatarCreateData = CustomerAvatarModelDto;
+export type PostCustomerUploadAvatarData = CustomerAvatarModelDto;
 
-export type CustomerUploadAvatarCreateError = string;
+export type PostCustomerUploadAvatarError = string;
 
-export type CustomerRemoveAvatarDeleteData = any;
+export type DeleteCustomerRemoveAvatarData = any;
 
-export type CustomerRemoveAvatarDeleteError = string;
+export type DeleteCustomerRemoveAvatarError = string;
 
-export type CustomerGdprToolsListData = GdprToolsModelDto;
+export type GetCustomerGdprToolsData = GdprToolsModelDto;
 
-export type CustomerGdprToolsListError = string;
+export type GetCustomerGdprToolsError = string;
 
-export type CustomerGdprToolsExportListData = DownloadResponse;
+export type GetCustomerGdprToolsExportData = DownloadResponse;
 
-export type CustomerGdprToolsExportListError = string;
+export type GetCustomerGdprToolsExportError = string;
 
-export type CustomerGdprToolsDeleteDeleteData = GdprToolsModelDto;
+export type DeleteCustomerGdprToolsDeleteData = GdprToolsModelDto;
 
-export type CustomerGdprToolsDeleteDeleteError = string;
+export type DeleteCustomerGdprToolsDeleteError = string;
 
-export type CustomerCheckGiftCardBalanceListData = CheckGiftCardBalanceModelDto;
+export type GetCustomerCheckGiftCardBalanceData = CheckGiftCardBalanceModelDto;
 
-export type CustomerCheckGiftCardBalanceListError = string;
+export type GetCustomerCheckGiftCardBalanceError = string;
 
-export type CustomerCheckBalanceCreateData = CheckGiftCardBalanceModelDto;
+export type PostCustomerCheckBalanceData = CheckGiftCardBalanceModelDto;
 
-export type CustomerCheckBalanceCreateError = string;
+export type PostCustomerCheckBalanceError = string;
 
-export type DownloadWebPdfInvoiceDetailError = string;
+export type GetDownloadWebPdfInvoiceError = string;
 
-export type DownloadPdfInvoiceDetailData = DownloadResponse;
+export type GetDownloadPdfInvoiceData = DownloadResponse;
 
-export type DownloadPdfInvoiceDetailError = string;
+export type GetDownloadPdfInvoiceError = string;
 
-export type DownloadWebSampleDetailError = string;
+export type GetDownloadWebSampleError = string;
 
-export type DownloadSampleDetailData = DownloadResponse;
+export type GetDownloadSampleData = DownloadResponse;
 
-export type DownloadSampleDetailError = string;
+export type GetDownloadSampleError = string;
 
-export interface DownloadGetDownloadListParams {
+export interface GetDownloadGetDownloadParams {
   /**
    * Order item GUID
    * @format uuid
@@ -3952,11 +4076,11 @@ export interface DownloadGetDownloadListParams {
   agree?: boolean;
 }
 
-export type DownloadGetDownloadListData = DownloadResponse;
+export type GetDownloadGetDownloadData = DownloadResponse;
 
-export type DownloadGetDownloadListError = string;
+export type GetDownloadGetDownloadError = string;
 
-export interface DownloadWebDownloadListParams {
+export interface GetDownloadWebDownloadParams {
   /**
    * Order item GUID
    * @format uuid
@@ -3969,9 +4093,9 @@ export interface DownloadWebDownloadListParams {
   agree?: boolean;
 }
 
-export type DownloadWebDownloadListError = string;
+export type GetDownloadWebDownloadError = string;
 
-export interface DownloadGetLicenseListParams {
+export interface GetDownloadGetLicenseParams {
   /**
    * Order item GUID
    * @format uuid
@@ -3979,9 +4103,9 @@ export interface DownloadGetLicenseListParams {
   orderItemGuid: string;
 }
 
-export type DownloadGetLicenseListError = string;
+export type GetDownloadGetLicenseError = string;
 
-export interface DownloadGetFileUploadListParams {
+export interface GetDownloadGetFileUploadParams {
   /**
    * Download GUID
    * @format uuid
@@ -3989,168 +4113,158 @@ export interface DownloadGetFileUploadListParams {
   downloadGuid: string;
 }
 
-export type DownloadGetFileUploadListError = string;
+export type GetDownloadGetFileUploadError = string;
 
-export type DownloadGetOrderNoteFileDetailError = string;
+export type GetDownloadGetOrderNoteFileError = string;
 
-export interface MultiprofileSwitchProfileListParams {
-  /** @format int32 */
-  companyId?: number;
-}
+export type PostKlokurAuthenticateExchangeTokenFromKeycloakData =
+  AuthenticateResponse;
 
-export type MultiprofileSwitchProfileListData = boolean;
+export type PostKlokurAuthenticateExchangeTokenFromKeycloakError = string;
 
-export type MultiprofileSwitchProfileListError = string;
+export type GetKlokurAuthenticateGetApiVersionData = string;
 
-export interface MultiprofileSwitchProfileToSomethingElseListParams {
-  /** @format int32 */
-  productId?: number;
-}
+export type PostNewsListData = NewsItemListModelDto;
 
-export type MultiprofileSwitchProfileToSomethingElseListData = boolean;
+export type PostNewsListError = string;
 
-export type MultiprofileSwitchProfileToSomethingElseListError = string;
+export type GetNewsListRssData = string;
 
-export type NewsListCreateData = NewsItemListModelDto;
+export type GetNewsListRssError = string;
 
-export type NewsListCreateError = string;
+export type GetNewsGetNewsItemData = NewsItemModelDto;
 
-export type NewsListRssDetailData = string;
+export type GetNewsGetNewsItemError = string;
 
-export type NewsListRssDetailError = string;
+export type PostNewsNewsCommentAddData = any;
 
-export type NewsGetNewsItemDetailData = NewsItemModelDto;
+export type PostNewsNewsCommentAddError = string;
 
-export type NewsGetNewsItemDetailError = string;
-
-export type NewsNewsCommentAddCreateData = any;
-
-export type NewsNewsCommentAddCreateError = string;
-
-export interface NewsletterSubscribeNewsletterListParams {
+export interface GetNewsletterSubscribeNewsletterParams {
   email: string;
   subscribe: boolean;
 }
 
-export type NewsletterSubscribeNewsletterListData = string;
+export type GetNewsletterSubscribeNewsletterData = string;
 
-export type NewsletterSubscribeNewsletterListError = string;
+export type GetNewsletterSubscribeNewsletterError = string;
 
-export interface NewsletterSubscriptionActivationListParams {
+export interface GetNewsletterSubscriptionActivationParams {
   /** @format uuid */
   token: string;
   active: boolean;
 }
 
-export type NewsletterSubscriptionActivationListData = SubscriptionActivationModelDto;
+export type GetNewsletterSubscriptionActivationData =
+  SubscriptionActivationModelDto;
 
-export type NewsletterSubscriptionActivationListError = string;
+export type GetNewsletterSubscriptionActivationError = string;
 
-export type NopMobileAppSettingsListData = Record<string, string>;
+export type GetNopMobileAppSettingsData = Record<string, string>;
 
-export type NopMobileAppSettingsListError = string;
+export type GetNopMobileAppSettingsError = string;
 
-export type NopMobileAppSliderDataListData = SliderDataDto;
+export type GetNopMobileAppSliderDataData = SliderDataDto;
 
-export type NopMobileAppSliderDataListError = string;
+export type GetNopMobileAppSliderDataError = string;
 
-export type OrderCustomerOrdersListData = CustomerOrderListModelDto;
+export type GetOrderCustomerOrdersData = CustomerOrderListModelDto;
 
-export type OrderCustomerOrdersListError = string;
+export type GetOrderCustomerOrdersError = string;
 
-export type OrderCancelRecurringPaymentCreatePayload = Record<string, string>;
+export type PostOrderCancelRecurringPaymentPayload = Record<string, string>;
 
-export type OrderCancelRecurringPaymentCreateData = CustomerOrderListModelDto;
+export type PostOrderCancelRecurringPaymentData = CustomerOrderListModelDto;
 
-export type OrderCancelRecurringPaymentCreateError = ProblemDetails | string;
+export type PostOrderCancelRecurringPaymentError = ProblemDetails | string;
 
-export type OrderRetryLastRecurringPaymentCreatePayload = Record<string, string>;
+export type PostOrderRetryLastRecurringPaymentPayload = Record<string, string>;
 
-export type OrderRetryLastRecurringPaymentCreateData = CustomerOrderListModelDto;
+export type PostOrderRetryLastRecurringPaymentData = CustomerOrderListModelDto;
 
-export type OrderRetryLastRecurringPaymentCreateError = ProblemDetails | string;
+export type PostOrderRetryLastRecurringPaymentError = ProblemDetails | string;
 
-export interface OrderCustomerRewardPointsListParams {
+export interface GetOrderCustomerRewardPointsParams {
   /** @format int32 */
   pageNumber?: number;
 }
 
-export type OrderCustomerRewardPointsListData = CustomerRewardPointsModelDto;
+export type GetOrderCustomerRewardPointsData = CustomerRewardPointsModelDto;
 
-export type OrderCustomerRewardPointsListError = ProblemDetails | string;
+export type GetOrderCustomerRewardPointsError = ProblemDetails | string;
 
-export type OrderDetailsDetailData = OrderDetailsModelDto;
+export type GetOrderDetailsData = OrderDetailsModelDto;
 
-export type OrderDetailsDetailError = string;
+export type GetOrderDetailsError = string;
 
-export type OrderReOrderDetailData = any;
+export type GetOrderReOrderData = any;
 
-export type OrderReOrderDetailError = string;
+export type GetOrderReOrderError = string;
 
-export type OrderRePostPaymentDetailData = any;
+export type GetOrderRePostPaymentData = any;
 
-export type OrderRePostPaymentDetailError = string;
+export type GetOrderRePostPaymentError = string;
 
-export type OrderShipmentDetailsDetailData = ShipmentDetailsModelDto;
+export type GetOrderShipmentDetailsData = ShipmentDetailsModelDto;
 
-export type OrderShipmentDetailsDetailError = string;
+export type GetOrderShipmentDetailsError = string;
 
-export type PollVoteDetailData = PollModelDto;
+export type GetPollVoteData = PollModelDto;
 
-export type PollVoteDetailError = string;
+export type GetPollVoteError = string;
 
-export interface PrivateMessagesIndexListParams {
+export interface GetPrivateMessagesIndexParams {
   tab: string;
   /** @format int32 */
   pageNumber?: number;
 }
 
-export type PrivateMessagesIndexListData = PrivateMessageIndexModelDto;
+export type GetPrivateMessagesIndexData = PrivateMessageIndexModelDto;
 
-export type PrivateMessagesIndexListError = ProblemDetails | string;
+export type GetPrivateMessagesIndexError = ProblemDetails | string;
 
-export type PrivateMessagesDeleteInboxPmCreatePayload = Record<string, string>;
+export type PostPrivateMessagesDeleteInboxPmPayload = Record<string, string>;
 
-export type PrivateMessagesDeleteInboxPmCreateData = any;
+export type PostPrivateMessagesDeleteInboxPmData = any;
 
-export type PrivateMessagesDeleteInboxPmCreateError = string;
+export type PostPrivateMessagesDeleteInboxPmError = string;
 
-export type PrivateMessagesMarkUnreadCreatePayload = Record<string, string>;
+export type PostPrivateMessagesMarkUnreadPayload = Record<string, string>;
 
-export type PrivateMessagesMarkUnreadCreateData = any;
+export type PostPrivateMessagesMarkUnreadData = any;
 
-export type PrivateMessagesMarkUnreadCreateError = string;
+export type PostPrivateMessagesMarkUnreadError = string;
 
-export type PrivateMessagesDeleteSentPmCreatePayload = Record<string, string>;
+export type PostPrivateMessagesDeleteSentPmPayload = Record<string, string>;
 
-export type PrivateMessagesDeleteSentPmCreateData = any;
+export type PostPrivateMessagesDeleteSentPmData = any;
 
-export type PrivateMessagesDeleteSentPmCreateError = string;
+export type PostPrivateMessagesDeleteSentPmError = string;
 
-export interface PrivateMessagesSendPmDetailParams {
+export interface GetPrivateMessagesSendPmParams {
   /** @format int32 */
   replyToMessageId?: number;
   /** @format int32 */
   toCustomerId: number;
 }
 
-export type PrivateMessagesSendPmDetailData = SendPrivateMessageModelDto;
+export type GetPrivateMessagesSendPmData = SendPrivateMessageModelDto;
 
-export type PrivateMessagesSendPmDetailError = string;
+export type GetPrivateMessagesSendPmError = string;
 
-export type PrivateMessagesSendPmCreateData = SendPrivateMessageModelDto;
+export type PostPrivateMessagesSendPmData = SendPrivateMessageModelDto;
 
-export type PrivateMessagesSendPmCreateError = string;
+export type PostPrivateMessagesSendPmError = string;
 
-export type PrivateMessagesViewPmDetailData = PrivateMessageModelDto;
+export type GetPrivateMessagesViewPmData = PrivateMessageModelDto;
 
-export type PrivateMessagesViewPmDetailError = ProblemDetails | string;
+export type GetPrivateMessagesViewPmError = ProblemDetails | string;
 
-export type PrivateMessagesDeletePmDeleteData = any;
+export type DeletePrivateMessagesDeletePmData = any;
 
-export type PrivateMessagesDeletePmDeleteError = ProblemDetails | string;
+export type DeletePrivateMessagesDeletePmError = ProblemDetails | string;
 
-export interface ProductGetProductDetailsDetailParams {
+export interface GetProductGetProductDetailsParams {
   /**
    * @format int32
    * @default 0
@@ -4160,19 +4274,19 @@ export interface ProductGetProductDetailsDetailParams {
   productId: number;
 }
 
-export type ProductGetProductDetailsDetailData = ProductDetailsResponse;
+export type GetProductGetProductDetailsData = ProductDetailsResponse;
 
-export type ProductGetProductDetailsDetailError = string;
+export type GetProductGetProductDetailsError = string;
 
-export type ProductEstimateShippingCreateData = EstimateShippingResultModelDto;
+export type PostProductEstimateShippingData = EstimateShippingResultModelDto;
 
-export type ProductEstimateShippingCreateError = string;
+export type PostProductEstimateShippingError = string;
 
-export type ProductGetProductCombinationsDetailData = ProductCombinationModelDto[];
+export type GetProductGetProductCombinationsData = ProductCombinationModelDto[];
 
-export type ProductGetProductCombinationsDetailError = string;
+export type GetProductGetProductCombinationsError = string;
 
-export interface ProductGetRelatedProductsDetailParams {
+export interface GetProductGetRelatedProductsParams {
   /** @format int32 */
   productThumbPictureSize?: number;
   /**
@@ -4182,31 +4296,31 @@ export interface ProductGetRelatedProductsDetailParams {
   productId: number;
 }
 
-export type ProductGetRelatedProductsDetailData = ProductOverviewModelDto[];
+export type GetProductGetRelatedProductsData = ProductOverviewModelDto[];
 
-export type ProductGetRelatedProductsDetailError = string;
+export type GetProductGetRelatedProductsError = string;
 
-export type ProductRecentlyViewedProductsListData = ProductOverviewModelDto[];
+export type GetProductRecentlyViewedProductsData = ProductOverviewModelDto[];
 
-export type ProductRecentlyViewedProductsListError = string;
+export type GetProductRecentlyViewedProductsError = string;
 
-export type ProductHomePageProductsListData = ProductOverviewModelDto[];
+export type GetProductHomePageProductsData = ProductOverviewModelDto[];
 
-export type ProductHomePageProductsListError = string;
+export type GetProductHomePageProductsError = string;
 
-export type ProductValidateProductReviewAvailabilityDetailData = string[];
+export type GetProductValidateProductReviewAvailabilityData = string[];
 
-export type ProductValidateProductReviewAvailabilityDetailError = string;
+export type GetProductValidateProductReviewAvailabilityError = string;
 
-export type ProductProductReviewsDetailData = ProductReviewsModelDto;
+export type GetProductProductReviewsData = ProductReviewsModelDto;
 
-export type ProductProductReviewsDetailError = string;
+export type GetProductProductReviewsError = string;
 
-export type ProductProductReviewsAddCreateData = ProductReviewsModelDto;
+export type PostProductProductReviewsAddData = ProductReviewsModelDto;
 
-export type ProductProductReviewsAddCreateError = string[] | string;
+export type PostProductProductReviewsAddError = string[] | string;
 
-export interface ProductSetProductReviewHelpfulnessCreateParams {
+export interface PostProductSetProductReviewHelpfulnessParams {
   /** Indicator if the review was helpful */
   helpfulness: boolean;
   /**
@@ -4216,11 +4330,12 @@ export interface ProductSetProductReviewHelpfulnessCreateParams {
   productReviewId: number;
 }
 
-export type ProductSetProductReviewHelpfulnessCreateData = SetProductReviewHelpfulnessResponse;
+export type PostProductSetProductReviewHelpfulnessData =
+  SetProductReviewHelpfulnessResponse;
 
-export type ProductSetProductReviewHelpfulnessCreateError = string;
+export type PostProductSetProductReviewHelpfulnessError = string;
 
-export interface ProductCustomerProductReviewsListParams {
+export interface GetProductCustomerProductReviewsParams {
   /**
    * Page number
    * @format int32
@@ -4228,87 +4343,93 @@ export interface ProductCustomerProductReviewsListParams {
   pageNumber?: number;
 }
 
-export type ProductCustomerProductReviewsListData = CustomerProductReviewsModelDto;
+export type GetProductCustomerProductReviewsData =
+  CustomerProductReviewsModelDto;
 
-export type ProductCustomerProductReviewsListError = string;
+export type GetProductCustomerProductReviewsError = string;
 
-export type ProductProductEmailAFriendDetailData = ProductEmailAFriendModelDto;
+export type GetProductProductEmailAFriendData = ProductEmailAFriendModelDto;
 
-export type ProductProductEmailAFriendDetailError = string;
+export type GetProductProductEmailAFriendError = string;
 
-export type ProductProductEmailAFriendSendCreateData = ProductEmailAFriendModelDto;
+export type PostProductProductEmailAFriendSendData =
+  ProductEmailAFriendModelDto;
 
-export type ProductProductEmailAFriendSendCreateError = string;
+export type PostProductProductEmailAFriendSendError = string;
 
-export type ProductAddProductToCompareListDetailData = AddProductToCompareListResponse;
+export type GetProductAddProductToCompareListData =
+  AddProductToCompareListResponse;
 
-export type ProductAddProductToCompareListDetailError = string;
+export type GetProductAddProductToCompareListError = string;
 
-export type ProductRemoveProductFromCompareListDetailData = any;
+export type GetProductRemoveProductFromCompareListData = any;
 
-export type ProductRemoveProductFromCompareListDetailError = string;
+export type GetProductRemoveProductFromCompareListError = string;
 
-export type ProductCompareProductsListData = CompareProductsModelDto;
+export type GetProductCompareProductsData = CompareProductsModelDto;
 
-export type ProductCompareProductsListError = string;
+export type GetProductCompareProductsError = string;
 
-export type ProductClearCompareListDeleteData = any;
+export type DeleteProductClearCompareListData = any;
 
-export type ProductClearCompareListDeleteError = string;
+export type DeleteProductClearCompareListError = string;
 
-export interface ProfileIndexListParams {
+export interface GetProfileIndexParams {
   /** @format int32 */
   id?: number;
   /** @format int32 */
   pageNumber?: number;
 }
 
-export type ProfileIndexListData = ProfileIndexModelDto;
+export type GetProfileIndexData = ProfileIndexModelDto;
 
-export type ProfileIndexListError = ProblemDetails | string;
+export type GetProfileIndexError = ProblemDetails | string;
 
-export type ReturnRequestCustomerReturnRequestsListData = CustomerReturnRequestsModelDto;
+export type GetReturnRequestCustomerReturnRequestsData =
+  CustomerReturnRequestsModelDto;
 
-export type ReturnRequestCustomerReturnRequestsListError = string;
+export type GetReturnRequestCustomerReturnRequestsError = string;
 
-export type ReturnRequestReturnRequestDetailData = SubmitReturnRequestModelDto;
+export type GetReturnRequestReturnRequestData = SubmitReturnRequestModelDto;
 
-export type ReturnRequestReturnRequestDetailError = string;
+export type GetReturnRequestReturnRequestError = string;
 
-export type ReturnRequestReturnRequestSubmitCreateData = SubmitReturnRequestModelDto;
+export type PostReturnRequestReturnRequestSubmitData =
+  SubmitReturnRequestModelDto;
 
-export type ReturnRequestReturnRequestSubmitCreateError = string;
+export type PostReturnRequestReturnRequestSubmitError = string;
 
 /** @format byte */
-export type ReturnRequestUploadFileReturnRequestCreatePayload = string;
+export type PostReturnRequestUploadFileReturnRequestPayload = string;
 
-export interface ReturnRequestUploadFileReturnRequestCreateParams {
+export interface PostReturnRequestUploadFileReturnRequestParams {
   fileName: string;
   contentType: string;
 }
 
-export type ReturnRequestUploadFileReturnRequestCreateData = UploadFileResponse;
+export type PostReturnRequestUploadFileReturnRequestData = UploadFileResponse;
 
-export type ReturnRequestUploadFileReturnRequestCreateError = string;
+export type PostReturnRequestUploadFileReturnRequestError = string;
 
-export interface ScheduleTaskRunTaskListParams {
+export interface GetScheduleTaskRunTaskParams {
   /** Task type */
   taskType: string;
 }
 
-export type ScheduleTaskRunTaskListData = any;
+export type GetScheduleTaskRunTaskData = any;
 
-export type ScheduleTaskRunTaskListError = string;
+export type GetScheduleTaskRunTaskError = string;
 
-export interface ShoppingCartSelectShippingOptionCreateParams {
+export interface PostShoppingCartSelectShippingOptionParams {
   name: string;
 }
 
-export type ShoppingCartSelectShippingOptionCreateData = SelectShippingOptionResponse;
+export type PostShoppingCartSelectShippingOptionData =
+  SelectShippingOptionResponse;
 
-export type ShoppingCartSelectShippingOptionCreateError = string;
+export type PostShoppingCartSelectShippingOptionError = string;
 
-export interface ShoppingCartAddProductToCartFromCatalogCreateParams {
+export interface PostShoppingCartAddProductToCartFromCatalogParams {
   shoppingCartType: ShoppingCartType;
   /** @format int32 */
   quantity: number;
@@ -4316,174 +4437,198 @@ export interface ShoppingCartAddProductToCartFromCatalogCreateParams {
   productId: number;
 }
 
-export type ShoppingCartAddProductToCartFromCatalogCreateData = AddProductToCartResponse;
+export type PostShoppingCartAddProductToCartFromCatalogData =
+  AddProductToCartResponse;
 
-export type ShoppingCartAddProductToCartFromCatalogCreateError = string;
+export type PostShoppingCartAddProductToCartFromCatalogError = string;
 
-export type ShoppingCartAddProductToCartFromDetailsCreatePayload = Record<string, string>;
+export type PostShoppingCartAddProductToCartFromDetailsPayload = Record<
+  string,
+  string
+>;
 
-export interface ShoppingCartAddProductToCartFromDetailsCreateParams {
+export interface PostShoppingCartAddProductToCartFromDetailsParams {
   shoppingCartType: ShoppingCartType;
   /** @format int32 */
   productId: number;
 }
 
-export type ShoppingCartAddProductToCartFromDetailsCreateData = AddProductToCartResponse;
+export type PostShoppingCartAddProductToCartFromDetailsData =
+  AddProductToCartResponse;
 
-export type ShoppingCartAddProductToCartFromDetailsCreateError = string;
+export type PostShoppingCartAddProductToCartFromDetailsError = string;
 
-export type ShoppingCartProductDetailsAttributeChangeUpdatePayload = Record<string, string>;
+export type PutShoppingCartProductDetailsAttributeChangePayload = Record<
+  string,
+  string
+>;
 
-export interface ShoppingCartProductDetailsAttributeChangeUpdateParams {
+export interface PutShoppingCartProductDetailsAttributeChangeParams {
   validateAttributeConditions: boolean;
   loadPicture: boolean;
   /** @format int32 */
   productId: number;
 }
 
-export type ShoppingCartProductDetailsAttributeChangeUpdateData = ProductDetailsAttributeChangeResponse;
+export type PutShoppingCartProductDetailsAttributeChangeData =
+  ProductDetailsAttributeChangeResponse;
 
-export type ShoppingCartProductDetailsAttributeChangeUpdateError = string;
+export type PutShoppingCartProductDetailsAttributeChangeError = string;
 
-export type ShoppingCartCheckoutAttributeChangeCreatePayload = Record<string, string>;
+export type PostShoppingCartCheckoutAttributeChangePayload = Record<
+  string,
+  string
+>;
 
-export type ShoppingCartCheckoutAttributeChangeCreateData = CheckoutAttributeChangeResponse;
+export type PostShoppingCartCheckoutAttributeChangeData =
+  CheckoutAttributeChangeResponse;
 
-export type ShoppingCartCheckoutAttributeChangeCreateError = string;
+export type PostShoppingCartCheckoutAttributeChangeError = string;
 
-export type ShoppingCartUploadFileProductAttributeCreateData = UploadFileProductAttributeResponse;
+export type PostShoppingCartUploadFileProductAttributeData =
+  UploadFileProductAttributeResponse;
 
-export type ShoppingCartUploadFileProductAttributeCreateError = string;
+export type PostShoppingCartUploadFileProductAttributeError = string;
 
-export type ShoppingCartUploadFileCheckoutAttributeCreateData = UploadFileCheckoutAttributeResponse;
+export type PostShoppingCartUploadFileCheckoutAttributeData =
+  UploadFileCheckoutAttributeResponse;
 
-export type ShoppingCartUploadFileCheckoutAttributeCreateError = string;
+export type PostShoppingCartUploadFileCheckoutAttributeError = string;
 
-export type ShoppingCartCartListData = ShoppingCartModelDto;
+export type GetShoppingCartCartData = ShoppingCartModelDto;
 
-export type ShoppingCartCartListError = ProblemDetails | string;
+export type GetShoppingCartCartError = ProblemDetails | string;
 
-export type ShoppingCartMiniCartListData = MiniShoppingCartModelDto;
+export type GetShoppingCartMiniCartData = MiniShoppingCartModelDto;
 
-export type ShoppingCartMiniCartListError = ProblemDetails | string;
+export type GetShoppingCartMiniCartError = ProblemDetails | string;
 
-export type ShoppingCartUpdateCartCreatePayload = Record<string, string>;
+export type PostShoppingCartUpdateCartPayload = Record<string, string>;
 
-export type ShoppingCartUpdateCartCreateData = ShoppingCartModelDto;
+export type PostShoppingCartUpdateCartData = ShoppingCartModelDto;
 
-export type ShoppingCartUpdateCartCreateError = ProblemDetails | string;
+export type PostShoppingCartUpdateCartError = ProblemDetails | string;
 
-export type ShoppingCartApplyDiscountCouponCreatePayload = Record<string, string>;
+export type PostShoppingCartApplyDiscountCouponPayload = Record<string, string>;
 
-export interface ShoppingCartApplyDiscountCouponCreateParams {
+export interface PostShoppingCartApplyDiscountCouponParams {
   discountCouponCode: string;
 }
 
-export type ShoppingCartApplyDiscountCouponCreateData = ShoppingCartModelDto;
+export type PostShoppingCartApplyDiscountCouponData = ShoppingCartModelDto;
 
-export type ShoppingCartApplyDiscountCouponCreateError = string;
+export type PostShoppingCartApplyDiscountCouponError = string;
 
-export type ShoppingCartApplyGiftCardCreatePayload = Record<string, string>;
+export type PostShoppingCartApplyGiftCardPayload = Record<string, string>;
 
-export interface ShoppingCartApplyGiftCardCreateParams {
+export interface PostShoppingCartApplyGiftCardParams {
   giftCardCouponCode: string;
 }
 
-export type ShoppingCartApplyGiftCardCreateData = ShoppingCartModelDto;
+export type PostShoppingCartApplyGiftCardData = ShoppingCartModelDto;
 
-export type ShoppingCartApplyGiftCardCreateError = string;
+export type PostShoppingCartApplyGiftCardError = string;
 
-export type ShoppingCartGetEstimateShippingCreateData = EstimateShippingResultModelDto;
+export type PostShoppingCartGetEstimateShippingData =
+  EstimateShippingResultModelDto;
 
-export type ShoppingCartGetEstimateShippingCreateError = string;
+export type PostShoppingCartGetEstimateShippingError = string;
 
-export type ShoppingCartRemoveDiscountCouponCreatePayload = Record<string, string>;
+export type PostShoppingCartRemoveDiscountCouponPayload = Record<
+  string,
+  string
+>;
 
-export type ShoppingCartRemoveDiscountCouponCreateData = ShoppingCartModelDto;
+export type PostShoppingCartRemoveDiscountCouponData = ShoppingCartModelDto;
 
-export type ShoppingCartRemoveDiscountCouponCreateError = string;
+export type PostShoppingCartRemoveDiscountCouponError = string;
 
-export type ShoppingCartRemoveGiftCardCodeCreatePayload = Record<string, string>;
+export type PostShoppingCartRemoveGiftCardCodePayload = Record<string, string>;
 
-export type ShoppingCartRemoveGiftCardCodeCreateData = ShoppingCartModelDto;
+export type PostShoppingCartRemoveGiftCardCodeData = ShoppingCartModelDto;
 
-export type ShoppingCartRemoveGiftCardCodeCreateError = string;
+export type PostShoppingCartRemoveGiftCardCodeError = string;
 
-export type TopicGetTopicDetailsDetailData = TopicModelDto;
+export type GetTopicGetTopicDetailsData = TopicModelDto;
 
-export type TopicGetTopicDetailsDetailError = ProblemDetails | string;
+export type GetTopicGetTopicDetailsError = ProblemDetails | string;
 
-export type TopicGetTopicDetailsBySystemNameDetailData = TopicModelDto;
+export type GetTopicGetTopicDetailsBySystemNameData = TopicModelDto;
 
-export type TopicGetTopicDetailsBySystemNameDetailError = ProblemDetails | string;
+export type GetTopicGetTopicDetailsBySystemNameError = ProblemDetails | string;
 
-export interface UrlRecordGetBySlugListParams {
+export interface GetUrlRecordGetBySlugParams {
   /** Slug */
   slug: string;
 }
 
-export type UrlRecordGetBySlugListData = UrlRecordDto;
+export type GetUrlRecordGetBySlugData = UrlRecordDto;
 
-export type UrlRecordGetBySlugListError = string;
+export type GetUrlRecordGetBySlugError = string;
 
-export type VendorApplyVendorListData = ApplyVendorModelDto;
+export type GetVendorApplyVendorData = ApplyVendorModelDto;
 
-export type VendorApplyVendorListError = ProblemDetails | string;
+export type GetVendorApplyVendorError = ProblemDetails | string;
 
-export interface VendorApplyVendorSubmitCreateParams {
+export interface PostVendorApplyVendorSubmitParams {
   contentType: string;
 }
 
-export type VendorApplyVendorSubmitCreateData = ApplyVendorModelDto;
+export type PostVendorApplyVendorSubmitData = ApplyVendorModelDto;
 
-export type VendorApplyVendorSubmitCreateError = string;
+export type PostVendorApplyVendorSubmitError = string;
 
-export type VendorInfoListData = VendorInfoModelDto;
+export type GetVendorInfoData = VendorInfoModelDto;
 
-export type VendorInfoListError = ProblemDetails | string;
+export type GetVendorInfoError = ProblemDetails | string;
 
-export interface VendorInfoCreateParams {
+export interface PostVendorInfoParams {
   contentType: string;
 }
 
-export type VendorInfoCreateData = VendorInfoModelDto;
+export type PostVendorInfoData = VendorInfoModelDto;
 
-export type VendorInfoCreateError = string[] | string;
+export type PostVendorInfoError = string[] | string;
 
-export type VendorRemovePictureDeleteData = any;
+export type DeleteVendorRemovePictureData = any;
 
-export type VendorRemovePictureDeleteError = ProblemDetails | string;
+export type DeleteVendorRemovePictureError = ProblemDetails | string;
 
-export interface WishlistWishlistListParams {
+export interface GetWishlistWishlistParams {
   /** @format uuid */
   customerGuid?: string;
 }
 
-export type WishlistWishlistListData = WishlistModelDto;
+export type GetWishlistWishlistData = WishlistModelDto;
 
-export type WishlistWishlistListError = ProblemDetails | string;
+export type GetWishlistWishlistError = ProblemDetails | string;
 
-export type WishlistUpdateWishlistCreatePayload = Record<string, string>;
+export type PostWishlistUpdateWishlistPayload = Record<string, string>;
 
-export type WishlistUpdateWishlistCreateData = WishlistModelDto;
+export type PostWishlistUpdateWishlistData = WishlistModelDto;
 
-export type WishlistUpdateWishlistCreateError = string;
+export type PostWishlistUpdateWishlistError = string;
 
-export type WishlistAddItemsToCartFromWishlistUpdatePayload = Record<string, string>;
+export type PutWishlistAddItemsToCartFromWishlistPayload = Record<
+  string,
+  string
+>;
 
-export interface WishlistAddItemsToCartFromWishlistUpdateParams {
+export interface PutWishlistAddItemsToCartFromWishlistParams {
   /** @format uuid */
   customerGuid?: string;
 }
 
-export type WishlistAddItemsToCartFromWishlistUpdateData = WishlistModelDto;
+export type PutWishlistAddItemsToCartFromWishlistData = WishlistModelDto;
 
-export type WishlistAddItemsToCartFromWishlistUpdateError = ProblemDetails | string;
+export type PutWishlistAddItemsToCartFromWishlistError =
+  | ProblemDetails
+  | string;
 
-export type WishlistEmailWishlistListData = WishlistEmailAFriendModelDto;
+export type GetWishlistEmailWishlistData = WishlistEmailAFriendModelDto;
 
-export type WishlistEmailWishlistListError = ProblemDetails | string;
+export type GetWishlistEmailWishlistError = ProblemDetails | string;
 
-export type WishlistEmailWishlistSendCreateData = WishlistEmailAFriendModelDto;
+export type PostWishlistEmailWishlistSendData = WishlistEmailAFriendModelDto;
 
-export type WishlistEmailWishlistSendCreateError = ProblemDetails | string;
+export type PostWishlistEmailWishlistSendError = ProblemDetails | string;

@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,29 +11,37 @@
  */
 
 import {
-  NewsletterSubscribeNewsletterListData,
-  NewsletterSubscribeNewsletterListError,
-  NewsletterSubscribeNewsletterListParams,
-  NewsletterSubscriptionActivationListData,
-  NewsletterSubscriptionActivationListError,
-  NewsletterSubscriptionActivationListParams,
+  GetNewsletterSubscribeNewsletterData,
+  GetNewsletterSubscribeNewsletterError,
+  GetNewsletterSubscribeNewsletterParams,
+  GetNewsletterSubscriptionActivationData,
+  GetNewsletterSubscriptionActivationError,
+  GetNewsletterSubscriptionActivationParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
-export class Newsletter<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
+export class Newsletter<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
    * @tags Newsletter
-   * @name NewsletterSubscribeNewsletterList
+   * @name GetNewsletterSubscribeNewsletter
    * @request GET:/api-frontend/Newsletter/SubscribeNewsletter
    * @secure
-   * @response `200` `NewsletterSubscribeNewsletterListData` Success
+   * @response `200` `GetNewsletterSubscribeNewsletterData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  newsletterSubscribeNewsletterList = (query: NewsletterSubscribeNewsletterListParams, params: RequestParams = {}) =>
-    this.request<NewsletterSubscribeNewsletterListData, NewsletterSubscribeNewsletterListError>({
+  getNewsletterSubscribeNewsletter = (
+    query: GetNewsletterSubscribeNewsletterParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<
+      GetNewsletterSubscribeNewsletterData,
+      GetNewsletterSubscribeNewsletterError
+    >({
       path: `/api-frontend/Newsletter/SubscribeNewsletter`,
       method: "GET",
       query: query,
@@ -44,18 +53,21 @@ export class Newsletter<SecurityDataType = unknown> extends HttpClient<SecurityD
    * No description
    *
    * @tags Newsletter
-   * @name NewsletterSubscriptionActivationList
+   * @name GetNewsletterSubscriptionActivation
    * @request GET:/api-frontend/Newsletter/SubscriptionActivation
    * @secure
-   * @response `200` `NewsletterSubscriptionActivationListData` Success
+   * @response `200` `GetNewsletterSubscriptionActivationData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  newsletterSubscriptionActivationList = (
-    query: NewsletterSubscriptionActivationListParams,
+  getNewsletterSubscriptionActivation = (
+    query: GetNewsletterSubscriptionActivationParams,
     params: RequestParams = {},
   ) =>
-    this.request<NewsletterSubscriptionActivationListData, NewsletterSubscriptionActivationListError>({
+    this.request<
+      GetNewsletterSubscriptionActivationData,
+      GetNewsletterSubscriptionActivationError
+    >({
       path: `/api-frontend/Newsletter/SubscriptionActivation`,
       method: "GET",
       query: query,
