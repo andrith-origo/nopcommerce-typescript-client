@@ -11,22 +11,22 @@
  */
 
 import {
-  GetDownloadGetDownloadData,
-  GetDownloadGetDownloadError,
-  GetDownloadGetDownloadParams,
-  GetDownloadGetFileUploadError,
-  GetDownloadGetFileUploadParams,
-  GetDownloadGetLicenseError,
-  GetDownloadGetLicenseParams,
-  GetDownloadGetOrderNoteFileError,
-  GetDownloadPdfInvoiceData,
-  GetDownloadPdfInvoiceError,
-  GetDownloadSampleData,
-  GetDownloadSampleError,
-  GetDownloadWebDownloadError,
-  GetDownloadWebDownloadParams,
-  GetDownloadWebPdfInvoiceError,
-  GetDownloadWebSampleError,
+  DownloadGetDownloadListData,
+  DownloadGetDownloadListError,
+  DownloadGetDownloadListParams,
+  DownloadGetFileUploadListError,
+  DownloadGetFileUploadListParams,
+  DownloadGetLicenseListError,
+  DownloadGetLicenseListParams,
+  DownloadGetOrderNoteFileDetailError,
+  DownloadPdfInvoiceDetailData,
+  DownloadPdfInvoiceDetailError,
+  DownloadSampleDetailData,
+  DownloadSampleDetailError,
+  DownloadWebDownloadListError,
+  DownloadWebDownloadListParams,
+  DownloadWebPdfInvoiceDetailError,
+  DownloadWebSampleDetailError,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -37,7 +37,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadWebPdfInvoice
+   * @name DownloadWebPdfInvoiceDetail
    * @request GET:/api-frontend/Download/WebPdfInvoice/{orderId}
    * @secure
    * @response `302` `void` Found
@@ -45,8 +45,8 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadWebPdfInvoice = (orderId: number, params: RequestParams = {}) =>
-    this.request<any, GetDownloadWebPdfInvoiceError>({
+  downloadWebPdfInvoiceDetail = (orderId: number, params: RequestParams = {}) =>
+    this.request<any, DownloadWebPdfInvoiceDetailError>({
       path: `/api-frontend/Download/WebPdfInvoice/${orderId}`,
       method: "GET",
       secure: true,
@@ -56,16 +56,16 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadPdfInvoice
+   * @name DownloadPdfInvoiceDetail
    * @request GET:/api-frontend/Download/PdfInvoice/{orderId}
    * @secure
-   * @response `200` `GetDownloadPdfInvoiceData` OK
+   * @response `200` `DownloadPdfInvoiceDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadPdfInvoice = (orderId: number, params: RequestParams = {}) =>
-    this.request<GetDownloadPdfInvoiceData, GetDownloadPdfInvoiceError>({
+  downloadPdfInvoiceDetail = (orderId: number, params: RequestParams = {}) =>
+    this.request<DownloadPdfInvoiceDetailData, DownloadPdfInvoiceDetailError>({
       path: `/api-frontend/Download/PdfInvoice/${orderId}`,
       method: "GET",
       secure: true,
@@ -76,7 +76,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadWebSample
+   * @name DownloadWebSampleDetail
    * @summary Sample
    * @request GET:/api-frontend/Download/WebSample/{productId}
    * @secure
@@ -84,8 +84,8 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadWebSample = (productId: number, params: RequestParams = {}) =>
-    this.request<any, GetDownloadWebSampleError>({
+  downloadWebSampleDetail = (productId: number, params: RequestParams = {}) =>
+    this.request<any, DownloadWebSampleDetailError>({
       path: `/api-frontend/Download/WebSample/${productId}`,
       method: "GET",
       secure: true,
@@ -95,16 +95,16 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadSample
+   * @name DownloadSampleDetail
    * @summary Sample
    * @request GET:/api-frontend/Download/Sample/{productId}
    * @secure
-   * @response `200` `GetDownloadSampleData` OK
+   * @response `200` `DownloadSampleDetailData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadSample = (productId: number, params: RequestParams = {}) =>
-    this.request<GetDownloadSampleData, GetDownloadSampleError>({
+  downloadSampleDetail = (productId: number, params: RequestParams = {}) =>
+    this.request<DownloadSampleDetailData, DownloadSampleDetailError>({
       path: `/api-frontend/Download/Sample/${productId}`,
       method: "GET",
       secure: true,
@@ -115,20 +115,20 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadGetDownload
+   * @name DownloadGetDownloadList
    * @summary Get download
    * @request GET:/api-frontend/Download/GetDownload
    * @secure
-   * @response `200` `GetDownloadGetDownloadData` OK
+   * @response `200` `DownloadGetDownloadListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadGetDownload = (
-    query: GetDownloadGetDownloadParams,
+  downloadGetDownloadList = (
+    query: DownloadGetDownloadListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetDownloadGetDownloadData, GetDownloadGetDownloadError>({
+    this.request<DownloadGetDownloadListData, DownloadGetDownloadListError>({
       path: `/api-frontend/Download/GetDownload`,
       method: "GET",
       query: query,
@@ -140,7 +140,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadWebDownload
+   * @name DownloadWebDownloadList
    * @summary Get download
    * @request GET:/api-frontend/Download/WebDownload
    * @secure
@@ -149,11 +149,11 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadWebDownload = (
-    query: GetDownloadWebDownloadParams,
+  downloadWebDownloadList = (
+    query: DownloadWebDownloadListParams,
     params: RequestParams = {},
   ) =>
-    this.request<any, GetDownloadWebDownloadError>({
+    this.request<any, DownloadWebDownloadListError>({
       path: `/api-frontend/Download/WebDownload`,
       method: "GET",
       query: query,
@@ -164,7 +164,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadGetLicense
+   * @name DownloadGetLicenseList
    * @summary Get license
    * @request GET:/api-frontend/Download/GetLicense
    * @secure
@@ -173,11 +173,11 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadGetLicense = (
-    query: GetDownloadGetLicenseParams,
+  downloadGetLicenseList = (
+    query: DownloadGetLicenseListParams,
     params: RequestParams = {},
   ) =>
-    this.request<any, GetDownloadGetLicenseError>({
+    this.request<any, DownloadGetLicenseListError>({
       path: `/api-frontend/Download/GetLicense`,
       method: "GET",
       query: query,
@@ -188,7 +188,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadGetFileUpload
+   * @name DownloadGetFileUploadList
    * @summary Get file upload
    * @request GET:/api-frontend/Download/GetFileUpload
    * @secure
@@ -196,11 +196,11 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadGetFileUpload = (
-    query: GetDownloadGetFileUploadParams,
+  downloadGetFileUploadList = (
+    query: DownloadGetFileUploadListParams,
     params: RequestParams = {},
   ) =>
-    this.request<any, GetDownloadGetFileUploadError>({
+    this.request<any, DownloadGetFileUploadListError>({
       path: `/api-frontend/Download/GetFileUpload`,
       method: "GET",
       query: query,
@@ -211,7 +211,7 @@ export class Download<
    * No description
    *
    * @tags Download
-   * @name GetDownloadGetOrderNoteFile
+   * @name DownloadGetOrderNoteFileDetail
    * @summary Get order note file
    * @request GET:/api-frontend/Download/GetOrderNoteFile/{orderNoteId}
    * @secure
@@ -220,11 +220,11 @@ export class Download<
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getDownloadGetOrderNoteFile = (
+  downloadGetOrderNoteFileDetail = (
     orderNoteId: number,
     params: RequestParams = {},
   ) =>
-    this.request<any, GetDownloadGetOrderNoteFileError>({
+    this.request<any, DownloadGetOrderNoteFileDetailError>({
       path: `/api-frontend/Download/GetOrderNoteFile/${orderNoteId}`,
       method: "GET",
       secure: true,

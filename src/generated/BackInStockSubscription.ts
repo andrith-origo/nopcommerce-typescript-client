@@ -11,16 +11,16 @@
  */
 
 import {
-  GetBackInStockSubscriptionCustomerSubscriptionsData,
-  GetBackInStockSubscriptionCustomerSubscriptionsError,
-  GetBackInStockSubscriptionCustomerSubscriptionsParams,
-  GetBackInStockSubscriptionSubscribePopupData,
-  GetBackInStockSubscriptionSubscribePopupError,
-  PostBackInStockSubscriptionCustomerSubscriptionsData,
-  PostBackInStockSubscriptionCustomerSubscriptionsError,
-  PostBackInStockSubscriptionCustomerSubscriptionsPayload,
-  PostBackInStockSubscriptionSubscribeData,
-  PostBackInStockSubscriptionSubscribeError,
+  BackInStockSubscriptionCustomerSubscriptionsCreateData,
+  BackInStockSubscriptionCustomerSubscriptionsCreateError,
+  BackInStockSubscriptionCustomerSubscriptionsCreatePayload,
+  BackInStockSubscriptionCustomerSubscriptionsListData,
+  BackInStockSubscriptionCustomerSubscriptionsListError,
+  BackInStockSubscriptionCustomerSubscriptionsListParams,
+  BackInStockSubscriptionSubscribeCreateData,
+  BackInStockSubscriptionSubscribeCreateError,
+  BackInStockSubscriptionSubscribePopupDetailData,
+  BackInStockSubscriptionSubscribePopupDetailError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -31,21 +31,21 @@ export class BackInStockSubscription<
    * No description
    *
    * @tags BackInStockSubscription
-   * @name GetBackInStockSubscriptionSubscribePopup
+   * @name BackInStockSubscriptionSubscribePopupDetail
    * @summary Product details page > back in stock subscribe
    * @request GET:/api-frontend/BackInStockSubscription/SubscribePopup/{productId}
    * @secure
-   * @response `200` `GetBackInStockSubscriptionSubscribePopupData` OK
+   * @response `200` `BackInStockSubscriptionSubscribePopupDetailData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getBackInStockSubscriptionSubscribePopup = (
+  backInStockSubscriptionSubscribePopupDetail = (
     productId: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetBackInStockSubscriptionSubscribePopupData,
-      GetBackInStockSubscriptionSubscribePopupError
+      BackInStockSubscriptionSubscribePopupDetailData,
+      BackInStockSubscriptionSubscribePopupDetailError
     >({
       path: `/api-frontend/BackInStockSubscription/SubscribePopup/${productId}`,
       method: "GET",
@@ -57,21 +57,21 @@ export class BackInStockSubscription<
    * No description
    *
    * @tags BackInStockSubscription
-   * @name PostBackInStockSubscriptionSubscribe
+   * @name BackInStockSubscriptionSubscribeCreate
    * @summary Back in stock subscribe
    * @request POST:/api-frontend/BackInStockSubscription/Subscribe/{productId}
    * @secure
-   * @response `200` `PostBackInStockSubscriptionSubscribeData` OK
+   * @response `200` `BackInStockSubscriptionSubscribeCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postBackInStockSubscriptionSubscribe = (
+  backInStockSubscriptionSubscribeCreate = (
     productId: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostBackInStockSubscriptionSubscribeData,
-      PostBackInStockSubscriptionSubscribeError
+      BackInStockSubscriptionSubscribeCreateData,
+      BackInStockSubscriptionSubscribeCreateError
     >({
       path: `/api-frontend/BackInStockSubscription/Subscribe/${productId}`,
       method: "POST",
@@ -83,21 +83,21 @@ export class BackInStockSubscription<
    * No description
    *
    * @tags BackInStockSubscription
-   * @name GetBackInStockSubscriptionCustomerSubscriptions
+   * @name BackInStockSubscriptionCustomerSubscriptionsList
    * @summary My account / Back in stock subscriptions
    * @request GET:/api-frontend/BackInStockSubscription/CustomerSubscriptions
    * @secure
-   * @response `200` `GetBackInStockSubscriptionCustomerSubscriptionsData` OK
+   * @response `200` `BackInStockSubscriptionCustomerSubscriptionsListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getBackInStockSubscriptionCustomerSubscriptions = (
-    query: GetBackInStockSubscriptionCustomerSubscriptionsParams,
+  backInStockSubscriptionCustomerSubscriptionsList = (
+    query: BackInStockSubscriptionCustomerSubscriptionsListParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetBackInStockSubscriptionCustomerSubscriptionsData,
-      GetBackInStockSubscriptionCustomerSubscriptionsError
+      BackInStockSubscriptionCustomerSubscriptionsListData,
+      BackInStockSubscriptionCustomerSubscriptionsListError
     >({
       path: `/api-frontend/BackInStockSubscription/CustomerSubscriptions`,
       method: "GET",
@@ -110,19 +110,19 @@ export class BackInStockSubscription<
    * No description
    *
    * @tags BackInStockSubscription
-   * @name PostBackInStockSubscriptionCustomerSubscriptions
+   * @name BackInStockSubscriptionCustomerSubscriptionsCreate
    * @request POST:/api-frontend/BackInStockSubscription/CustomerSubscriptions
    * @secure
-   * @response `200` `PostBackInStockSubscriptionCustomerSubscriptionsData` OK
+   * @response `200` `BackInStockSubscriptionCustomerSubscriptionsCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postBackInStockSubscriptionCustomerSubscriptions = (
-    data: PostBackInStockSubscriptionCustomerSubscriptionsPayload,
+  backInStockSubscriptionCustomerSubscriptionsCreate = (
+    data: BackInStockSubscriptionCustomerSubscriptionsCreatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostBackInStockSubscriptionCustomerSubscriptionsData,
-      PostBackInStockSubscriptionCustomerSubscriptionsError
+      BackInStockSubscriptionCustomerSubscriptionsCreateData,
+      BackInStockSubscriptionCustomerSubscriptionsCreateError
     >({
       path: `/api-frontend/BackInStockSubscription/CustomerSubscriptions`,
       method: "POST",

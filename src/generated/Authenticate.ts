@@ -12,9 +12,9 @@
 
 import {
   AuthenticateCustomerRequest,
-  GetAuthenticateGetApiVersionData,
-  PostAuthenticateGetTokenData,
-  PostAuthenticateGetTokenError,
+  AuthenticateGetApiVersionListData,
+  AuthenticateGetTokenCreateData,
+  AuthenticateGetTokenCreateError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -25,19 +25,22 @@ export class Authenticate<
    * No description
    *
    * @tags Authenticate
-   * @name PostAuthenticateGetToken
+   * @name AuthenticateGetTokenCreate
    * @summary Authenticate user
    * @request POST:/api-frontend/Authenticate/GetToken
    * @secure
-   * @response `200` `PostAuthenticateGetTokenData` OK
+   * @response `200` `AuthenticateGetTokenCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postAuthenticateGetToken = (
+  authenticateGetTokenCreate = (
     data: AuthenticateCustomerRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostAuthenticateGetTokenData, PostAuthenticateGetTokenError>({
+    this.request<
+      AuthenticateGetTokenCreateData,
+      AuthenticateGetTokenCreateError
+    >({
       path: `/api-frontend/Authenticate/GetToken`,
       method: "POST",
       body: data,
@@ -50,14 +53,14 @@ export class Authenticate<
    * No description
    *
    * @tags Authenticate
-   * @name GetAuthenticateGetApiVersion
+   * @name AuthenticateGetApiVersionList
    * @summary Gets API version
    * @request GET:/api-frontend/Authenticate/GetApiVersion
    * @secure
-   * @response `200` `GetAuthenticateGetApiVersionData` OK
+   * @response `200` `AuthenticateGetApiVersionListData` OK
    */
-  getAuthenticateGetApiVersion = (params: RequestParams = {}) =>
-    this.request<GetAuthenticateGetApiVersionData, any>({
+  authenticateGetApiVersionList = (params: RequestParams = {}) =>
+    this.request<AuthenticateGetApiVersionListData, any>({
       path: `/api-frontend/Authenticate/GetApiVersion`,
       method: "GET",
       secure: true,

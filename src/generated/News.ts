@@ -11,16 +11,16 @@
  */
 
 import {
-  GetNewsGetNewsItemData,
-  GetNewsGetNewsItemError,
-  GetNewsListRssData,
-  GetNewsListRssError,
+  NewsGetNewsItemDetailData,
+  NewsGetNewsItemDetailError,
   NewsItemModelDto,
+  NewsListCreateData,
+  NewsListCreateError,
+  NewsListRssDetailData,
+  NewsListRssDetailError,
+  NewsNewsCommentAddCreateData,
+  NewsNewsCommentAddCreateError,
   NewsPagingFilteringModelDto,
-  PostNewsListData,
-  PostNewsListError,
-  PostNewsNewsCommentAddData,
-  PostNewsNewsCommentAddError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -31,18 +31,18 @@ export class News<
    * No description
    *
    * @tags News
-   * @name PostNewsList
+   * @name NewsListCreate
    * @request POST:/api-frontend/News/List
    * @secure
-   * @response `200` `PostNewsListData` OK
+   * @response `200` `NewsListCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postNewsList = (
+  newsListCreate = (
     data: NewsPagingFilteringModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostNewsListData, PostNewsListError>({
+    this.request<NewsListCreateData, NewsListCreateError>({
       path: `/api-frontend/News/List`,
       method: "POST",
       body: data,
@@ -55,15 +55,15 @@ export class News<
    * No description
    *
    * @tags News
-   * @name GetNewsListRss
+   * @name NewsListRssDetail
    * @request GET:/api-frontend/News/ListRss/{languageId}
    * @secure
-   * @response `200` `GetNewsListRssData` OK
+   * @response `200` `NewsListRssDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getNewsListRss = (languageId: number, params: RequestParams = {}) =>
-    this.request<GetNewsListRssData, GetNewsListRssError>({
+  newsListRssDetail = (languageId: number, params: RequestParams = {}) =>
+    this.request<NewsListRssDetailData, NewsListRssDetailError>({
       path: `/api-frontend/News/ListRss/${languageId}`,
       method: "GET",
       secure: true,
@@ -74,16 +74,16 @@ export class News<
    * No description
    *
    * @tags News
-   * @name GetNewsGetNewsItem
+   * @name NewsGetNewsItemDetail
    * @request GET:/api-frontend/News/GetNewsItem/{newsItemId}
    * @secure
-   * @response `200` `GetNewsGetNewsItemData` OK
+   * @response `200` `NewsGetNewsItemDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getNewsGetNewsItem = (newsItemId: number, params: RequestParams = {}) =>
-    this.request<GetNewsGetNewsItemData, GetNewsGetNewsItemError>({
+  newsGetNewsItemDetail = (newsItemId: number, params: RequestParams = {}) =>
+    this.request<NewsGetNewsItemDetailData, NewsGetNewsItemDetailError>({
       path: `/api-frontend/News/GetNewsItem/${newsItemId}`,
       method: "GET",
       secure: true,
@@ -94,20 +94,20 @@ export class News<
    * No description
    *
    * @tags News
-   * @name PostNewsNewsCommentAdd
+   * @name NewsNewsCommentAddCreate
    * @request POST:/api-frontend/News/NewsCommentAdd/{newsItemId}
    * @secure
-   * @response `200` `PostNewsNewsCommentAddData` OK
+   * @response `200` `NewsNewsCommentAddCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postNewsNewsCommentAdd = (
+  newsNewsCommentAddCreate = (
     newsItemId: number,
     data: NewsItemModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostNewsNewsCommentAddData, PostNewsNewsCommentAddError>({
+    this.request<NewsNewsCommentAddCreateData, NewsNewsCommentAddCreateError>({
       path: `/api-frontend/News/NewsCommentAdd/${newsItemId}`,
       method: "POST",
       body: data,

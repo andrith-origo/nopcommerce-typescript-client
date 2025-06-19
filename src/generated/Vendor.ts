@@ -12,19 +12,19 @@
 
 import {
   ApplyVendorRequest,
-  DeleteVendorRemovePictureData,
-  DeleteVendorRemovePictureError,
-  GetVendorApplyVendorData,
-  GetVendorApplyVendorError,
-  GetVendorInfoData,
-  GetVendorInfoError,
   InfoRequest,
-  PostVendorApplyVendorSubmitData,
-  PostVendorApplyVendorSubmitError,
-  PostVendorApplyVendorSubmitParams,
-  PostVendorInfoData,
-  PostVendorInfoError,
-  PostVendorInfoParams,
+  VendorApplyVendorListData,
+  VendorApplyVendorListError,
+  VendorApplyVendorSubmitCreateData,
+  VendorApplyVendorSubmitCreateError,
+  VendorApplyVendorSubmitCreateParams,
+  VendorInfoCreateData,
+  VendorInfoCreateError,
+  VendorInfoCreateParams,
+  VendorInfoListData,
+  VendorInfoListError,
+  VendorRemovePictureDeleteData,
+  VendorRemovePictureDeleteError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -35,15 +35,15 @@ export class Vendor<
    * No description
    *
    * @tags Vendor
-   * @name GetVendorApplyVendor
+   * @name VendorApplyVendorList
    * @request GET:/api-frontend/Vendor/ApplyVendor
    * @secure
-   * @response `200` `GetVendorApplyVendorData` OK
+   * @response `200` `VendorApplyVendorListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getVendorApplyVendor = (params: RequestParams = {}) =>
-    this.request<GetVendorApplyVendorData, GetVendorApplyVendorError>({
+  vendorApplyVendorList = (params: RequestParams = {}) =>
+    this.request<VendorApplyVendorListData, VendorApplyVendorListError>({
       path: `/api-frontend/Vendor/ApplyVendor`,
       method: "GET",
       secure: true,
@@ -54,21 +54,21 @@ export class Vendor<
    * No description
    *
    * @tags Vendor
-   * @name PostVendorApplyVendorSubmit
+   * @name VendorApplyVendorSubmitCreate
    * @request POST:/api-frontend/Vendor/ApplyVendorSubmit
    * @secure
-   * @response `200` `PostVendorApplyVendorSubmitData` OK
+   * @response `200` `VendorApplyVendorSubmitCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postVendorApplyVendorSubmit = (
-    query: PostVendorApplyVendorSubmitParams,
+  vendorApplyVendorSubmitCreate = (
+    query: VendorApplyVendorSubmitCreateParams,
     data: ApplyVendorRequest,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostVendorApplyVendorSubmitData,
-      PostVendorApplyVendorSubmitError
+      VendorApplyVendorSubmitCreateData,
+      VendorApplyVendorSubmitCreateError
     >({
       path: `/api-frontend/Vendor/ApplyVendorSubmit`,
       method: "POST",
@@ -83,15 +83,15 @@ export class Vendor<
    * No description
    *
    * @tags Vendor
-   * @name GetVendorInfo
+   * @name VendorInfoList
    * @request GET:/api-frontend/Vendor/Info
    * @secure
-   * @response `200` `GetVendorInfoData` OK
+   * @response `200` `VendorInfoListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getVendorInfo = (params: RequestParams = {}) =>
-    this.request<GetVendorInfoData, GetVendorInfoError>({
+  vendorInfoList = (params: RequestParams = {}) =>
+    this.request<VendorInfoListData, VendorInfoListError>({
       path: `/api-frontend/Vendor/Info`,
       method: "GET",
       secure: true,
@@ -102,20 +102,20 @@ export class Vendor<
    * No description
    *
    * @tags Vendor
-   * @name PostVendorInfo
+   * @name VendorInfoCreate
    * @request POST:/api-frontend/Vendor/Info
    * @secure
-   * @response `200` `PostVendorInfoData` OK
+   * @response `200` `VendorInfoCreateData` OK
    * @response `400` `(string)[]` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postVendorInfo = (
-    query: PostVendorInfoParams,
+  vendorInfoCreate = (
+    query: VendorInfoCreateParams,
     data: InfoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostVendorInfoData, PostVendorInfoError>({
+    this.request<VendorInfoCreateData, VendorInfoCreateError>({
       path: `/api-frontend/Vendor/Info`,
       method: "POST",
       query: query,
@@ -129,15 +129,15 @@ export class Vendor<
    * No description
    *
    * @tags Vendor
-   * @name DeleteVendorRemovePicture
+   * @name VendorRemovePictureDelete
    * @request DELETE:/api-frontend/Vendor/RemovePicture
    * @secure
-   * @response `200` `DeleteVendorRemovePictureData` OK
+   * @response `200` `VendorRemovePictureDeleteData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  deleteVendorRemovePicture = (params: RequestParams = {}) =>
-    this.request<DeleteVendorRemovePictureData, DeleteVendorRemovePictureError>(
+  vendorRemovePictureDelete = (params: RequestParams = {}) =>
+    this.request<VendorRemovePictureDeleteData, VendorRemovePictureDeleteError>(
       {
         path: `/api-frontend/Vendor/RemovePicture`,
         method: "DELETE",

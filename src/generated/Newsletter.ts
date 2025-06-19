@@ -11,12 +11,12 @@
  */
 
 import {
-  GetNewsletterSubscribeNewsletterData,
-  GetNewsletterSubscribeNewsletterError,
-  GetNewsletterSubscribeNewsletterParams,
-  GetNewsletterSubscriptionActivationData,
-  GetNewsletterSubscriptionActivationError,
-  GetNewsletterSubscriptionActivationParams,
+  NewsletterSubscribeNewsletterListData,
+  NewsletterSubscribeNewsletterListError,
+  NewsletterSubscribeNewsletterListParams,
+  NewsletterSubscriptionActivationListData,
+  NewsletterSubscriptionActivationListError,
+  NewsletterSubscriptionActivationListParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -27,20 +27,20 @@ export class Newsletter<
    * No description
    *
    * @tags Newsletter
-   * @name GetNewsletterSubscribeNewsletter
+   * @name NewsletterSubscribeNewsletterList
    * @request GET:/api-frontend/Newsletter/SubscribeNewsletter
    * @secure
-   * @response `200` `GetNewsletterSubscribeNewsletterData` OK
+   * @response `200` `NewsletterSubscribeNewsletterListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getNewsletterSubscribeNewsletter = (
-    query: GetNewsletterSubscribeNewsletterParams,
+  newsletterSubscribeNewsletterList = (
+    query: NewsletterSubscribeNewsletterListParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetNewsletterSubscribeNewsletterData,
-      GetNewsletterSubscribeNewsletterError
+      NewsletterSubscribeNewsletterListData,
+      NewsletterSubscribeNewsletterListError
     >({
       path: `/api-frontend/Newsletter/SubscribeNewsletter`,
       method: "GET",
@@ -53,20 +53,20 @@ export class Newsletter<
    * No description
    *
    * @tags Newsletter
-   * @name GetNewsletterSubscriptionActivation
+   * @name NewsletterSubscriptionActivationList
    * @request GET:/api-frontend/Newsletter/SubscriptionActivation
    * @secure
-   * @response `200` `GetNewsletterSubscriptionActivationData` OK
+   * @response `200` `NewsletterSubscriptionActivationListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getNewsletterSubscriptionActivation = (
-    query: GetNewsletterSubscriptionActivationParams,
+  newsletterSubscriptionActivationList = (
+    query: NewsletterSubscriptionActivationListParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetNewsletterSubscriptionActivationData,
-      GetNewsletterSubscriptionActivationError
+      NewsletterSubscriptionActivationListData,
+      NewsletterSubscriptionActivationListError
     >({
       path: `/api-frontend/Newsletter/SubscriptionActivation`,
       method: "GET",

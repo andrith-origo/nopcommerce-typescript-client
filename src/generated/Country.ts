@@ -11,9 +11,9 @@
  */
 
 import {
-  GetCountryGetStatesByCountryIdData,
-  GetCountryGetStatesByCountryIdError,
-  GetCountryGetStatesByCountryIdParams,
+  CountryGetStatesByCountryIdDetailData,
+  CountryGetStatesByCountryIdDetailError,
+  CountryGetStatesByCountryIdDetailParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -24,19 +24,19 @@ export class Country<
    * No description
    *
    * @tags Country
-   * @name GetCountryGetStatesByCountryId
+   * @name CountryGetStatesByCountryIdDetail
    * @request GET:/api-frontend/Country/GetStatesByCountryId/{countryId}
    * @secure
-   * @response `200` `GetCountryGetStatesByCountryIdData` OK
+   * @response `200` `CountryGetStatesByCountryIdDetailData` OK
    * @response `401` `string` Unauthorized
    */
-  getCountryGetStatesByCountryId = (
-    { countryId, ...query }: GetCountryGetStatesByCountryIdParams,
+  countryGetStatesByCountryIdDetail = (
+    { countryId, ...query }: CountryGetStatesByCountryIdDetailParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetCountryGetStatesByCountryIdData,
-      GetCountryGetStatesByCountryIdError
+      CountryGetStatesByCountryIdDetailData,
+      CountryGetStatesByCountryIdDetailError
     >({
       path: `/api-frontend/Country/GetStatesByCountryId/${countryId}`,
       method: "GET",

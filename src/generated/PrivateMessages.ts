@@ -11,27 +11,27 @@
  */
 
 import {
-  DeletePrivateMessagesDeletePmData,
-  DeletePrivateMessagesDeletePmError,
-  GetPrivateMessagesIndexData,
-  GetPrivateMessagesIndexError,
-  GetPrivateMessagesIndexParams,
-  GetPrivateMessagesSendPmData,
-  GetPrivateMessagesSendPmError,
-  GetPrivateMessagesSendPmParams,
-  GetPrivateMessagesViewPmData,
-  GetPrivateMessagesViewPmError,
-  PostPrivateMessagesDeleteInboxPmData,
-  PostPrivateMessagesDeleteInboxPmError,
-  PostPrivateMessagesDeleteInboxPmPayload,
-  PostPrivateMessagesDeleteSentPmData,
-  PostPrivateMessagesDeleteSentPmError,
-  PostPrivateMessagesDeleteSentPmPayload,
-  PostPrivateMessagesMarkUnreadData,
-  PostPrivateMessagesMarkUnreadError,
-  PostPrivateMessagesMarkUnreadPayload,
-  PostPrivateMessagesSendPmData,
-  PostPrivateMessagesSendPmError,
+  PrivateMessagesDeleteInboxPmCreateData,
+  PrivateMessagesDeleteInboxPmCreateError,
+  PrivateMessagesDeleteInboxPmCreatePayload,
+  PrivateMessagesDeletePmDeleteData,
+  PrivateMessagesDeletePmDeleteError,
+  PrivateMessagesDeleteSentPmCreateData,
+  PrivateMessagesDeleteSentPmCreateError,
+  PrivateMessagesDeleteSentPmCreatePayload,
+  PrivateMessagesIndexListData,
+  PrivateMessagesIndexListError,
+  PrivateMessagesIndexListParams,
+  PrivateMessagesMarkUnreadCreateData,
+  PrivateMessagesMarkUnreadCreateError,
+  PrivateMessagesMarkUnreadCreatePayload,
+  PrivateMessagesSendPmCreateData,
+  PrivateMessagesSendPmCreateError,
+  PrivateMessagesSendPmDetailData,
+  PrivateMessagesSendPmDetailError,
+  PrivateMessagesSendPmDetailParams,
+  PrivateMessagesViewPmDetailData,
+  PrivateMessagesViewPmDetailError,
   SendPrivateMessageModelDto,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
@@ -43,18 +43,18 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name GetPrivateMessagesIndex
+   * @name PrivateMessagesIndexList
    * @request GET:/api-frontend/PrivateMessages/Index
    * @secure
-   * @response `200` `GetPrivateMessagesIndexData` OK
+   * @response `200` `PrivateMessagesIndexListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getPrivateMessagesIndex = (
-    query: GetPrivateMessagesIndexParams,
+  privateMessagesIndexList = (
+    query: PrivateMessagesIndexListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetPrivateMessagesIndexData, GetPrivateMessagesIndexError>({
+    this.request<PrivateMessagesIndexListData, PrivateMessagesIndexListError>({
       path: `/api-frontend/PrivateMessages/Index`,
       method: "GET",
       query: query,
@@ -66,19 +66,19 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name PostPrivateMessagesDeleteInboxPm
+   * @name PrivateMessagesDeleteInboxPmCreate
    * @request POST:/api-frontend/PrivateMessages/DeleteInboxPM
    * @secure
-   * @response `200` `PostPrivateMessagesDeleteInboxPmData` OK
+   * @response `200` `PrivateMessagesDeleteInboxPmCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postPrivateMessagesDeleteInboxPm = (
-    data: PostPrivateMessagesDeleteInboxPmPayload,
+  privateMessagesDeleteInboxPmCreate = (
+    data: PrivateMessagesDeleteInboxPmCreatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostPrivateMessagesDeleteInboxPmData,
-      PostPrivateMessagesDeleteInboxPmError
+      PrivateMessagesDeleteInboxPmCreateData,
+      PrivateMessagesDeleteInboxPmCreateError
     >({
       path: `/api-frontend/PrivateMessages/DeleteInboxPM`,
       method: "POST",
@@ -91,19 +91,19 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name PostPrivateMessagesMarkUnread
+   * @name PrivateMessagesMarkUnreadCreate
    * @request POST:/api-frontend/PrivateMessages/MarkUnread
    * @secure
-   * @response `200` `PostPrivateMessagesMarkUnreadData` OK
+   * @response `200` `PrivateMessagesMarkUnreadCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postPrivateMessagesMarkUnread = (
-    data: PostPrivateMessagesMarkUnreadPayload,
+  privateMessagesMarkUnreadCreate = (
+    data: PrivateMessagesMarkUnreadCreatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostPrivateMessagesMarkUnreadData,
-      PostPrivateMessagesMarkUnreadError
+      PrivateMessagesMarkUnreadCreateData,
+      PrivateMessagesMarkUnreadCreateError
     >({
       path: `/api-frontend/PrivateMessages/MarkUnread`,
       method: "POST",
@@ -116,19 +116,19 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name PostPrivateMessagesDeleteSentPm
+   * @name PrivateMessagesDeleteSentPmCreate
    * @request POST:/api-frontend/PrivateMessages/DeleteSentPM
    * @secure
-   * @response `200` `PostPrivateMessagesDeleteSentPmData` OK
+   * @response `200` `PrivateMessagesDeleteSentPmCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postPrivateMessagesDeleteSentPm = (
-    data: PostPrivateMessagesDeleteSentPmPayload,
+  privateMessagesDeleteSentPmCreate = (
+    data: PrivateMessagesDeleteSentPmCreatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostPrivateMessagesDeleteSentPmData,
-      PostPrivateMessagesDeleteSentPmError
+      PrivateMessagesDeleteSentPmCreateData,
+      PrivateMessagesDeleteSentPmCreateError
     >({
       path: `/api-frontend/PrivateMessages/DeleteSentPM`,
       method: "POST",
@@ -141,18 +141,21 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name GetPrivateMessagesSendPm
+   * @name PrivateMessagesSendPmDetail
    * @request GET:/api-frontend/PrivateMessages/SendPM/{toCustomerId}
    * @secure
-   * @response `200` `GetPrivateMessagesSendPmData` OK
+   * @response `200` `PrivateMessagesSendPmDetailData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getPrivateMessagesSendPm = (
-    { toCustomerId, ...query }: GetPrivateMessagesSendPmParams,
+  privateMessagesSendPmDetail = (
+    { toCustomerId, ...query }: PrivateMessagesSendPmDetailParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetPrivateMessagesSendPmData, GetPrivateMessagesSendPmError>({
+    this.request<
+      PrivateMessagesSendPmDetailData,
+      PrivateMessagesSendPmDetailError
+    >({
       path: `/api-frontend/PrivateMessages/SendPM/${toCustomerId}`,
       method: "GET",
       query: query,
@@ -164,46 +167,50 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name PostPrivateMessagesSendPm
+   * @name PrivateMessagesSendPmCreate
    * @request POST:/api-frontend/PrivateMessages/SendPM
    * @secure
-   * @response `200` `PostPrivateMessagesSendPmData` OK
+   * @response `200` `PrivateMessagesSendPmCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postPrivateMessagesSendPm = (
+  privateMessagesSendPmCreate = (
     data: SendPrivateMessageModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostPrivateMessagesSendPmData, PostPrivateMessagesSendPmError>(
-      {
-        path: `/api-frontend/PrivateMessages/SendPM`,
-        method: "POST",
-        body: data,
-        secure: true,
-        type: ContentType.Json,
-        format: "json",
-        ...params,
-      },
-    );
+    this.request<
+      PrivateMessagesSendPmCreateData,
+      PrivateMessagesSendPmCreateError
+    >({
+      path: `/api-frontend/PrivateMessages/SendPM`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      format: "json",
+      ...params,
+    });
   /**
    * No description
    *
    * @tags PrivateMessages
-   * @name GetPrivateMessagesViewPm
+   * @name PrivateMessagesViewPmDetail
    * @request GET:/api-frontend/PrivateMessages/ViewPM/{privateMessageId}
    * @secure
-   * @response `200` `GetPrivateMessagesViewPmData` OK
+   * @response `200` `PrivateMessagesViewPmDetailData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getPrivateMessagesViewPm = (
+  privateMessagesViewPmDetail = (
     privateMessageId: number,
     params: RequestParams = {},
   ) =>
-    this.request<GetPrivateMessagesViewPmData, GetPrivateMessagesViewPmError>({
+    this.request<
+      PrivateMessagesViewPmDetailData,
+      PrivateMessagesViewPmDetailError
+    >({
       path: `/api-frontend/PrivateMessages/ViewPM/${privateMessageId}`,
       method: "GET",
       secure: true,
@@ -214,20 +221,20 @@ export class PrivateMessages<
    * No description
    *
    * @tags PrivateMessages
-   * @name DeletePrivateMessagesDeletePm
+   * @name PrivateMessagesDeletePmDelete
    * @request DELETE:/api-frontend/PrivateMessages/DeletePM/{privateMessageId}
    * @secure
-   * @response `200` `DeletePrivateMessagesDeletePmData` OK
+   * @response `200` `PrivateMessagesDeletePmDeleteData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  deletePrivateMessagesDeletePm = (
+  privateMessagesDeletePmDelete = (
     privateMessageId: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      DeletePrivateMessagesDeletePmData,
-      DeletePrivateMessagesDeletePmError
+      PrivateMessagesDeletePmDeleteData,
+      PrivateMessagesDeletePmDeleteError
     >({
       path: `/api-frontend/PrivateMessages/DeletePM/${privateMessageId}`,
       method: "DELETE",

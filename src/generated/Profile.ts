@@ -11,9 +11,9 @@
  */
 
 import {
-  GetProfileIndexData,
-  GetProfileIndexError,
-  GetProfileIndexParams,
+  ProfileIndexListData,
+  ProfileIndexListError,
+  ProfileIndexListParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -24,19 +24,19 @@ export class Profile<
    * No description
    *
    * @tags Profile
-   * @name GetProfileIndex
+   * @name ProfileIndexList
    * @request GET:/api-frontend/Profile/Index
    * @secure
-   * @response `200` `GetProfileIndexData` OK
+   * @response `200` `ProfileIndexListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getProfileIndex = (
-    query: GetProfileIndexParams,
+  profileIndexList = (
+    query: ProfileIndexListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetProfileIndexData, GetProfileIndexError>({
+    this.request<ProfileIndexListData, ProfileIndexListError>({
       path: `/api-frontend/Profile/Index`,
       method: "GET",
       query: query,

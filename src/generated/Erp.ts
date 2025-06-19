@@ -11,10 +11,10 @@
  */
 
 import {
-  GetErpGetApiVersionData,
-  PostErpProductBaseData,
-  PostErpProductBaseError,
-  PostErpProductBasePayload,
+  ErpGetApiVersionListData,
+  ErpProductBaseCreateData,
+  ErpProductBaseCreateError,
+  ErpProductBaseCreatePayload,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -25,18 +25,18 @@ export class Erp<
    * No description
    *
    * @tags ERP
-   * @name PostErpProductBase
+   * @name ErpProductBaseCreate
    * @request POST:/api-frontend/ERP/ProductBase
    * @secure
-   * @response `200` `PostErpProductBaseData` OK
+   * @response `200` `ErpProductBaseCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postErpProductBase = (
-    data: PostErpProductBasePayload,
+  erpProductBaseCreate = (
+    data: ErpProductBaseCreatePayload,
     params: RequestParams = {},
   ) =>
-    this.request<PostErpProductBaseData, PostErpProductBaseError>({
+    this.request<ErpProductBaseCreateData, ErpProductBaseCreateError>({
       path: `/api-frontend/ERP/ProductBase`,
       method: "POST",
       body: data,
@@ -49,13 +49,13 @@ export class Erp<
    * No description
    *
    * @tags ERP
-   * @name GetErpGetApiVersion
+   * @name ErpGetApiVersionList
    * @request GET:/api-frontend/ERP/GetApiVersion
    * @secure
-   * @response `200` `GetErpGetApiVersionData` OK
+   * @response `200` `ErpGetApiVersionListData` OK
    */
-  getErpGetApiVersion = (params: RequestParams = {}) =>
-    this.request<GetErpGetApiVersionData, any>({
+  erpGetApiVersionList = (params: RequestParams = {}) =>
+    this.request<ErpGetApiVersionListData, any>({
       path: `/api-frontend/ERP/GetApiVersion`,
       method: "GET",
       secure: true,

@@ -11,10 +11,10 @@
  */
 
 import {
-  GetTopicGetTopicDetailsBySystemNameData,
-  GetTopicGetTopicDetailsBySystemNameError,
-  GetTopicGetTopicDetailsData,
-  GetTopicGetTopicDetailsError,
+  TopicGetTopicDetailsBySystemNameDetailData,
+  TopicGetTopicDetailsBySystemNameDetailError,
+  TopicGetTopicDetailsDetailData,
+  TopicGetTopicDetailsDetailError,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -25,17 +25,20 @@ export class Topic<
    * No description
    *
    * @tags Topic
-   * @name GetTopicGetTopicDetails
+   * @name TopicGetTopicDetailsDetail
    * @summary Gets a topic details
    * @request GET:/api-frontend/Topic/GetTopicDetails/{id}
    * @secure
-   * @response `200` `GetTopicGetTopicDetailsData` OK
+   * @response `200` `TopicGetTopicDetailsDetailData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getTopicGetTopicDetails = (id: number, params: RequestParams = {}) =>
-    this.request<GetTopicGetTopicDetailsData, GetTopicGetTopicDetailsError>({
+  topicGetTopicDetailsDetail = (id: number, params: RequestParams = {}) =>
+    this.request<
+      TopicGetTopicDetailsDetailData,
+      TopicGetTopicDetailsDetailError
+    >({
       path: `/api-frontend/Topic/GetTopicDetails/${id}`,
       method: "GET",
       secure: true,
@@ -46,22 +49,22 @@ export class Topic<
    * No description
    *
    * @tags Topic
-   * @name GetTopicGetTopicDetailsBySystemName
+   * @name TopicGetTopicDetailsBySystemNameDetail
    * @summary Gets a topic details by system name
    * @request GET:/api-frontend/Topic/GetTopicDetailsBySystemName/{systemName}
    * @secure
-   * @response `200` `GetTopicGetTopicDetailsBySystemNameData` OK
+   * @response `200` `TopicGetTopicDetailsBySystemNameDetailData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getTopicGetTopicDetailsBySystemName = (
+  topicGetTopicDetailsBySystemNameDetail = (
     systemName: string,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetTopicGetTopicDetailsBySystemNameData,
-      GetTopicGetTopicDetailsBySystemNameError
+      TopicGetTopicDetailsBySystemNameDetailData,
+      TopicGetTopicDetailsBySystemNameDetailError
     >({
       path: `/api-frontend/Topic/GetTopicDetailsBySystemName/${systemName}`,
       method: "GET",

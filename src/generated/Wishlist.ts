@@ -11,21 +11,21 @@
  */
 
 import {
-  GetWishlistEmailWishlistData,
-  GetWishlistEmailWishlistError,
-  GetWishlistWishlistData,
-  GetWishlistWishlistError,
-  GetWishlistWishlistParams,
-  PostWishlistEmailWishlistSendData,
-  PostWishlistEmailWishlistSendError,
-  PostWishlistUpdateWishlistData,
-  PostWishlistUpdateWishlistError,
-  PostWishlistUpdateWishlistPayload,
-  PutWishlistAddItemsToCartFromWishlistData,
-  PutWishlistAddItemsToCartFromWishlistError,
-  PutWishlistAddItemsToCartFromWishlistParams,
-  PutWishlistAddItemsToCartFromWishlistPayload,
+  WishlistAddItemsToCartFromWishlistUpdateData,
+  WishlistAddItemsToCartFromWishlistUpdateError,
+  WishlistAddItemsToCartFromWishlistUpdateParams,
+  WishlistAddItemsToCartFromWishlistUpdatePayload,
   WishlistEmailAFriendModelDto,
+  WishlistEmailWishlistListData,
+  WishlistEmailWishlistListError,
+  WishlistEmailWishlistSendCreateData,
+  WishlistEmailWishlistSendCreateError,
+  WishlistUpdateWishlistCreateData,
+  WishlistUpdateWishlistCreateError,
+  WishlistUpdateWishlistCreatePayload,
+  WishlistWishlistListData,
+  WishlistWishlistListError,
+  WishlistWishlistListParams,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -36,18 +36,18 @@ export class Wishlist<
    * No description
    *
    * @tags Wishlist
-   * @name GetWishlistWishlist
+   * @name WishlistWishlistList
    * @request GET:/api-frontend/Wishlist/Wishlist
    * @secure
-   * @response `200` `GetWishlistWishlistData` OK
+   * @response `200` `WishlistWishlistListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getWishlistWishlist = (
-    query: GetWishlistWishlistParams,
+  wishlistWishlistList = (
+    query: WishlistWishlistListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetWishlistWishlistData, GetWishlistWishlistError>({
+    this.request<WishlistWishlistListData, WishlistWishlistListError>({
       path: `/api-frontend/Wishlist/Wishlist`,
       method: "GET",
       query: query,
@@ -59,20 +59,20 @@ export class Wishlist<
    * No description
    *
    * @tags Wishlist
-   * @name PostWishlistUpdateWishlist
+   * @name WishlistUpdateWishlistCreate
    * @request POST:/api-frontend/Wishlist/UpdateWishlist
    * @secure
-   * @response `200` `PostWishlistUpdateWishlistData` OK
+   * @response `200` `WishlistUpdateWishlistCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postWishlistUpdateWishlist = (
-    data: PostWishlistUpdateWishlistPayload,
+  wishlistUpdateWishlistCreate = (
+    data: WishlistUpdateWishlistCreatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostWishlistUpdateWishlistData,
-      PostWishlistUpdateWishlistError
+      WishlistUpdateWishlistCreateData,
+      WishlistUpdateWishlistCreateError
     >({
       path: `/api-frontend/Wishlist/UpdateWishlist`,
       method: "POST",
@@ -86,21 +86,21 @@ export class Wishlist<
    * No description
    *
    * @tags Wishlist
-   * @name PutWishlistAddItemsToCartFromWishlist
+   * @name WishlistAddItemsToCartFromWishlistUpdate
    * @request PUT:/api-frontend/Wishlist/AddItemsToCartFromWishlist
    * @secure
-   * @response `200` `PutWishlistAddItemsToCartFromWishlistData` OK
+   * @response `200` `WishlistAddItemsToCartFromWishlistUpdateData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  putWishlistAddItemsToCartFromWishlist = (
-    query: PutWishlistAddItemsToCartFromWishlistParams,
-    data: PutWishlistAddItemsToCartFromWishlistPayload,
+  wishlistAddItemsToCartFromWishlistUpdate = (
+    query: WishlistAddItemsToCartFromWishlistUpdateParams,
+    data: WishlistAddItemsToCartFromWishlistUpdatePayload,
     params: RequestParams = {},
   ) =>
     this.request<
-      PutWishlistAddItemsToCartFromWishlistData,
-      PutWishlistAddItemsToCartFromWishlistError
+      WishlistAddItemsToCartFromWishlistUpdateData,
+      WishlistAddItemsToCartFromWishlistUpdateError
     >({
       path: `/api-frontend/Wishlist/AddItemsToCartFromWishlist`,
       method: "PUT",
@@ -115,39 +115,41 @@ export class Wishlist<
    * No description
    *
    * @tags Wishlist
-   * @name GetWishlistEmailWishlist
+   * @name WishlistEmailWishlistList
    * @request GET:/api-frontend/Wishlist/EmailWishlist
    * @secure
-   * @response `200` `GetWishlistEmailWishlistData` OK
+   * @response `200` `WishlistEmailWishlistListData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getWishlistEmailWishlist = (params: RequestParams = {}) =>
-    this.request<GetWishlistEmailWishlistData, GetWishlistEmailWishlistError>({
-      path: `/api-frontend/Wishlist/EmailWishlist`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  wishlistEmailWishlistList = (params: RequestParams = {}) =>
+    this.request<WishlistEmailWishlistListData, WishlistEmailWishlistListError>(
+      {
+        path: `/api-frontend/Wishlist/EmailWishlist`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Wishlist
-   * @name PostWishlistEmailWishlistSend
+   * @name WishlistEmailWishlistSendCreate
    * @request POST:/api-frontend/Wishlist/EmailWishlistSend
    * @secure
-   * @response `200` `PostWishlistEmailWishlistSendData` OK
+   * @response `200` `WishlistEmailWishlistSendCreateData` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postWishlistEmailWishlistSend = (
+  wishlistEmailWishlistSendCreate = (
     data: WishlistEmailAFriendModelDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostWishlistEmailWishlistSendData,
-      PostWishlistEmailWishlistSendError
+      WishlistEmailWishlistSendCreateData,
+      WishlistEmailWishlistSendCreateError
     >({
       path: `/api-frontend/Wishlist/EmailWishlistSend`,
       method: "POST",

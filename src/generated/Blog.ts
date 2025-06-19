@@ -11,20 +11,20 @@
  */
 
 import {
+  BlogBlogByMonthCreateData,
+  BlogBlogByMonthCreateError,
+  BlogBlogByTagCreateData,
+  BlogBlogByTagCreateError,
+  BlogBlogCommentAddCreateData,
+  BlogBlogCommentAddCreateError,
+  BlogGetBlogPostDetailData,
+  BlogGetBlogPostDetailError,
+  BlogListCreateData,
+  BlogListCreateError,
+  BlogListRssDetailData,
+  BlogListRssDetailError,
   BlogPagingFilteringModelDto,
   BlogPostModelDto,
-  GetBlogGetBlogPostData,
-  GetBlogGetBlogPostError,
-  GetBlogListRssData,
-  GetBlogListRssError,
-  PostBlogBlogByMonthData,
-  PostBlogBlogByMonthError,
-  PostBlogBlogByTagData,
-  PostBlogBlogByTagError,
-  PostBlogBlogCommentAddData,
-  PostBlogBlogCommentAddError,
-  PostBlogListData,
-  PostBlogListError,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -35,18 +35,18 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name PostBlogList
+   * @name BlogListCreate
    * @request POST:/api-frontend/Blog/List
    * @secure
-   * @response `200` `PostBlogListData` OK
+   * @response `200` `BlogListCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postBlogList = (
+  blogListCreate = (
     data: BlogPagingFilteringModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostBlogListData, PostBlogListError>({
+    this.request<BlogListCreateData, BlogListCreateError>({
       path: `/api-frontend/Blog/List`,
       method: "POST",
       body: data,
@@ -59,18 +59,18 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name PostBlogBlogByTag
+   * @name BlogBlogByTagCreate
    * @request POST:/api-frontend/Blog/BlogByTag
    * @secure
-   * @response `200` `PostBlogBlogByTagData` OK
+   * @response `200` `BlogBlogByTagCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postBlogBlogByTag = (
+  blogBlogByTagCreate = (
     data: BlogPagingFilteringModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostBlogBlogByTagData, PostBlogBlogByTagError>({
+    this.request<BlogBlogByTagCreateData, BlogBlogByTagCreateError>({
       path: `/api-frontend/Blog/BlogByTag`,
       method: "POST",
       body: data,
@@ -83,18 +83,18 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name PostBlogBlogByMonth
+   * @name BlogBlogByMonthCreate
    * @request POST:/api-frontend/Blog/BlogByMonth
    * @secure
-   * @response `200` `PostBlogBlogByMonthData` OK
+   * @response `200` `BlogBlogByMonthCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postBlogBlogByMonth = (
+  blogBlogByMonthCreate = (
     data: BlogPagingFilteringModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostBlogBlogByMonthData, PostBlogBlogByMonthError>({
+    this.request<BlogBlogByMonthCreateData, BlogBlogByMonthCreateError>({
       path: `/api-frontend/Blog/BlogByMonth`,
       method: "POST",
       body: data,
@@ -107,15 +107,15 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name GetBlogListRss
+   * @name BlogListRssDetail
    * @request GET:/api-frontend/Blog/ListRss/{languageId}
    * @secure
-   * @response `200` `GetBlogListRssData` OK
+   * @response `200` `BlogListRssDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getBlogListRss = (languageId: number, params: RequestParams = {}) =>
-    this.request<GetBlogListRssData, GetBlogListRssError>({
+  blogListRssDetail = (languageId: number, params: RequestParams = {}) =>
+    this.request<BlogListRssDetailData, BlogListRssDetailError>({
       path: `/api-frontend/Blog/ListRss/${languageId}`,
       method: "GET",
       secure: true,
@@ -126,16 +126,16 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name GetBlogGetBlogPost
+   * @name BlogGetBlogPostDetail
    * @request GET:/api-frontend/Blog/GetBlogPost/{blogPostId}
    * @secure
-   * @response `200` `GetBlogGetBlogPostData` OK
+   * @response `200` `BlogGetBlogPostDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getBlogGetBlogPost = (blogPostId: number, params: RequestParams = {}) =>
-    this.request<GetBlogGetBlogPostData, GetBlogGetBlogPostError>({
+  blogGetBlogPostDetail = (blogPostId: number, params: RequestParams = {}) =>
+    this.request<BlogGetBlogPostDetailData, BlogGetBlogPostDetailError>({
       path: `/api-frontend/Blog/GetBlogPost/${blogPostId}`,
       method: "GET",
       secure: true,
@@ -146,20 +146,20 @@ export class Blog<
    * No description
    *
    * @tags Blog
-   * @name PostBlogBlogCommentAdd
+   * @name BlogBlogCommentAddCreate
    * @request POST:/api-frontend/Blog/BlogCommentAdd/{blogPostId}
    * @secure
-   * @response `200` `PostBlogBlogCommentAddData` OK
+   * @response `200` `BlogBlogCommentAddCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postBlogBlogCommentAdd = (
+  blogBlogCommentAddCreate = (
     blogPostId: number,
     data: BlogPostModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostBlogBlogCommentAddData, PostBlogBlogCommentAddError>({
+    this.request<BlogBlogCommentAddCreateData, BlogBlogCommentAddCreateError>({
       path: `/api-frontend/Blog/BlogCommentAdd/${blogPostId}`,
       method: "POST",
       body: data,

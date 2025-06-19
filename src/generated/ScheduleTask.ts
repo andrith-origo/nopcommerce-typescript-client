@@ -11,9 +11,9 @@
  */
 
 import {
-  GetScheduleTaskRunTaskData,
-  GetScheduleTaskRunTaskError,
-  GetScheduleTaskRunTaskParams,
+  ScheduleTaskRunTaskListData,
+  ScheduleTaskRunTaskListError,
+  ScheduleTaskRunTaskListParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -24,19 +24,19 @@ export class ScheduleTask<
    * No description
    *
    * @tags ScheduleTask
-   * @name GetScheduleTaskRunTask
+   * @name ScheduleTaskRunTaskList
    * @summary Run task
    * @request GET:/api-frontend/ScheduleTask/RunTask
    * @secure
-   * @response `200` `GetScheduleTaskRunTaskData` OK
+   * @response `200` `ScheduleTaskRunTaskListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getScheduleTaskRunTask = (
-    query: GetScheduleTaskRunTaskParams,
+  scheduleTaskRunTaskList = (
+    query: ScheduleTaskRunTaskListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetScheduleTaskRunTaskData, GetScheduleTaskRunTaskError>({
+    this.request<ScheduleTaskRunTaskListData, ScheduleTaskRunTaskListError>({
       path: `/api-frontend/ScheduleTask/RunTask`,
       method: "GET",
       query: query,

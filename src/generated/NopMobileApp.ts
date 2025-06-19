@@ -11,10 +11,10 @@
  */
 
 import {
-  GetNopMobileAppSettingsData,
-  GetNopMobileAppSettingsError,
-  GetNopMobileAppSliderDataData,
-  GetNopMobileAppSliderDataError,
+  NopMobileAppSettingsListData,
+  NopMobileAppSettingsListError,
+  NopMobileAppSliderDataListData,
+  NopMobileAppSliderDataListError,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -25,15 +25,15 @@ export class NopMobileApp<
    * No description
    *
    * @tags NopMobileApp
-   * @name GetNopMobileAppSettings
+   * @name NopMobileAppSettingsList
    * @summary Get all settings
    * @request GET:/api-frontend/NopMobileApp/Settings
    * @secure
-   * @response `200` `GetNopMobileAppSettingsData` OK
+   * @response `200` `NopMobileAppSettingsListData` OK
    * @response `401` `string` Unauthorized
    */
-  getNopMobileAppSettings = (params: RequestParams = {}) =>
-    this.request<GetNopMobileAppSettingsData, GetNopMobileAppSettingsError>({
+  nopMobileAppSettingsList = (params: RequestParams = {}) =>
+    this.request<NopMobileAppSettingsListData, NopMobileAppSettingsListError>({
       path: `/api-frontend/NopMobileApp/Settings`,
       method: "GET",
       secure: true,
@@ -44,20 +44,21 @@ export class NopMobileApp<
    * No description
    *
    * @tags NopMobileApp
-   * @name GetNopMobileAppSliderData
+   * @name NopMobileAppSliderDataList
    * @request GET:/api-frontend/NopMobileApp/SliderData
    * @secure
-   * @response `200` `GetNopMobileAppSliderDataData` OK
+   * @response `200` `NopMobileAppSliderDataListData` OK
    * @response `401` `string` Unauthorized
    */
-  getNopMobileAppSliderData = (params: RequestParams = {}) =>
-    this.request<GetNopMobileAppSliderDataData, GetNopMobileAppSliderDataError>(
-      {
-        path: `/api-frontend/NopMobileApp/SliderData`,
-        method: "GET",
-        secure: true,
-        format: "json",
-        ...params,
-      },
-    );
+  nopMobileAppSliderDataList = (params: RequestParams = {}) =>
+    this.request<
+      NopMobileAppSliderDataListData,
+      NopMobileAppSliderDataListError
+    >({
+      path: `/api-frontend/NopMobileApp/SliderData`,
+      method: "GET",
+      secure: true,
+      format: "json",
+      ...params,
+    });
 }

@@ -13,86 +13,86 @@
 import {
   ChangePasswordModelDto,
   CheckGiftCardBalanceModelDto,
+  CustomerAccountActivationCreateData,
+  CustomerAccountActivationCreateError,
+  CustomerAccountActivationCreateParams,
+  CustomerAddressAddCreateData,
+  CustomerAddressAddCreateError,
+  CustomerAddressAddListData,
+  CustomerAddressAddListError,
+  CustomerAddressDeleteDeleteData,
+  CustomerAddressDeleteDeleteError,
+  CustomerAddressEditDetailData,
+  CustomerAddressEditDetailError,
   CustomerAddressEditModelDtoBaseModelDtoRequest,
+  CustomerAddressEditUpdateData,
+  CustomerAddressEditUpdateError,
+  CustomerAddressesListData,
+  CustomerAddressesListError,
+  CustomerAvatarListData,
+  CustomerAvatarListError,
+  CustomerChangePasswordCreateData,
+  CustomerChangePasswordCreateError,
+  CustomerChangePasswordListData,
+  CustomerChangePasswordListError,
+  CustomerCheckBalanceCreateData,
+  CustomerCheckBalanceCreateError,
+  CustomerCheckGiftCardBalanceListData,
+  CustomerCheckGiftCardBalanceListError,
+  CustomerCheckUsernameAvailabilityListData,
+  CustomerCheckUsernameAvailabilityListError,
+  CustomerCheckUsernameAvailabilityListParams,
+  CustomerDownloadableProductsListData,
+  CustomerDownloadableProductsListError,
+  CustomerEmailRevalidationCreateData,
+  CustomerEmailRevalidationCreateError,
+  CustomerEmailRevalidationCreateParams,
+  CustomerGdprToolsDeleteDeleteData,
+  CustomerGdprToolsDeleteDeleteError,
+  CustomerGdprToolsExportListData,
+  CustomerGdprToolsExportListError,
+  CustomerGdprToolsListData,
+  CustomerGdprToolsListError,
+  CustomerInfoCreateData,
+  CustomerInfoCreateError,
+  CustomerInfoListData,
+  CustomerInfoListError,
   CustomerInfoModelDtoBaseModelDtoRequest,
-  DeleteCustomerAddressDeleteData,
-  DeleteCustomerAddressDeleteError,
-  DeleteCustomerGdprToolsDeleteData,
-  DeleteCustomerGdprToolsDeleteError,
-  DeleteCustomerRemoveAvatarData,
-  DeleteCustomerRemoveAvatarError,
-  DeleteCustomerRemoveExternalAssociationData,
-  DeleteCustomerRemoveExternalAssociationError,
-  GetCustomerAddressAddData,
-  GetCustomerAddressAddError,
-  GetCustomerAddressEditData,
-  GetCustomerAddressEditError,
-  GetCustomerAddressesData,
-  GetCustomerAddressesError,
-  GetCustomerAvatarData,
-  GetCustomerAvatarError,
-  GetCustomerChangePasswordData,
-  GetCustomerChangePasswordError,
-  GetCustomerCheckGiftCardBalanceData,
-  GetCustomerCheckGiftCardBalanceError,
-  GetCustomerCheckUsernameAvailabilityData,
-  GetCustomerCheckUsernameAvailabilityError,
-  GetCustomerCheckUsernameAvailabilityParams,
-  GetCustomerDownloadableProductsData,
-  GetCustomerDownloadableProductsError,
-  GetCustomerGdprToolsData,
-  GetCustomerGdprToolsError,
-  GetCustomerGdprToolsExportData,
-  GetCustomerGdprToolsExportError,
-  GetCustomerInfoData,
-  GetCustomerInfoError,
-  GetCustomerLogoutData,
-  GetCustomerLogoutError,
-  GetCustomerPasswordRecoveryData,
-  GetCustomerPasswordRecoveryError,
-  GetCustomerRegisterData,
-  GetCustomerRegisterError,
-  GetCustomerUserAgreementData,
-  GetCustomerUserAgreementError,
-  GetCustomerUserAgreementParams,
+  CustomerLoginCreateData,
+  CustomerLoginCreateError,
+  CustomerLogoutListData,
+  CustomerLogoutListError,
+  CustomerPasswordRecoveryConfirmCreateData,
+  CustomerPasswordRecoveryConfirmCreateError,
+  CustomerPasswordRecoveryConfirmCreateParams,
+  CustomerPasswordRecoveryConfirmPostCreateData,
+  CustomerPasswordRecoveryConfirmPostCreateError,
+  CustomerPasswordRecoveryConfirmPostCreateParams,
+  CustomerPasswordRecoveryListData,
+  CustomerPasswordRecoveryListError,
+  CustomerPasswordRecoverySendCreateData,
+  CustomerPasswordRecoverySendCreateError,
+  CustomerRegisterCreateData,
+  CustomerRegisterCreateError,
+  CustomerRegisterListData,
+  CustomerRegisterListError,
+  CustomerRegisterResultCreateData,
+  CustomerRegisterResultCreateError,
+  CustomerRegisterResultCreateParams,
+  CustomerRemoveAvatarDeleteData,
+  CustomerRemoveAvatarDeleteError,
+  CustomerRemoveExternalAssociationDeleteData,
+  CustomerRemoveExternalAssociationDeleteError,
+  CustomerUploadAvatarCreateData,
+  CustomerUploadAvatarCreateError,
+  CustomerUploadAvatarCreateParams,
+  CustomerUploadAvatarCreatePayload,
+  CustomerUserAgreementListData,
+  CustomerUserAgreementListError,
+  CustomerUserAgreementListParams,
   LoginCustomerRequest,
   PasswordRecoveryConfirmModelDto,
   PasswordRecoveryModelDto,
-  PostCustomerAccountActivationData,
-  PostCustomerAccountActivationError,
-  PostCustomerAccountActivationParams,
-  PostCustomerAddressAddData,
-  PostCustomerAddressAddError,
-  PostCustomerChangePasswordData,
-  PostCustomerChangePasswordError,
-  PostCustomerCheckBalanceData,
-  PostCustomerCheckBalanceError,
-  PostCustomerEmailRevalidationData,
-  PostCustomerEmailRevalidationError,
-  PostCustomerEmailRevalidationParams,
-  PostCustomerInfoData,
-  PostCustomerInfoError,
-  PostCustomerLoginData,
-  PostCustomerLoginError,
-  PostCustomerPasswordRecoveryConfirmData,
-  PostCustomerPasswordRecoveryConfirmError,
-  PostCustomerPasswordRecoveryConfirmParams,
-  PostCustomerPasswordRecoveryConfirmPostData,
-  PostCustomerPasswordRecoveryConfirmPostError,
-  PostCustomerPasswordRecoveryConfirmPostParams,
-  PostCustomerPasswordRecoverySendData,
-  PostCustomerPasswordRecoverySendError,
-  PostCustomerRegisterData,
-  PostCustomerRegisterError,
-  PostCustomerRegisterResultData,
-  PostCustomerRegisterResultError,
-  PostCustomerRegisterResultParams,
-  PostCustomerUploadAvatarData,
-  PostCustomerUploadAvatarError,
-  PostCustomerUploadAvatarParams,
-  PostCustomerUploadAvatarPayload,
-  PutCustomerAddressEditData,
-  PutCustomerAddressEditError,
   RegisterModelDtoBaseModelDtoRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
@@ -104,19 +104,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerLogin
+   * @name CustomerLoginCreate
    * @summary Login
    * @request POST:/api-frontend/Customer/Login
    * @secure
-   * @response `200` `PostCustomerLoginData` OK
+   * @response `200` `CustomerLoginCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postCustomerLogin = (
+  customerLoginCreate = (
     data: LoginCustomerRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerLoginData, PostCustomerLoginError>({
+    this.request<CustomerLoginCreateData, CustomerLoginCreateError>({
       path: `/api-frontend/Customer/Login`,
       method: "POST",
       body: data,
@@ -129,15 +129,15 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerLogout
+   * @name CustomerLogoutList
    * @summary Logout
    * @request GET:/api-frontend/Customer/Logout
    * @secure
-   * @response `200` `GetCustomerLogoutData` OK
+   * @response `200` `CustomerLogoutListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCustomerLogout = (params: RequestParams = {}) =>
-    this.request<GetCustomerLogoutData, GetCustomerLogoutError>({
+  customerLogoutList = (params: RequestParams = {}) =>
+    this.request<CustomerLogoutListData, CustomerLogoutListError>({
       path: `/api-frontend/Customer/Logout`,
       method: "GET",
       secure: true,
@@ -147,17 +147,17 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerPasswordRecovery
+   * @name CustomerPasswordRecoveryList
    * @summary Prepare the password recovery model
    * @request GET:/api-frontend/Customer/PasswordRecovery
    * @secure
-   * @response `200` `GetCustomerPasswordRecoveryData` OK
+   * @response `200` `CustomerPasswordRecoveryListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCustomerPasswordRecovery = (params: RequestParams = {}) =>
+  customerPasswordRecoveryList = (params: RequestParams = {}) =>
     this.request<
-      GetCustomerPasswordRecoveryData,
-      GetCustomerPasswordRecoveryError
+      CustomerPasswordRecoveryListData,
+      CustomerPasswordRecoveryListError
     >({
       path: `/api-frontend/Customer/PasswordRecovery`,
       method: "GET",
@@ -169,20 +169,20 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerPasswordRecoverySend
+   * @name CustomerPasswordRecoverySendCreate
    * @summary Password recovery send
    * @request POST:/api-frontend/Customer/PasswordRecoverySend
    * @secure
-   * @response `200` `PostCustomerPasswordRecoverySendData` OK
+   * @response `200` `CustomerPasswordRecoverySendCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postCustomerPasswordRecoverySend = (
+  customerPasswordRecoverySendCreate = (
     data: PasswordRecoveryModelDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerPasswordRecoverySendData,
-      PostCustomerPasswordRecoverySendError
+      CustomerPasswordRecoverySendCreateData,
+      CustomerPasswordRecoverySendCreateError
     >({
       path: `/api-frontend/Customer/PasswordRecoverySend`,
       method: "POST",
@@ -196,21 +196,21 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerPasswordRecoveryConfirm
+   * @name CustomerPasswordRecoveryConfirmCreate
    * @summary Password recovery confirm
    * @request POST:/api-frontend/Customer/PasswordRecoveryConfirm
    * @secure
-   * @response `200` `PostCustomerPasswordRecoveryConfirmData` OK
+   * @response `200` `CustomerPasswordRecoveryConfirmCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCustomerPasswordRecoveryConfirm = (
-    query: PostCustomerPasswordRecoveryConfirmParams,
+  customerPasswordRecoveryConfirmCreate = (
+    query: CustomerPasswordRecoveryConfirmCreateParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerPasswordRecoveryConfirmData,
-      PostCustomerPasswordRecoveryConfirmError
+      CustomerPasswordRecoveryConfirmCreateData,
+      CustomerPasswordRecoveryConfirmCreateError
     >({
       path: `/api-frontend/Customer/PasswordRecoveryConfirm`,
       method: "POST",
@@ -223,22 +223,22 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerPasswordRecoveryConfirmPost
+   * @name CustomerPasswordRecoveryConfirmPostCreate
    * @summary Password recovery confirm post
    * @request POST:/api-frontend/Customer/PasswordRecoveryConfirmPOST
    * @secure
-   * @response `200` `PostCustomerPasswordRecoveryConfirmPostData` OK
+   * @response `200` `CustomerPasswordRecoveryConfirmPostCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCustomerPasswordRecoveryConfirmPost = (
-    query: PostCustomerPasswordRecoveryConfirmPostParams,
+  customerPasswordRecoveryConfirmPostCreate = (
+    query: CustomerPasswordRecoveryConfirmPostCreateParams,
     data: PasswordRecoveryConfirmModelDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerPasswordRecoveryConfirmPostData,
-      PostCustomerPasswordRecoveryConfirmPostError
+      CustomerPasswordRecoveryConfirmPostCreateData,
+      CustomerPasswordRecoveryConfirmPostCreateError
     >({
       path: `/api-frontend/Customer/PasswordRecoveryConfirmPOST`,
       method: "POST",
@@ -253,16 +253,16 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerRegister
+   * @name CustomerRegisterList
    * @summary Prepare the customer register model
    * @request GET:/api-frontend/Customer/Register
    * @secure
-   * @response `200` `GetCustomerRegisterData` OK
+   * @response `200` `CustomerRegisterListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerRegister = (params: RequestParams = {}) =>
-    this.request<GetCustomerRegisterData, GetCustomerRegisterError>({
+  customerRegisterList = (params: RequestParams = {}) =>
+    this.request<CustomerRegisterListData, CustomerRegisterListError>({
       path: `/api-frontend/Customer/Register`,
       method: "GET",
       secure: true,
@@ -273,20 +273,20 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerRegister
+   * @name CustomerRegisterCreate
    * @summary Register
    * @request POST:/api-frontend/Customer/Register
    * @secure
-   * @response `200` `PostCustomerRegisterData` OK
+   * @response `200` `CustomerRegisterCreateData` OK
    * @response `400` `(string)[]` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCustomerRegister = (
+  customerRegisterCreate = (
     data: RegisterModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerRegisterData, PostCustomerRegisterError>({
+    this.request<CustomerRegisterCreateData, CustomerRegisterCreateError>({
       path: `/api-frontend/Customer/Register`,
       method: "POST",
       body: data,
@@ -299,20 +299,20 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerRegisterResult
+   * @name CustomerRegisterResultCreate
    * @summary Prepare the register result model
    * @request POST:/api-frontend/Customer/RegisterResult/{resultId}
    * @secure
-   * @response `200` `PostCustomerRegisterResultData` OK
+   * @response `200` `CustomerRegisterResultCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postCustomerRegisterResult = (
-    { resultId, ...query }: PostCustomerRegisterResultParams,
+  customerRegisterResultCreate = (
+    { resultId, ...query }: CustomerRegisterResultCreateParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerRegisterResultData,
-      PostCustomerRegisterResultError
+      CustomerRegisterResultCreateData,
+      CustomerRegisterResultCreateError
     >({
       path: `/api-frontend/Customer/RegisterResult/${resultId}`,
       method: "POST",
@@ -325,20 +325,20 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerCheckUsernameAvailability
+   * @name CustomerCheckUsernameAvailabilityList
    * @summary Check Username availability
    * @request GET:/api-frontend/Customer/CheckUsernameAvailability
    * @secure
-   * @response `200` `GetCustomerCheckUsernameAvailabilityData` OK
+   * @response `200` `CustomerCheckUsernameAvailabilityListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCustomerCheckUsernameAvailability = (
-    query: GetCustomerCheckUsernameAvailabilityParams,
+  customerCheckUsernameAvailabilityList = (
+    query: CustomerCheckUsernameAvailabilityListParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetCustomerCheckUsernameAvailabilityData,
-      GetCustomerCheckUsernameAvailabilityError
+      CustomerCheckUsernameAvailabilityListData,
+      CustomerCheckUsernameAvailabilityListError
     >({
       path: `/api-frontend/Customer/CheckUsernameAvailability`,
       method: "GET",
@@ -351,22 +351,22 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerAccountActivation
+   * @name CustomerAccountActivationCreate
    * @summary Account activation
    * @request POST:/api-frontend/Customer/AccountActivation
    * @secure
-   * @response `200` `PostCustomerAccountActivationData` OK
+   * @response `200` `CustomerAccountActivationCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCustomerAccountActivation = (
-    query: PostCustomerAccountActivationParams,
+  customerAccountActivationCreate = (
+    query: CustomerAccountActivationCreateParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerAccountActivationData,
-      PostCustomerAccountActivationError
+      CustomerAccountActivationCreateData,
+      CustomerAccountActivationCreateError
     >({
       path: `/api-frontend/Customer/AccountActivation`,
       method: "POST",
@@ -379,16 +379,16 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerInfo
+   * @name CustomerInfoList
    * @summary Prepare the customer info model
    * @request GET:/api-frontend/Customer/Info
    * @secure
-   * @response `200` `GetCustomerInfoData` OK
+   * @response `200` `CustomerInfoListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getCustomerInfo = (params: RequestParams = {}) =>
-    this.request<GetCustomerInfoData, GetCustomerInfoError>({
+  customerInfoList = (params: RequestParams = {}) =>
+    this.request<CustomerInfoListData, CustomerInfoListError>({
       path: `/api-frontend/Customer/Info`,
       method: "GET",
       secure: true,
@@ -399,19 +399,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerInfo
+   * @name CustomerInfoCreate
    * @summary Customer info
    * @request POST:/api-frontend/Customer/Info
    * @secure
-   * @response `200` `PostCustomerInfoData` OK
+   * @response `200` `CustomerInfoCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postCustomerInfo = (
+  customerInfoCreate = (
     data: CustomerInfoModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerInfoData, PostCustomerInfoError>({
+    this.request<CustomerInfoCreateData, CustomerInfoCreateError>({
       path: `/api-frontend/Customer/Info`,
       method: "POST",
       body: data,
@@ -424,21 +424,21 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name DeleteCustomerRemoveExternalAssociation
+   * @name CustomerRemoveExternalAssociationDelete
    * @summary Delete the external authentication record
    * @request DELETE:/api-frontend/Customer/RemoveExternalAssociation/{id}
    * @secure
-   * @response `200` `DeleteCustomerRemoveExternalAssociationData` OK
+   * @response `200` `CustomerRemoveExternalAssociationDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  deleteCustomerRemoveExternalAssociation = (
+  customerRemoveExternalAssociationDelete = (
     id: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      DeleteCustomerRemoveExternalAssociationData,
-      DeleteCustomerRemoveExternalAssociationError
+      CustomerRemoveExternalAssociationDeleteData,
+      CustomerRemoveExternalAssociationDeleteError
     >({
       path: `/api-frontend/Customer/RemoveExternalAssociation/${id}`,
       method: "DELETE",
@@ -450,22 +450,22 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerEmailRevalidation
+   * @name CustomerEmailRevalidationCreate
    * @summary Email revalidation
    * @request POST:/api-frontend/Customer/EmailRevalidation
    * @secure
-   * @response `200` `PostCustomerEmailRevalidationData` OK
+   * @response `200` `CustomerEmailRevalidationCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCustomerEmailRevalidation = (
-    query: PostCustomerEmailRevalidationParams,
+  customerEmailRevalidationCreate = (
+    query: CustomerEmailRevalidationCreateParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerEmailRevalidationData,
-      PostCustomerEmailRevalidationError
+      CustomerEmailRevalidationCreateData,
+      CustomerEmailRevalidationCreateError
     >({
       path: `/api-frontend/Customer/EmailRevalidation`,
       method: "POST",
@@ -478,16 +478,16 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerAddresses
+   * @name CustomerAddressesList
    * @summary Prepare the customer address list model
    * @request GET:/api-frontend/Customer/Addresses
    * @secure
-   * @response `200` `GetCustomerAddressesData` OK
+   * @response `200` `CustomerAddressesListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getCustomerAddresses = (params: RequestParams = {}) =>
-    this.request<GetCustomerAddressesData, GetCustomerAddressesError>({
+  customerAddressesList = (params: RequestParams = {}) =>
+    this.request<CustomerAddressesListData, CustomerAddressesListError>({
       path: `/api-frontend/Customer/Addresses`,
       method: "GET",
       secure: true,
@@ -498,21 +498,21 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name DeleteCustomerAddressDelete
+   * @name CustomerAddressDeleteDelete
    * @summary Address delete
    * @request DELETE:/api-frontend/Customer/AddressDelete/{addressId}
    * @secure
-   * @response `200` `DeleteCustomerAddressDeleteData` OK
+   * @response `200` `CustomerAddressDeleteDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  deleteCustomerAddressDelete = (
+  customerAddressDeleteDelete = (
     addressId: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      DeleteCustomerAddressDeleteData,
-      DeleteCustomerAddressDeleteError
+      CustomerAddressDeleteDeleteData,
+      CustomerAddressDeleteDeleteError
     >({
       path: `/api-frontend/Customer/AddressDelete/${addressId}`,
       method: "DELETE",
@@ -524,16 +524,16 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerAddressAdd
+   * @name CustomerAddressAddList
    * @summary Prepare address model
    * @request GET:/api-frontend/Customer/AddressAdd
    * @secure
-   * @response `200` `GetCustomerAddressAddData` OK
+   * @response `200` `CustomerAddressAddListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getCustomerAddressAdd = (params: RequestParams = {}) =>
-    this.request<GetCustomerAddressAddData, GetCustomerAddressAddError>({
+  customerAddressAddList = (params: RequestParams = {}) =>
+    this.request<CustomerAddressAddListData, CustomerAddressAddListError>({
       path: `/api-frontend/Customer/AddressAdd`,
       method: "GET",
       secure: true,
@@ -544,19 +544,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerAddressAdd
+   * @name CustomerAddressAddCreate
    * @summary Address add
    * @request POST:/api-frontend/Customer/AddressAdd
    * @secure
-   * @response `200` `PostCustomerAddressAddData` OK
+   * @response `200` `CustomerAddressAddCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postCustomerAddressAdd = (
+  customerAddressAddCreate = (
     data: CustomerAddressEditModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerAddressAddData, PostCustomerAddressAddError>({
+    this.request<CustomerAddressAddCreateData, CustomerAddressAddCreateError>({
       path: `/api-frontend/Customer/AddressAdd`,
       method: "POST",
       body: data,
@@ -569,66 +569,70 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerAddressEdit
+   * @name CustomerAddressEditDetail
    * @summary Prepare address model
    * @request GET:/api-frontend/Customer/AddressEdit/{addressId}
    * @secure
-   * @response `200` `GetCustomerAddressEditData` OK
+   * @response `200` `CustomerAddressEditDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerAddressEdit = (addressId: number, params: RequestParams = {}) =>
-    this.request<GetCustomerAddressEditData, GetCustomerAddressEditError>({
-      path: `/api-frontend/Customer/AddressEdit/${addressId}`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  customerAddressEditDetail = (addressId: number, params: RequestParams = {}) =>
+    this.request<CustomerAddressEditDetailData, CustomerAddressEditDetailError>(
+      {
+        path: `/api-frontend/Customer/AddressEdit/${addressId}`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Customer
-   * @name PutCustomerAddressEdit
+   * @name CustomerAddressEditUpdate
    * @summary Update address
    * @request PUT:/api-frontend/Customer/AddressEdit
    * @secure
-   * @response `200` `PutCustomerAddressEditData` OK
+   * @response `200` `CustomerAddressEditUpdateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  putCustomerAddressEdit = (
+  customerAddressEditUpdate = (
     data: CustomerAddressEditModelDtoBaseModelDtoRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PutCustomerAddressEditData, PutCustomerAddressEditError>({
-      path: `/api-frontend/Customer/AddressEdit`,
-      method: "PUT",
-      body: data,
-      secure: true,
-      type: ContentType.Json,
-      format: "json",
-      ...params,
-    });
+    this.request<CustomerAddressEditUpdateData, CustomerAddressEditUpdateError>(
+      {
+        path: `/api-frontend/Customer/AddressEdit`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Customer
-   * @name GetCustomerDownloadableProducts
+   * @name CustomerDownloadableProductsList
    * @summary Prepare the customer downloadable products model
    * @request GET:/api-frontend/Customer/DownloadableProducts
    * @secure
-   * @response `200` `GetCustomerDownloadableProductsData` OK
+   * @response `200` `CustomerDownloadableProductsListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerDownloadableProducts = (params: RequestParams = {}) =>
+  customerDownloadableProductsList = (params: RequestParams = {}) =>
     this.request<
-      GetCustomerDownloadableProductsData,
-      GetCustomerDownloadableProductsError
+      CustomerDownloadableProductsListData,
+      CustomerDownloadableProductsListError
     >({
       path: `/api-frontend/Customer/DownloadableProducts`,
       method: "GET",
@@ -640,43 +644,23 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerUserAgreement
+   * @name CustomerUserAgreementList
    * @summary Prepare the user agreement model
    * @request GET:/api-frontend/Customer/UserAgreement
    * @secure
-   * @response `200` `GetCustomerUserAgreementData` OK
+   * @response `200` `CustomerUserAgreementListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerUserAgreement = (
-    query: GetCustomerUserAgreementParams,
+  customerUserAgreementList = (
+    query: CustomerUserAgreementListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetCustomerUserAgreementData, GetCustomerUserAgreementError>({
-      path: `/api-frontend/Customer/UserAgreement`,
-      method: "GET",
-      query: query,
-      secure: true,
-      format: "json",
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags Customer
-   * @name GetCustomerChangePassword
-   * @summary Prepare the change password model
-   * @request GET:/api-frontend/Customer/ChangePassword
-   * @secure
-   * @response `200` `GetCustomerChangePasswordData` OK
-   * @response `400` `string` Bad Request
-   * @response `401` `string` Unauthorized
-   */
-  getCustomerChangePassword = (params: RequestParams = {}) =>
-    this.request<GetCustomerChangePasswordData, GetCustomerChangePasswordError>(
+    this.request<CustomerUserAgreementListData, CustomerUserAgreementListError>(
       {
-        path: `/api-frontend/Customer/ChangePassword`,
+        path: `/api-frontend/Customer/UserAgreement`,
         method: "GET",
+        query: query,
         secure: true,
         format: "json",
         ...params,
@@ -686,21 +670,44 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerChangePassword
+   * @name CustomerChangePasswordList
+   * @summary Prepare the change password model
+   * @request GET:/api-frontend/Customer/ChangePassword
+   * @secure
+   * @response `200` `CustomerChangePasswordListData` OK
+   * @response `400` `string` Bad Request
+   * @response `401` `string` Unauthorized
+   */
+  customerChangePasswordList = (params: RequestParams = {}) =>
+    this.request<
+      CustomerChangePasswordListData,
+      CustomerChangePasswordListError
+    >({
+      path: `/api-frontend/Customer/ChangePassword`,
+      method: "GET",
+      secure: true,
+      format: "json",
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags Customer
+   * @name CustomerChangePasswordCreate
    * @summary Change password
    * @request POST:/api-frontend/Customer/ChangePassword
    * @secure
-   * @response `200` `PostCustomerChangePasswordData` OK
+   * @response `200` `CustomerChangePasswordCreateData` OK
    * @response `400` `(string)[]` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postCustomerChangePassword = (
+  customerChangePasswordCreate = (
     data: ChangePasswordModelDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCustomerChangePasswordData,
-      PostCustomerChangePasswordError
+      CustomerChangePasswordCreateData,
+      CustomerChangePasswordCreateError
     >({
       path: `/api-frontend/Customer/ChangePassword`,
       method: "POST",
@@ -714,16 +721,16 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerAvatar
+   * @name CustomerAvatarList
    * @summary Prepare the customer avatar model
    * @request GET:/api-frontend/Customer/Avatar
    * @secure
-   * @response `200` `GetCustomerAvatarData` OK
+   * @response `200` `CustomerAvatarListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getCustomerAvatar = (params: RequestParams = {}) =>
-    this.request<GetCustomerAvatarData, GetCustomerAvatarError>({
+  customerAvatarList = (params: RequestParams = {}) =>
+    this.request<CustomerAvatarListData, CustomerAvatarListError>({
       path: `/api-frontend/Customer/Avatar`,
       method: "GET",
       secure: true,
@@ -734,20 +741,23 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerUploadAvatar
+   * @name CustomerUploadAvatarCreate
    * @summary Upload avatar
    * @request POST:/api-frontend/Customer/UploadAvatar
    * @secure
-   * @response `200` `PostCustomerUploadAvatarData` OK
+   * @response `200` `CustomerUploadAvatarCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postCustomerUploadAvatar = (
-    query: PostCustomerUploadAvatarParams,
-    data: PostCustomerUploadAvatarPayload,
+  customerUploadAvatarCreate = (
+    query: CustomerUploadAvatarCreateParams,
+    data: CustomerUploadAvatarCreatePayload,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerUploadAvatarData, PostCustomerUploadAvatarError>({
+    this.request<
+      CustomerUploadAvatarCreateData,
+      CustomerUploadAvatarCreateError
+    >({
       path: `/api-frontend/Customer/UploadAvatar`,
       method: "POST",
       query: query,
@@ -761,19 +771,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name DeleteCustomerRemoveAvatar
+   * @name CustomerRemoveAvatarDelete
    * @summary Remove avatar
    * @request DELETE:/api-frontend/Customer/RemoveAvatar
    * @secure
-   * @response `200` `DeleteCustomerRemoveAvatarData` OK
+   * @response `200` `CustomerRemoveAvatarDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  deleteCustomerRemoveAvatar = (params: RequestParams = {}) =>
+  customerRemoveAvatarDelete = (params: RequestParams = {}) =>
     this.request<
-      DeleteCustomerRemoveAvatarData,
-      DeleteCustomerRemoveAvatarError
+      CustomerRemoveAvatarDeleteData,
+      CustomerRemoveAvatarDeleteError
     >({
       path: `/api-frontend/Customer/RemoveAvatar`,
       method: "DELETE",
@@ -784,17 +794,17 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerGdprTools
+   * @name CustomerGdprToolsList
    * @summary Prepare the GDPR tools model
    * @request GET:/api-frontend/Customer/GdprTools
    * @secure
-   * @response `200` `GetCustomerGdprToolsData` OK
+   * @response `200` `CustomerGdprToolsListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerGdprTools = (params: RequestParams = {}) =>
-    this.request<GetCustomerGdprToolsData, GetCustomerGdprToolsError>({
+  customerGdprToolsList = (params: RequestParams = {}) =>
+    this.request<CustomerGdprToolsListData, CustomerGdprToolsListError>({
       path: `/api-frontend/Customer/GdprTools`,
       method: "GET",
       secure: true,
@@ -805,19 +815,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerGdprToolsExport
+   * @name CustomerGdprToolsExportList
    * @summary Export customer info (GDPR request) to XLSX
    * @request GET:/api-frontend/Customer/GdprToolsExport
    * @secure
-   * @response `200` `GetCustomerGdprToolsExportData` OK
+   * @response `200` `CustomerGdprToolsExportListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerGdprToolsExport = (params: RequestParams = {}) =>
+  customerGdprToolsExportList = (params: RequestParams = {}) =>
     this.request<
-      GetCustomerGdprToolsExportData,
-      GetCustomerGdprToolsExportError
+      CustomerGdprToolsExportListData,
+      CustomerGdprToolsExportListError
     >({
       path: `/api-frontend/Customer/GdprToolsExport`,
       method: "GET",
@@ -829,19 +839,19 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name DeleteCustomerGdprToolsDelete
+   * @name CustomerGdprToolsDeleteDelete
    * @summary Gdpr tools delete
    * @request DELETE:/api-frontend/Customer/GdprToolsDelete
    * @secure
-   * @response `200` `DeleteCustomerGdprToolsDeleteData` OK
+   * @response `200` `CustomerGdprToolsDeleteDeleteData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  deleteCustomerGdprToolsDelete = (params: RequestParams = {}) =>
+  customerGdprToolsDeleteDelete = (params: RequestParams = {}) =>
     this.request<
-      DeleteCustomerGdprToolsDeleteData,
-      DeleteCustomerGdprToolsDeleteError
+      CustomerGdprToolsDeleteDeleteData,
+      CustomerGdprToolsDeleteDeleteError
     >({
       path: `/api-frontend/Customer/GdprToolsDelete`,
       method: "DELETE",
@@ -853,18 +863,18 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name GetCustomerCheckGiftCardBalance
+   * @name CustomerCheckGiftCardBalanceList
    * @summary Prepare the check gift card balance madel
    * @request GET:/api-frontend/Customer/CheckGiftCardBalance
    * @secure
-   * @response `200` `GetCustomerCheckGiftCardBalanceData` OK
+   * @response `200` `CustomerCheckGiftCardBalanceListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCustomerCheckGiftCardBalance = (params: RequestParams = {}) =>
+  customerCheckGiftCardBalanceList = (params: RequestParams = {}) =>
     this.request<
-      GetCustomerCheckGiftCardBalanceData,
-      GetCustomerCheckGiftCardBalanceError
+      CustomerCheckGiftCardBalanceListData,
+      CustomerCheckGiftCardBalanceListError
     >({
       path: `/api-frontend/Customer/CheckGiftCardBalance`,
       method: "GET",
@@ -876,18 +886,21 @@ export class Customer<
    * No description
    *
    * @tags Customer
-   * @name PostCustomerCheckBalance
+   * @name CustomerCheckBalanceCreate
    * @summary Check GiftCard balance
    * @request POST:/api-frontend/Customer/CheckBalance
    * @secure
-   * @response `200` `PostCustomerCheckBalanceData` OK
+   * @response `200` `CustomerCheckBalanceCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postCustomerCheckBalance = (
+  customerCheckBalanceCreate = (
     data: CheckGiftCardBalanceModelDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostCustomerCheckBalanceData, PostCustomerCheckBalanceError>({
+    this.request<
+      CustomerCheckBalanceCreateData,
+      CustomerCheckBalanceCreateError
+    >({
       path: `/api-frontend/Customer/CheckBalance`,
       method: "POST",
       body: data,

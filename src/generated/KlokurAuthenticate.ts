@@ -11,10 +11,10 @@
  */
 
 import {
-  GetKlokurAuthenticateGetApiVersionData,
   KlokurAuthenticateCustomerRequest,
-  PostKlokurAuthenticateExchangeTokenFromKeycloakData,
-  PostKlokurAuthenticateExchangeTokenFromKeycloakError,
+  KlokurAuthenticateExchangeTokenFromKeycloakCreateData,
+  KlokurAuthenticateExchangeTokenFromKeycloakCreateError,
+  KlokurAuthenticateGetApiVersionListData,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -25,20 +25,20 @@ export class KlokurAuthenticate<
    * No description
    *
    * @tags KlokurAuthenticate
-   * @name PostKlokurAuthenticateExchangeTokenFromKeycloak
+   * @name KlokurAuthenticateExchangeTokenFromKeycloakCreate
    * @request POST:/api-frontend/KlokurAuthenticate/ExchangeTokenFromKeycloak
    * @secure
-   * @response `200` `PostKlokurAuthenticateExchangeTokenFromKeycloakData` OK
+   * @response `200` `KlokurAuthenticateExchangeTokenFromKeycloakCreateData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  postKlokurAuthenticateExchangeTokenFromKeycloak = (
+  klokurAuthenticateExchangeTokenFromKeycloakCreate = (
     data: KlokurAuthenticateCustomerRequest,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostKlokurAuthenticateExchangeTokenFromKeycloakData,
-      PostKlokurAuthenticateExchangeTokenFromKeycloakError
+      KlokurAuthenticateExchangeTokenFromKeycloakCreateData,
+      KlokurAuthenticateExchangeTokenFromKeycloakCreateError
     >({
       path: `/api-frontend/KlokurAuthenticate/ExchangeTokenFromKeycloak`,
       method: "POST",
@@ -52,13 +52,13 @@ export class KlokurAuthenticate<
    * No description
    *
    * @tags KlokurAuthenticate
-   * @name GetKlokurAuthenticateGetApiVersion
+   * @name KlokurAuthenticateGetApiVersionList
    * @request GET:/api-frontend/KlokurAuthenticate/GetApiVersion
    * @secure
-   * @response `200` `GetKlokurAuthenticateGetApiVersionData` OK
+   * @response `200` `KlokurAuthenticateGetApiVersionListData` OK
    */
-  getKlokurAuthenticateGetApiVersion = (params: RequestParams = {}) =>
-    this.request<GetKlokurAuthenticateGetApiVersionData, any>({
+  klokurAuthenticateGetApiVersionList = (params: RequestParams = {}) =>
+    this.request<KlokurAuthenticateGetApiVersionListData, any>({
       path: `/api-frontend/KlokurAuthenticate/GetApiVersion`,
       method: "GET",
       secure: true,

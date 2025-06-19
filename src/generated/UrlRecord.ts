@@ -11,9 +11,9 @@
  */
 
 import {
-  GetUrlRecordGetBySlugData,
-  GetUrlRecordGetBySlugError,
-  GetUrlRecordGetBySlugParams,
+  UrlRecordGetBySlugListData,
+  UrlRecordGetBySlugListError,
+  UrlRecordGetBySlugListParams,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -24,19 +24,19 @@ export class UrlRecord<
    * No description
    *
    * @tags UrlRecord
-   * @name GetUrlRecordGetBySlug
+   * @name UrlRecordGetBySlugList
    * @summary Gets a URL record by slug
    * @request GET:/api-frontend/UrlRecord/GetBySlug
    * @secure
-   * @response `200` `GetUrlRecordGetBySlugData` OK
+   * @response `200` `UrlRecordGetBySlugListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getUrlRecordGetBySlug = (
-    query: GetUrlRecordGetBySlugParams,
+  urlRecordGetBySlugList = (
+    query: UrlRecordGetBySlugListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetUrlRecordGetBySlugData, GetUrlRecordGetBySlugError>({
+    this.request<UrlRecordGetBySlugListData, UrlRecordGetBySlugListError>({
       path: `/api-frontend/UrlRecord/GetBySlug`,
       method: "GET",
       query: query,

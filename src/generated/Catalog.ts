@@ -11,49 +11,49 @@
  */
 
 import {
+  CatalogGetCatalogRootListData,
+  CatalogGetCatalogRootListError,
+  CatalogGetCatalogRootListParams,
+  CatalogGetCatalogSubCategoriesDetailData,
+  CatalogGetCatalogSubCategoriesDetailError,
+  CatalogGetCategoryCreateData,
+  CatalogGetCategoryCreateError,
+  CatalogGetCategoryProductsCreateData,
+  CatalogGetCategoryProductsCreateError,
+  CatalogGetManufacturerCreateData,
+  CatalogGetManufacturerCreateError,
+  CatalogGetManufacturerProductsCreateData,
+  CatalogGetManufacturerProductsCreateError,
+  CatalogGetProductsByTagCreateData,
+  CatalogGetProductsByTagCreateError,
+  CatalogGetTagProductsCreateData,
+  CatalogGetTagProductsCreateError,
+  CatalogGetVendorCreateData,
+  CatalogGetVendorCreateError,
+  CatalogGetVendorProductsCreateData,
+  CatalogGetVendorProductsCreateError,
+  CatalogHomePageCategoriesListData,
+  CatalogHomePageCategoriesListError,
+  CatalogManufacturerAllListData,
+  CatalogManufacturerAllListError,
+  CatalogNewProductsListData,
+  CatalogNewProductsListError,
+  CatalogNewProductsRssListData,
+  CatalogNewProductsRssListError,
+  CatalogProductTagsAllListData,
+  CatalogProductTagsAllListError,
   CatalogProductsCommandDto,
-  GetCatalogGetCatalogRootData,
-  GetCatalogGetCatalogRootError,
-  GetCatalogGetCatalogRootParams,
-  GetCatalogGetCatalogSubCategoriesData,
-  GetCatalogGetCatalogSubCategoriesError,
-  GetCatalogHomePageCategoriesData,
-  GetCatalogHomePageCategoriesError,
-  GetCatalogManufacturerAllData,
-  GetCatalogManufacturerAllError,
-  GetCatalogNewProductsData,
-  GetCatalogNewProductsError,
-  GetCatalogNewProductsRssData,
-  GetCatalogNewProductsRssError,
-  GetCatalogProductTagsAllData,
-  GetCatalogProductTagsAllError,
-  GetCatalogSearchTermAutoCompleteData,
-  GetCatalogSearchTermAutoCompleteError,
-  GetCatalogSearchTermAutoCompleteParams,
-  GetCatalogVendorAllData,
-  GetCatalogVendorAllError,
-  PostCatalogGetCategoryData,
-  PostCatalogGetCategoryError,
-  PostCatalogGetCategoryProductsData,
-  PostCatalogGetCategoryProductsError,
-  PostCatalogGetManufacturerData,
-  PostCatalogGetManufacturerError,
-  PostCatalogGetManufacturerProductsData,
-  PostCatalogGetManufacturerProductsError,
-  PostCatalogGetProductsByTagData,
-  PostCatalogGetProductsByTagError,
-  PostCatalogGetTagProductsData,
-  PostCatalogGetTagProductsError,
-  PostCatalogGetVendorData,
-  PostCatalogGetVendorError,
-  PostCatalogGetVendorProductsData,
-  PostCatalogGetVendorProductsError,
-  PostCatalogSearchData,
-  PostCatalogSearchError,
-  PostCatalogSearchProductsData,
-  PostCatalogSearchProductsError,
-  PostCatalogVendorReviewsData,
-  PostCatalogVendorReviewsError,
+  CatalogSearchCreateData,
+  CatalogSearchCreateError,
+  CatalogSearchProductsCreateData,
+  CatalogSearchProductsCreateError,
+  CatalogSearchTermAutoCompleteListData,
+  CatalogSearchTermAutoCompleteListError,
+  CatalogSearchTermAutoCompleteListParams,
+  CatalogVendorAllListData,
+  CatalogVendorAllListError,
+  CatalogVendorReviewsCreateData,
+  CatalogVendorReviewsCreateError,
   SearchRequest,
   VendorReviewsPagingFilteringModel,
 } from "./data-contracts";
@@ -66,20 +66,20 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetCategory
+   * @name CatalogGetCategoryCreate
    * @summary Get category
    * @request POST:/api-frontend/Catalog/GetCategory/{categoryId}
    * @secure
-   * @response `200` `PostCatalogGetCategoryData` OK
+   * @response `200` `CatalogGetCategoryCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetCategory = (
+  catalogGetCategoryCreate = (
     categoryId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostCatalogGetCategoryData, PostCatalogGetCategoryError>({
+    this.request<CatalogGetCategoryCreateData, CatalogGetCategoryCreateError>({
       path: `/api-frontend/Catalog/GetCategory/${categoryId}`,
       method: "POST",
       body: data,
@@ -92,22 +92,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetCategoryProducts
+   * @name CatalogGetCategoryProductsCreate
    * @summary Get the category products
    * @request POST:/api-frontend/Catalog/GetCategoryProducts/{categoryId}
    * @secure
-   * @response `200` `PostCatalogGetCategoryProductsData` OK
+   * @response `200` `CatalogGetCategoryProductsCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetCategoryProducts = (
+  catalogGetCategoryProductsCreate = (
     categoryId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCatalogGetCategoryProductsData,
-      PostCatalogGetCategoryProductsError
+      CatalogGetCategoryProductsCreateData,
+      CatalogGetCategoryProductsCreateError
     >({
       path: `/api-frontend/Catalog/GetCategoryProducts/${categoryId}`,
       method: "POST",
@@ -121,43 +121,45 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogGetCatalogRoot
+   * @name CatalogGetCatalogRootList
    * @summary Get catalog root (list of categories)
    * @request GET:/api-frontend/Catalog/GetCatalogRoot
    * @secure
-   * @response `200` `GetCatalogGetCatalogRootData` OK
+   * @response `200` `CatalogGetCatalogRootListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCatalogGetCatalogRoot = (
-    query: GetCatalogGetCatalogRootParams,
+  catalogGetCatalogRootList = (
+    query: CatalogGetCatalogRootListParams,
     params: RequestParams = {},
   ) =>
-    this.request<GetCatalogGetCatalogRootData, GetCatalogGetCatalogRootError>({
-      path: `/api-frontend/Catalog/GetCatalogRoot`,
-      method: "GET",
-      query: query,
-      secure: true,
-      format: "json",
-      ...params,
-    });
+    this.request<CatalogGetCatalogRootListData, CatalogGetCatalogRootListError>(
+      {
+        path: `/api-frontend/Catalog/GetCatalogRoot`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogGetCatalogSubCategories
+   * @name CatalogGetCatalogSubCategoriesDetail
    * @summary Get catalog sub categories
    * @request GET:/api-frontend/Catalog/GetCatalogSubCategories/{id}
    * @secure
-   * @response `200` `GetCatalogGetCatalogSubCategoriesData` OK
+   * @response `200` `CatalogGetCatalogSubCategoriesDetailData` OK
    * @response `401` `string` Unauthorized
    */
-  getCatalogGetCatalogSubCategories = (
+  catalogGetCatalogSubCategoriesDetail = (
     id: number,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetCatalogGetCatalogSubCategoriesData,
-      GetCatalogGetCatalogSubCategoriesError
+      CatalogGetCatalogSubCategoriesDetailData,
+      CatalogGetCatalogSubCategoriesDetailError
     >({
       path: `/api-frontend/Catalog/GetCatalogSubCategories/${id}`,
       method: "GET",
@@ -169,17 +171,17 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogHomePageCategories
+   * @name CatalogHomePageCategoriesList
    * @summary Get categories on Home page
    * @request GET:/api-frontend/Catalog/HomePageCategories
    * @secure
-   * @response `200` `GetCatalogHomePageCategoriesData` OK
+   * @response `200` `CatalogHomePageCategoriesListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCatalogHomePageCategories = (params: RequestParams = {}) =>
+  catalogHomePageCategoriesList = (params: RequestParams = {}) =>
     this.request<
-      GetCatalogHomePageCategoriesData,
-      GetCatalogHomePageCategoriesError
+      CatalogHomePageCategoriesListData,
+      CatalogHomePageCategoriesListError
     >({
       path: `/api-frontend/Catalog/HomePageCategories`,
       method: "GET",
@@ -191,22 +193,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetManufacturer
+   * @name CatalogGetManufacturerCreate
    * @summary Get manufacturer
    * @request POST:/api-frontend/Catalog/GetManufacturer/{manufacturerId}
    * @secure
-   * @response `200` `PostCatalogGetManufacturerData` OK
+   * @response `200` `CatalogGetManufacturerCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetManufacturer = (
+  catalogGetManufacturerCreate = (
     manufacturerId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCatalogGetManufacturerData,
-      PostCatalogGetManufacturerError
+      CatalogGetManufacturerCreateData,
+      CatalogGetManufacturerCreateError
     >({
       path: `/api-frontend/Catalog/GetManufacturer/${manufacturerId}`,
       method: "POST",
@@ -220,22 +222,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetManufacturerProducts
+   * @name CatalogGetManufacturerProductsCreate
    * @summary Get manufacturer products
    * @request POST:/api-frontend/Catalog/GetManufacturerProducts/{manufacturerId}
    * @secure
-   * @response `200` `PostCatalogGetManufacturerProductsData` OK
+   * @response `200` `CatalogGetManufacturerProductsCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetManufacturerProducts = (
+  catalogGetManufacturerProductsCreate = (
     manufacturerId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCatalogGetManufacturerProductsData,
-      PostCatalogGetManufacturerProductsError
+      CatalogGetManufacturerProductsCreateData,
+      CatalogGetManufacturerProductsCreateError
     >({
       path: `/api-frontend/Catalog/GetManufacturerProducts/${manufacturerId}`,
       method: "POST",
@@ -249,41 +251,42 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogManufacturerAll
+   * @name CatalogManufacturerAllList
    * @summary Get all manufacturers
    * @request GET:/api-frontend/Catalog/ManufacturerAll
    * @secure
-   * @response `200` `GetCatalogManufacturerAllData` OK
+   * @response `200` `CatalogManufacturerAllListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCatalogManufacturerAll = (params: RequestParams = {}) =>
-    this.request<GetCatalogManufacturerAllData, GetCatalogManufacturerAllError>(
-      {
-        path: `/api-frontend/Catalog/ManufacturerAll`,
-        method: "GET",
-        secure: true,
-        format: "json",
-        ...params,
-      },
-    );
+  catalogManufacturerAllList = (params: RequestParams = {}) =>
+    this.request<
+      CatalogManufacturerAllListData,
+      CatalogManufacturerAllListError
+    >({
+      path: `/api-frontend/Catalog/ManufacturerAll`,
+      method: "GET",
+      secure: true,
+      format: "json",
+      ...params,
+    });
   /**
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetVendor
+   * @name CatalogGetVendorCreate
    * @summary Vendor
    * @request POST:/api-frontend/Catalog/GetVendor/{vendorId}
    * @secure
-   * @response `200` `PostCatalogGetVendorData` OK
+   * @response `200` `CatalogGetVendorCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetVendor = (
+  catalogGetVendorCreate = (
     vendorId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostCatalogGetVendorData, PostCatalogGetVendorError>({
+    this.request<CatalogGetVendorCreateData, CatalogGetVendorCreateError>({
       path: `/api-frontend/Catalog/GetVendor/${vendorId}`,
       method: "POST",
       body: data,
@@ -296,22 +299,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetVendorProducts
+   * @name CatalogGetVendorProductsCreate
    * @summary Get vendor products
    * @request POST:/api-frontend/Catalog/GetVendorProducts/{vendorId}
    * @secure
-   * @response `200` `PostCatalogGetVendorProductsData` OK
+   * @response `200` `CatalogGetVendorProductsCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetVendorProducts = (
+  catalogGetVendorProductsCreate = (
     vendorId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCatalogGetVendorProductsData,
-      PostCatalogGetVendorProductsError
+      CatalogGetVendorProductsCreateData,
+      CatalogGetVendorProductsCreateError
     >({
       path: `/api-frontend/Catalog/GetVendorProducts/${vendorId}`,
       method: "POST",
@@ -325,20 +328,23 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogVendorReviews
+   * @name CatalogVendorReviewsCreate
    * @summary Get vendor products
    * @request POST:/api-frontend/Catalog/VendorReviews/{vendorId}
    * @secure
-   * @response `200` `PostCatalogVendorReviewsData` OK
+   * @response `200` `CatalogVendorReviewsCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogVendorReviews = (
+  catalogVendorReviewsCreate = (
     vendorId: number,
     data: VendorReviewsPagingFilteringModel,
     params: RequestParams = {},
   ) =>
-    this.request<PostCatalogVendorReviewsData, PostCatalogVendorReviewsError>({
+    this.request<
+      CatalogVendorReviewsCreateData,
+      CatalogVendorReviewsCreateError
+    >({
       path: `/api-frontend/Catalog/VendorReviews/${vendorId}`,
       method: "POST",
       body: data,
@@ -351,15 +357,15 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogVendorAll
+   * @name CatalogVendorAllList
    * @summary Get all vendors
    * @request GET:/api-frontend/Catalog/VendorAll
    * @secure
-   * @response `200` `GetCatalogVendorAllData` OK
+   * @response `200` `CatalogVendorAllListData` OK
    * @response `401` `string` Unauthorized
    */
-  getCatalogVendorAll = (params: RequestParams = {}) =>
-    this.request<GetCatalogVendorAllData, GetCatalogVendorAllError>({
+  catalogVendorAllList = (params: RequestParams = {}) =>
+    this.request<CatalogVendorAllListData, CatalogVendorAllListError>({
       path: `/api-frontend/Catalog/VendorAll`,
       method: "GET",
       secure: true,
@@ -370,22 +376,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetProductsByTag
+   * @name CatalogGetProductsByTagCreate
    * @summary Get products by tag
    * @request POST:/api-frontend/Catalog/GetProductsByTag/{productTagId}
    * @secure
-   * @response `200` `PostCatalogGetProductsByTagData` OK
+   * @response `200` `CatalogGetProductsByTagCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetProductsByTag = (
+  catalogGetProductsByTagCreate = (
     productTagId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
     this.request<
-      PostCatalogGetProductsByTagData,
-      PostCatalogGetProductsByTagError
+      CatalogGetProductsByTagCreateData,
+      CatalogGetProductsByTagCreateError
     >({
       path: `/api-frontend/Catalog/GetProductsByTag/${productTagId}`,
       method: "POST",
@@ -399,26 +405,48 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogGetTagProducts
+   * @name CatalogGetTagProductsCreate
    * @summary Get tag products
    * @request POST:/api-frontend/Catalog/GetTagProducts/{productTagId}
    * @secure
-   * @response `200` `PostCatalogGetTagProductsData` OK
+   * @response `200` `CatalogGetTagProductsCreateData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  postCatalogGetTagProducts = (
+  catalogGetTagProductsCreate = (
     productTagId: number,
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
-    this.request<PostCatalogGetTagProductsData, PostCatalogGetTagProductsError>(
+    this.request<
+      CatalogGetTagProductsCreateData,
+      CatalogGetTagProductsCreateError
+    >({
+      path: `/api-frontend/Catalog/GetTagProducts/${productTagId}`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      format: "json",
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags Catalog
+   * @name CatalogProductTagsAllList
+   * @summary Get all popular product tags
+   * @request GET:/api-frontend/Catalog/ProductTagsAll
+   * @secure
+   * @response `200` `CatalogProductTagsAllListData` OK
+   * @response `401` `string` Unauthorized
+   */
+  catalogProductTagsAllList = (params: RequestParams = {}) =>
+    this.request<CatalogProductTagsAllListData, CatalogProductTagsAllListError>(
       {
-        path: `/api-frontend/Catalog/GetTagProducts/${productTagId}`,
-        method: "POST",
-        body: data,
+        path: `/api-frontend/Catalog/ProductTagsAll`,
+        method: "GET",
         secure: true,
-        type: ContentType.Json,
         format: "json",
         ...params,
       },
@@ -427,37 +455,18 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogProductTagsAll
-   * @summary Get all popular product tags
-   * @request GET:/api-frontend/Catalog/ProductTagsAll
-   * @secure
-   * @response `200` `GetCatalogProductTagsAllData` OK
-   * @response `401` `string` Unauthorized
-   */
-  getCatalogProductTagsAll = (params: RequestParams = {}) =>
-    this.request<GetCatalogProductTagsAllData, GetCatalogProductTagsAllError>({
-      path: `/api-frontend/Catalog/ProductTagsAll`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags Catalog
-   * @name GetCatalogNewProducts
+   * @name CatalogNewProductsList
    * @request GET:/api-frontend/Catalog/NewProducts
    * @secure
-   * @response `200` `GetCatalogNewProductsData` OK
+   * @response `200` `CatalogNewProductsListData` OK
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCatalogNewProducts = (
+  catalogNewProductsList = (
     data: CatalogProductsCommandDto,
     params: RequestParams = {},
   ) =>
-    this.request<GetCatalogNewProductsData, GetCatalogNewProductsError>({
+    this.request<CatalogNewProductsListData, CatalogNewProductsListError>({
       path: `/api-frontend/Catalog/NewProducts`,
       method: "GET",
       body: data,
@@ -470,34 +479,36 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogNewProductsRss
+   * @name CatalogNewProductsRssList
    * @request GET:/api-frontend/Catalog/NewProductsRss
    * @secure
-   * @response `200` `GetCatalogNewProductsRssData` OK
+   * @response `200` `CatalogNewProductsRssListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    */
-  getCatalogNewProductsRss = (params: RequestParams = {}) =>
-    this.request<GetCatalogNewProductsRssData, GetCatalogNewProductsRssError>({
-      path: `/api-frontend/Catalog/NewProductsRss`,
-      method: "GET",
-      secure: true,
-      format: "json",
-      ...params,
-    });
+  catalogNewProductsRssList = (params: RequestParams = {}) =>
+    this.request<CatalogNewProductsRssListData, CatalogNewProductsRssListError>(
+      {
+        path: `/api-frontend/Catalog/NewProductsRss`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      },
+    );
   /**
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogSearch
+   * @name CatalogSearchCreate
    * @summary Search
    * @request POST:/api-frontend/Catalog/Search
    * @secure
-   * @response `200` `PostCatalogSearchData` OK
+   * @response `200` `CatalogSearchCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postCatalogSearch = (data: SearchRequest, params: RequestParams = {}) =>
-    this.request<PostCatalogSearchData, PostCatalogSearchError>({
+  catalogSearchCreate = (data: SearchRequest, params: RequestParams = {}) =>
+    this.request<CatalogSearchCreateData, CatalogSearchCreateError>({
       path: `/api-frontend/Catalog/Search`,
       method: "POST",
       body: data,
@@ -510,22 +521,22 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name GetCatalogSearchTermAutoComplete
+   * @name CatalogSearchTermAutoCompleteList
    * @summary Search term auto complete
    * @request GET:/api-frontend/Catalog/SearchTermAutoComplete
    * @secure
-   * @response `200` `GetCatalogSearchTermAutoCompleteData` OK
+   * @response `200` `CatalogSearchTermAutoCompleteListData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getCatalogSearchTermAutoComplete = (
-    query: GetCatalogSearchTermAutoCompleteParams,
+  catalogSearchTermAutoCompleteList = (
+    query: CatalogSearchTermAutoCompleteListParams,
     params: RequestParams = {},
   ) =>
     this.request<
-      GetCatalogSearchTermAutoCompleteData,
-      GetCatalogSearchTermAutoCompleteError
+      CatalogSearchTermAutoCompleteListData,
+      CatalogSearchTermAutoCompleteListError
     >({
       path: `/api-frontend/Catalog/SearchTermAutoComplete`,
       method: "GET",
@@ -538,26 +549,27 @@ export class Catalog<
    * No description
    *
    * @tags Catalog
-   * @name PostCatalogSearchProducts
+   * @name CatalogSearchProductsCreate
    * @summary Search products
    * @request POST:/api-frontend/Catalog/SearchProducts
    * @secure
-   * @response `200` `PostCatalogSearchProductsData` OK
+   * @response `200` `CatalogSearchProductsCreateData` OK
    * @response `401` `string` Unauthorized
    */
-  postCatalogSearchProducts = (
+  catalogSearchProductsCreate = (
     data: SearchRequest,
     params: RequestParams = {},
   ) =>
-    this.request<PostCatalogSearchProductsData, PostCatalogSearchProductsError>(
-      {
-        path: `/api-frontend/Catalog/SearchProducts`,
-        method: "POST",
-        body: data,
-        secure: true,
-        type: ContentType.Json,
-        format: "json",
-        ...params,
-      },
-    );
+    this.request<
+      CatalogSearchProductsCreateData,
+      CatalogSearchProductsCreateError
+    >({
+      path: `/api-frontend/Catalog/SearchProducts`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      format: "json",
+      ...params,
+    });
 }

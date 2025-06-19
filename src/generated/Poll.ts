@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------
  */
 
-import { GetPollVoteData, GetPollVoteError } from "./data-contracts";
+import { PollVoteDetailData, PollVoteDetailError } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class Poll<
@@ -20,16 +20,16 @@ export class Poll<
    * No description
    *
    * @tags Poll
-   * @name GetPollVote
+   * @name PollVoteDetail
    * @request GET:/api-frontend/Poll/Vote/{pollAnswerId}
    * @secure
-   * @response `200` `GetPollVoteData` OK
+   * @response `200` `PollVoteDetailData` OK
    * @response `400` `string` Bad Request
    * @response `401` `string` Unauthorized
    * @response `404` `string` Not Found
    */
-  getPollVote = (pollAnswerId: number, params: RequestParams = {}) =>
-    this.request<GetPollVoteData, GetPollVoteError>({
+  pollVoteDetail = (pollAnswerId: number, params: RequestParams = {}) =>
+    this.request<PollVoteDetailData, PollVoteDetailError>({
       path: `/api-frontend/Poll/Vote/${pollAnswerId}`,
       method: "GET",
       secure: true,
