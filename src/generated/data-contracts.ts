@@ -1144,6 +1144,29 @@ export interface EstimateShippingResultModelDto {
   custom_properties?: Record<string, string | null>;
 }
 
+export interface ExternalPriceAndStockResponse {
+  products?: ExternalProductInfo[] | null;
+}
+
+export interface ExternalProductInfo {
+  stocks?: ExternalStock[] | null;
+  /** @format double */
+  list_price_with_tax?: number | null;
+  /** @format double */
+  list_price?: number | null;
+  /** @format double */
+  discount_price_with_tax?: number | null;
+  /** @format double */
+  discount_price?: number | null;
+}
+
+export interface ExternalStock {
+  id?: string | null;
+  name?: string | null;
+  /** @format int32 */
+  quantity?: number;
+}
+
 export interface ForumGroupModelDto {
   name?: string | null;
   se_name?: string | null;
@@ -4116,6 +4139,14 @@ export interface GetDownloadGetFileUploadParams {
 export type GetDownloadGetFileUploadError = string;
 
 export type GetDownloadGetOrderNoteFileError = string;
+
+export type PostErpProductBasePayload = string[];
+
+export type PostErpProductBaseData = ExternalPriceAndStockResponse;
+
+export type PostErpProductBaseError = string;
+
+export type GetErpGetApiVersionData = string;
 
 export type PostKlokurAuthenticateExchangeTokenFromKeycloakData =
   AuthenticateResponse;
