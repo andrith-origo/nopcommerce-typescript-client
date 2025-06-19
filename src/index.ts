@@ -7,7 +7,7 @@ export { Common as CommonAPI } from "./generated/Common";
 export { Country as CountryAPI } from "./generated/Country";
 export { Customer as CustomerAPI } from "./generated/Customer";
 export { Download as DownloadAPI } from "./generated/Download";
-export { Multiprofile as MultiprofileAPI } from "./generated/Multiprofile";
+export { Erp as ERPAPI } from "./generated/Erp";
 export { News as NewsAPI } from "./generated/News";
 export { Newsletter as NewsletterAPI } from "./generated/Newsletter";
 export { NopMobileApp as NopMobileAppAPI } from "./generated/NopMobileApp";
