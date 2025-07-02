@@ -8,7 +8,7 @@ Command:
 npx swagger-typescript-api -p http://localhost:8010/api/frontend_v4.70.1/swagger.json -o ./src --modular
 
 latest is
-npx swagger-typescript-api@13.1.3 generate -p "http://localhost:8010/api/frontend_v4.80.1/swagger.json" -o ./src/generated --patch --modular --responses --extract-responses --extract-request-params --extract-request-body --extract-response-body --extract-response-error --module-name-index 1 --clean-output
+npx swagger-typescript-api@13.1.3 generate -p "http://localhost:8010/api/frontend_v4.80.3/swagger.json" -o ./src/generated --patch --modular --responses --extract-responses --extract-request-params --extract-request-body --extract-response-body --extract-response-error --module-name-index 1 --clean-output
 
 Node version 22.13.0
 

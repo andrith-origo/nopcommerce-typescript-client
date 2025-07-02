@@ -1150,6 +1150,7 @@ export interface ExternalPriceAndStockResponse {
 
 export interface ExternalProductInfo {
   stocks?: ExternalStock[] | null;
+  sku?: string | null;
   /** @format double */
   list_price_with_tax?: number | null;
   /** @format double */
